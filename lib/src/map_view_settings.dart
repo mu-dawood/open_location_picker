@@ -14,7 +14,7 @@ typedef LocationMarkerCallback = Marker Function(
 typedef CurrentLocationMarkerCallback = Marker Function(
     BuildContext context, LatLng location);
 
-/// global settings for map
+/// Global settings for map
 /// You can wrap material app with it or wrap entire screen to ovveride the globals
 class OpenMapSettings extends InheritedWidget {
   const OpenMapSettings({

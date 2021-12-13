@@ -11,23 +11,52 @@ part 'location_model.freezed.dart';
 class FormattedLocation with _$FormattedLocation {
   const FormattedLocation._();
   const factory FormattedLocation({
+    ///reference to the Nominatim internal database ID
     @Default('') String placeId,
+
+    /// latitude of the centroid of the object
     required double lat,
+
+    /// llongitude of the centroid of the object
     required double lon,
     required String licence,
+
+    ///reference to the OSM object
     required String osmType,
+
+    /// reference to the OSM object
     required int osmId,
+
+    /// search rank of the object
     required int placeRank,
+
+    ///key of the main OSM tag
     required String category,
+
+    /// value of the main OSM tag
     required String type,
+
+    /// computed importance rank
     required double importance,
     required String addresstype,
     required String name,
+
+    ///full comma-separated address
     required String displayName,
+
+    /// dictionary of address details
     required Address address,
+
+    /// dictionary with additional useful tags like website or maxspeed
     required Map<String, dynamic> extratags,
+
+    /// ictionary with full list of available names including ref etc
     required Map<String, dynamic> namedetails,
+
+    ///area of corner coordinates
     required LatLngBounds boundingbox,
+
+    /// Geobouds of object
     required GeoGeometry geojson,
     @Default({}) Map<String, String> names,
   }) = _FormattedLocation;

@@ -4,6 +4,8 @@ import 'package:flutter_map/flutter_map.dart';
 import './location_model.dart';
 import 'bloc.dart';
 
+/// Display saerch results at the top of screen
+
 class SearchResults extends StatelessWidget {
   final OpenMapBloc bloc;
   final ValueChanged<LatLngBounds> fitBounds;

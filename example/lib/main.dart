@@ -45,12 +45,13 @@ class MyApp extends StatelessWidget {
     return OpenMapSettings(
       onError: (context, error) {},
       getCurrentLocation: _getCurrentLocationUsingLocationPackage,
-      reverseZoom: ReverseZoom.suburb,
+      reverseZoom: ReverseZoom.building,
       getLocationStream: () => location.onLocationChanged
           .map((event) => LatLng(event.latitude!, event.longitude!)),
       child: MaterialApp(
         title: 'Flutter Demo',
         locale: const Locale("ar"),
+        debugShowCheckedModeBanner: false,
         localizationsDelegates: const [
           GlobalMaterialLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate,
@@ -62,7 +63,7 @@ class MyApp extends StatelessWidget {
         ],
         theme: ThemeData.light(),
         darkTheme: ThemeData.dark(),
-        themeMode: ThemeMode.dark,
+        themeMode: ThemeMode.light,
         home: const MyHomePage(title: 'open_location_picker demo'),
       ),
     );

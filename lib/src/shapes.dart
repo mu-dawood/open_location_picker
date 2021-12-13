@@ -8,6 +8,7 @@ import 'bloc.dart';
 
 export 'package:latlong2/latlong.dart';
 
+/// List of Polygon of selected locations
 class MapPolygens extends StatelessWidget {
   final OpenMapBloc bloc;
   const MapPolygens({Key? key, required this.bloc}) : super(key: key);
@@ -36,6 +37,8 @@ class MapPolygens extends StatelessWidget {
   }
 }
 
+/// List of Polylines of selected locations
+
 class MapPolylines extends StatelessWidget {
   final OpenMapBloc bloc;
   const MapPolylines({Key? key, required this.bloc}) : super(key: key);
@@ -63,6 +66,8 @@ class MapPolylines extends StatelessWidget {
   }
 }
 
+/// List of Circles of selected locations
+
 class MapCircles extends StatelessWidget {
   final OpenMapBloc bloc;
   const MapCircles({Key? key, required this.bloc}) : super(key: key);
@@ -89,6 +94,8 @@ class MapCircles extends StatelessWidget {
     );
   }
 }
+
+/// Grouping locations into one object
 
 class GeoGeometryGroup {
   final List<GeoPolygon> polygons;

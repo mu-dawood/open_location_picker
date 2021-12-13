@@ -113,7 +113,7 @@ class __BaseFormFieldState<T> extends State<_BaseFormField<T>> {
                     onPressed: () {
                       widget.onRemove(field);
                     },
-                    icon: removeIcon,
+                    icon: removeIcon!,
                     color: Theme.of(context).errorColor,
                   )
                 : effectiveDecoration.suffixIcon);

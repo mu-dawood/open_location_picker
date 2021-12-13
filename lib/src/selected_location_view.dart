@@ -4,6 +4,8 @@ import 'package:flutter_map/flutter_map.dart';
 import 'bloc.dart';
 import 'location_model.dart';
 
+/// Display selected locations on Bottom navigation bar
+
 class SelectedLocationView extends StatelessWidget {
   final OpenMapBloc bloc;
   final ValueChanged<LatLngBounds> fitBounds;

@@ -66,23 +66,52 @@ const $FormattedLocation = _$FormattedLocationTearOff();
 
 /// @nodoc
 mixin _$FormattedLocation {
+  ///reference to the Nominatim internal database ID
   String get placeId => throw _privateConstructorUsedError;
+
+  /// latitude of the centroid of the object
   double get lat => throw _privateConstructorUsedError;
+
+  /// llongitude of the centroid of the object
   double get lon => throw _privateConstructorUsedError;
   String get licence => throw _privateConstructorUsedError;
+
+  ///reference to the OSM object
   String get osmType => throw _privateConstructorUsedError;
+
+  /// reference to the OSM object
   int get osmId => throw _privateConstructorUsedError;
+
+  /// search rank of the object
   int get placeRank => throw _privateConstructorUsedError;
+
+  ///key of the main OSM tag
   String get category => throw _privateConstructorUsedError;
+
+  /// value of the main OSM tag
   String get type => throw _privateConstructorUsedError;
+
+  /// computed importance rank
   double get importance => throw _privateConstructorUsedError;
   String get addresstype => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
+
+  ///full comma-separated address
   String get displayName => throw _privateConstructorUsedError;
+
+  /// dictionary of address details
   Address get address => throw _privateConstructorUsedError;
+
+  /// dictionary with additional useful tags like website or maxspeed
   Map<String, dynamic> get extratags => throw _privateConstructorUsedError;
+
+  /// ictionary with full list of available names including ref etc
   Map<String, dynamic> get namedetails => throw _privateConstructorUsedError;
+
+  ///area of corner coordinates
   LatLngBounds get boundingbox => throw _privateConstructorUsedError;
+
+  /// Geobouds of object
   GeoGeometry get geojson => throw _privateConstructorUsedError;
   Map<String, String> get names => throw _privateConstructorUsedError;
 
@@ -412,40 +441,70 @@ class _$_FormattedLocation extends _FormattedLocation {
 
   @JsonKey()
   @override
+
+  ///reference to the Nominatim internal database ID
   final String placeId;
   @override
+
+  /// latitude of the centroid of the object
   final double lat;
   @override
+
+  /// llongitude of the centroid of the object
   final double lon;
   @override
   final String licence;
   @override
+
+  ///reference to the OSM object
   final String osmType;
   @override
+
+  /// reference to the OSM object
   final int osmId;
   @override
+
+  /// search rank of the object
   final int placeRank;
   @override
+
+  ///key of the main OSM tag
   final String category;
   @override
+
+  /// value of the main OSM tag
   final String type;
   @override
+
+  /// computed importance rank
   final double importance;
   @override
   final String addresstype;
   @override
   final String name;
   @override
+
+  ///full comma-separated address
   final String displayName;
   @override
+
+  /// dictionary of address details
   final Address address;
   @override
+
+  /// dictionary with additional useful tags like website or maxspeed
   final Map<String, dynamic> extratags;
   @override
+
+  /// ictionary with full list of available names including ref etc
   final Map<String, dynamic> namedetails;
   @override
+
+  ///area of corner coordinates
   final LatLngBounds boundingbox;
   @override
+
+  /// Geobouds of object
   final GeoGeometry geojson;
   @JsonKey()
   @override
@@ -536,40 +595,70 @@ abstract class _FormattedLocation extends FormattedLocation {
   const _FormattedLocation._() : super._();
 
   @override
+
+  ///reference to the Nominatim internal database ID
   String get placeId;
   @override
+
+  /// latitude of the centroid of the object
   double get lat;
   @override
+
+  /// llongitude of the centroid of the object
   double get lon;
   @override
   String get licence;
   @override
+
+  ///reference to the OSM object
   String get osmType;
   @override
+
+  /// reference to the OSM object
   int get osmId;
   @override
+
+  /// search rank of the object
   int get placeRank;
   @override
+
+  ///key of the main OSM tag
   String get category;
   @override
+
+  /// value of the main OSM tag
   String get type;
   @override
+
+  /// computed importance rank
   double get importance;
   @override
   String get addresstype;
   @override
   String get name;
   @override
+
+  ///full comma-separated address
   String get displayName;
   @override
+
+  /// dictionary of address details
   Address get address;
   @override
+
+  /// dictionary with additional useful tags like website or maxspeed
   Map<String, dynamic> get extratags;
   @override
+
+  /// ictionary with full list of available names including ref etc
   Map<String, dynamic> get namedetails;
   @override
+
+  ///area of corner coordinates
   LatLngBounds get boundingbox;
   @override
+
+  /// Geobouds of object
   GeoGeometry get geojson;
   @override
   Map<String, String> get names;

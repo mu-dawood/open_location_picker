@@ -3,6 +3,7 @@ import 'package:latlong2/latlong.dart';
 
 import 'map_view_settings.dart';
 
+/// Default Floating button for user location
 class MyLocationButton extends StatefulWidget {
   final ValueChanged<LatLng> moveTo;
   const MyLocationButton({Key? key, required this.moveTo}) : super(key: key);

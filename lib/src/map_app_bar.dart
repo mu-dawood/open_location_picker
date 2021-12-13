@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:open_location_picker/open_location_picker.dart';
 
+/// search app bar
 class MapAppBar extends StatefulWidget with PreferredSizeWidget {
   final OpenMapBloc bloc;
   final MapController controller;

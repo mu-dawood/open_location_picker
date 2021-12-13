@@ -8,6 +8,7 @@ import './location_model.dart';
 import './map_view_settings.dart';
 import 'bloc.dart';
 
+/// current location display
 class MyCurrentLocationMarker extends StatefulWidget {
   const MyCurrentLocationMarker({Key? key}) : super(key: key);
 
@@ -88,6 +89,7 @@ class _MyCurrentLocationMarkerState extends State<MyCurrentLocationMarker> {
   }
 }
 
+// list of selected markers
 class MapMarkers extends StatelessWidget {
   final OpenMapBloc bloc;
   const MapMarkers({Key? key, required this.bloc}) : super(key: key);
