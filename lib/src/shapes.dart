@@ -104,7 +104,8 @@ class GeoGeometryGroup {
 class _MapShapes extends StatelessWidget {
   final OpenMapBloc bloc;
   final Widget Function(GeoGeometryGroup group, LatLng? loadingPoint) builder;
-  const _MapShapes({Key? key, required this.bloc, required this.builder}) : super(key: key);
+  const _MapShapes({Key? key, required this.bloc, required this.builder})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {

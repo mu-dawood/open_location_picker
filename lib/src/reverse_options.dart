@@ -57,7 +57,8 @@ class SearchFilters {
   Map<String, String> toJson() {
     return {
       if (countryCodes != null) "countrycodes": countryCodes!.join(','),
-      if (excludePlaceIds != null) "exclude_place_ids": excludePlaceIds!.join(','),
+      if (excludePlaceIds != null)
+        "exclude_place_ids": excludePlaceIds!.join(','),
       if (limit != null) "limit": limit!.toString(),
       if (viewBox != null) ...(viewBox!.toJson()),
       if (email != null) "email": email!,
@@ -69,12 +70,14 @@ class SearchFilters {
 class ViewBox extends LatLngBounds {
   final bool bounded;
 
-  ViewBox(LatLng southWest, LatLng northEast, [this.bounded = false]) : super(southWest, northEast);
+  ViewBox(LatLng southWest, LatLng northEast, [this.bounded = false])
+      : super(southWest, northEast);
 
   Map<String, String> toJson() {
     return {
       "bounded": bounded ? "1" : "0",
-      "viewbox": "${southWest?.latitude},${southWest?.longitude},${northEast?.latitude},${northEast?.longitude}",
+      "viewbox":
+          "${southWest?.latitude},${southWest?.longitude},${northEast?.latitude},${northEast?.longitude}",
     };
   }
 }

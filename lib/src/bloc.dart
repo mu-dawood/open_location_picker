@@ -12,7 +12,8 @@ abstract class OpenMapBloc {
 @freezed
 class OpenMapState with _$OpenMapState {
   const factory OpenMapState.selected(SelectedLocation selected) = _Selected;
-  const factory OpenMapState.reversing(SelectedLocation selected, LatLng reversing) = _Reversing;
+  const factory OpenMapState.reversing(
+      SelectedLocation selected, LatLng reversing) = _Reversing;
 
   const factory OpenMapState.searching({
     required SelectedLocation selected,
@@ -30,5 +31,6 @@ class OpenMapState with _$OpenMapState {
 @freezed
 class SelectedLocation with _$SelectedLocation {
   const factory SelectedLocation.single(FormattedLocation? selected) = _Single;
-  const factory SelectedLocation.multi(List<FormattedLocation> selected) = _Multi;
+  const factory SelectedLocation.multi(List<FormattedLocation> selected) =
+      _Multi;
 }

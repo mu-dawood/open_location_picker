@@ -177,20 +177,26 @@ class OpenMapOptions {
     required TapCallback onTap,
     OpenMapSettings? settings,
   }) {
-    var def = settings?.defaultOptions
-            ?.create(onMapCreated: onMapCreated, controller: controller, onTap: onTap, settings: null) ??
+    var def = settings?.defaultOptions?.create(
+            onMapCreated: onMapCreated,
+            controller: controller,
+            onTap: onTap,
+            settings: null) ??
         MapOptions();
     return MapOptions(
       allowPanning: allowPanning ?? def.allowPanning,
-      allowPanningOnScrollingParent: allowPanningOnScrollingParent ?? def.allowPanningOnScrollingParent,
+      allowPanningOnScrollingParent:
+          allowPanningOnScrollingParent ?? def.allowPanningOnScrollingParent,
       crs: crs ?? def.crs,
       center: _center ?? def.center,
       bounds: _bounds ?? def.bounds,
       boundsOptions: _boundsOptions ?? def.boundsOptions,
       zoom: zoom ?? def.zoom,
       rotation: rotation ?? def.rotation,
-      debugMultiFingerGestureWinner: debugMultiFingerGestureWinner ?? def.debugMultiFingerGestureWinner,
-      enableMultiFingerGestureRace: enableMultiFingerGestureRace ?? def.enableMultiFingerGestureRace,
+      debugMultiFingerGestureWinner:
+          debugMultiFingerGestureWinner ?? def.debugMultiFingerGestureWinner,
+      enableMultiFingerGestureRace:
+          enableMultiFingerGestureRace ?? def.enableMultiFingerGestureRace,
       rotationThreshold: rotationThreshold ?? def.rotationThreshold,
       rotationWinGestures: rotationWinGestures ?? def.rotationWinGestures,
       pinchZoomThreshold: pinchZoomThreshold ?? def.pinchZoomThreshold,
@@ -248,8 +254,10 @@ class OpenMapOptions {
         crs: crs ?? this.crs,
         zoom: zoom ?? this.zoom,
         rotation: rotation ?? this.rotation,
-        debugMultiFingerGestureWinner: debugMultiFingerGestureWinner ?? this.debugMultiFingerGestureWinner,
-        enableMultiFingerGestureRace: enableMultiFingerGestureRace ?? this.enableMultiFingerGestureRace,
+        debugMultiFingerGestureWinner:
+            debugMultiFingerGestureWinner ?? this.debugMultiFingerGestureWinner,
+        enableMultiFingerGestureRace:
+            enableMultiFingerGestureRace ?? this.enableMultiFingerGestureRace,
         rotationThreshold: rotationThreshold ?? this.rotationThreshold,
         rotationWinGestures: rotationWinGestures ?? this.rotationWinGestures,
         pinchZoomThreshold: pinchZoomThreshold ?? this.pinchZoomThreshold,
@@ -261,7 +269,8 @@ class OpenMapOptions {
         maxZoom: maxZoom ?? this.maxZoom,
         interactiveFlags: interactiveFlags ?? this.interactiveFlags,
         allowPanning: allowPanning ?? this.allowPanning,
-        allowPanningOnScrollingParent: allowPanningOnScrollingParent ?? this.allowPanningOnScrollingParent,
+        allowPanningOnScrollingParent:
+            allowPanningOnScrollingParent ?? this.allowPanningOnScrollingParent,
         onLongPress: onLongPress ?? this.onLongPress,
         onPositionChanged: onPositionChanged ?? this.onPositionChanged,
         plugins: plugins ?? this.plugins,
@@ -278,8 +287,10 @@ class OpenMapOptions {
       crs: crs ?? this.crs,
       zoom: zoom ?? this.zoom,
       rotation: rotation ?? this.rotation,
-      debugMultiFingerGestureWinner: debugMultiFingerGestureWinner ?? this.debugMultiFingerGestureWinner,
-      enableMultiFingerGestureRace: enableMultiFingerGestureRace ?? this.enableMultiFingerGestureRace,
+      debugMultiFingerGestureWinner:
+          debugMultiFingerGestureWinner ?? this.debugMultiFingerGestureWinner,
+      enableMultiFingerGestureRace:
+          enableMultiFingerGestureRace ?? this.enableMultiFingerGestureRace,
       rotationThreshold: rotationThreshold ?? this.rotationThreshold,
       rotationWinGestures: rotationWinGestures ?? this.rotationWinGestures,
       pinchZoomThreshold: pinchZoomThreshold ?? this.pinchZoomThreshold,
@@ -291,7 +302,8 @@ class OpenMapOptions {
       maxZoom: maxZoom ?? this.maxZoom,
       interactiveFlags: interactiveFlags ?? this.interactiveFlags,
       allowPanning: allowPanning ?? this.allowPanning,
-      allowPanningOnScrollingParent: allowPanningOnScrollingParent ?? this.allowPanningOnScrollingParent,
+      allowPanningOnScrollingParent:
+          allowPanningOnScrollingParent ?? this.allowPanningOnScrollingParent,
       onLongPress: onLongPress ?? this.onLongPress,
       onPositionChanged: onPositionChanged ?? this.onPositionChanged,
       plugins: plugins ?? this.plugins,

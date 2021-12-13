@@ -12,7 +12,8 @@ import 'options.dart';
 
 class _BaseFormField<T> extends StatefulWidget {
   final T? intialValue;
-  final Function(FormFieldState<T> field, SelectedLocation selectedLocation) onDone;
+  final Function(FormFieldState<T> field, SelectedLocation selectedLocation)
+      onDone;
   final FormFieldSetter<T>? onSaved;
   final FormFieldValidator<T>? validator;
   final InputDecoration decoration;
@@ -99,12 +100,14 @@ class __BaseFormFieldState<T> extends State<_BaseFormField<T>> {
       initialValue: widget.intialValue,
       onSaved: widget.onSaved,
       builder: (FormFieldState<T> field) {
-        var effectiveDecoration = widget.decoration.applyDefaults(Theme.of(context).inputDecorationTheme);
+        var effectiveDecoration = widget.decoration
+            .applyDefaults(Theme.of(context).inputDecorationTheme);
         var removeIcon = widget.removeIcon;
         var _showRemove = !widget.isEmpty(field.value) && removeIcon != null;
         effectiveDecoration = effectiveDecoration.copyWith(
             errorText: field.errorText,
-            prefixIcon: effectiveDecoration.prefixIcon ?? const Icon(Icons.my_location_rounded),
+            prefixIcon: effectiveDecoration.prefixIcon ??
+                const Icon(Icons.my_location_rounded),
             suffixIcon: _showRemove
                 ? IconButton(
                     onPressed: () {
@@ -206,7 +209,8 @@ class OpenMapPicker extends StatelessWidget {
       expands: expands,
       focusNode: focusNode,
       intialValue: intialValue,
-      options: (FormattedLocation? value) => OpenMapOptions(center: value?.toLatLng()),
+      options: (FormattedLocation? value) =>
+          OpenMapOptions(center: value?.toLatLng()),
       onDone: (field, value) {
         field.didChange(value.whenOrNull<FormattedLocation?>(
           single: (selected) {
@@ -265,7 +269,8 @@ class MultiOpenMapPicker extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return _BaseFormField<List<FormattedLocation>>(
-      state: (value) => OpenMapState.selected(SelectedLocation.multi(value ?? [])),
+      state: (value) =>
+          OpenMapState.selected(SelectedLocation.multi(value ?? [])),
       decoration: decoration,
       display: (value) {
         var v = value ?? [];
@@ -296,7 +301,9 @@ class MultiOpenMapPicker extends StatelessWidget {
         if (list.isEmpty) {
           return OpenMapOptions();
         } else {
-          return OpenMapOptions.bounds(bounds: LatLngBounds.fromPoints(list.map((e) => e.toLatLng()).toList()));
+          return OpenMapOptions.bounds(
+              bounds: LatLngBounds.fromPoints(
+                  list.map((e) => e.toLatLng()).toList()));
         }
       },
       onDone: (field, value) {
@@ -327,7 +334,8 @@ class _OpenMapBloc extends OpenMapBloc {
   _OpenMapBloc(this._state);
   @override
   OpenMapState get state => _state;
-  final StreamController<OpenMapState> _controller = StreamController<OpenMapState>.broadcast();
+  final StreamController<OpenMapState> _controller =
+      StreamController<OpenMapState>.broadcast();
   @override
   Stream<OpenMapState> get stream => _controller.stream;
 

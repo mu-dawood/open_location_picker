@@ -46,7 +46,8 @@ class MyApp extends StatelessWidget {
       onError: (context, error) {},
       getCurrentLocation: _getCurrentLocationUsingLocationPackage,
       reverseZoom: ReverseZoom.suburb,
-      getLocationStream: () => location.onLocationChanged.map((event) => LatLng(event.latitude!, event.longitude!)),
+      getLocationStream: () => location.onLocationChanged
+          .map((event) => LatLng(event.latitude!, event.longitude!)),
       child: MaterialApp(
         title: 'Flutter Demo',
         locale: const Locale("ar"),
@@ -105,10 +106,12 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void showPicker(BuildContext context) {
-    Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) {
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (BuildContext context) {
       return OpenStreetMaps(
         options: OpenMapOptions(),
-        bloc: CustomBloc(const OpenMapState.selected(SelectedLocation.single(null))),
+        bloc: CustomBloc(
+            const OpenMapState.selected(SelectedLocation.single(null))),
       );
     }));
   }

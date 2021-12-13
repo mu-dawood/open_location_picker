@@ -7,7 +7,8 @@ import 'bloc.dart';
 class SearchResults extends StatelessWidget {
   final OpenMapBloc bloc;
   final ValueChanged<LatLngBounds> fitBounds;
-  const SearchResults({Key? key, required this.bloc, required this.fitBounds}) : super(key: key);
+  const SearchResults({Key? key, required this.bloc, required this.fitBounds})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,15 +21,18 @@ class SearchResults extends StatelessWidget {
         return type.maybeMap(
           orElse: () => _buildBody(context, [], type),
           searching: (search) => _buildBody(context, search.oldResults, search),
-          results: (results) => _buildBody(context, results.searchResults, results),
+          results: (results) =>
+              _buildBody(context, results.searchResults, results),
         );
       },
     );
   }
 
-  ConstrainedBox _buildBody(BuildContext context, List<FormattedLocation> results, OpenMapState state) {
+  ConstrainedBox _buildBody(BuildContext context,
+      List<FormattedLocation> results, OpenMapState state) {
     return ConstrainedBox(
-      constraints: BoxConstraints(maxHeight: MediaQuery.of(context).size.height / 2),
+      constraints:
+          BoxConstraints(maxHeight: MediaQuery.of(context).size.height / 2),
       child: AnimatedSize(
         duration: const Duration(milliseconds: 300),
         alignment: Alignment.topCenter,
@@ -50,12 +54,19 @@ class SearchResults extends StatelessWidget {
             onTap: () {
               state.selected.when(
                 single: (_) {
-                  bloc.emit(OpenMapState.selected(SelectedLocation.single(loc)));
+                  bloc.emit(
+                      OpenMapState.selected(SelectedLocation.single(loc)));
                 },
                 multi: (old) {
-                  var exists = old.any((element) => element.identifier == loc.identifier);
-                  var _new = exists ? old.map((e) => e.identifier == loc.identifier ? loc : e).toList() : [loc, ...old];
-                  bloc.emit(OpenMapState.selected(SelectedLocation.multi(_new)));
+                  var exists = old
+                      .any((element) => element.identifier == loc.identifier);
+                  var _new = exists
+                      ? old
+                          .map((e) => e.identifier == loc.identifier ? loc : e)
+                          .toList()
+                      : [loc, ...old];
+                  bloc.emit(
+                      OpenMapState.selected(SelectedLocation.multi(_new)));
                 },
               );
               fitBounds(loc.boundingbox);

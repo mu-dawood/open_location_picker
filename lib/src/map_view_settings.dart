@@ -9,8 +9,10 @@ import 'reverse_options.dart';
 
 typedef GetCurrentLocationCallBack = Future<LatLng?> Function();
 typedef GetLocationStreamCallBack = Stream<LatLng> Function();
-typedef LocationMarkerCallback = Marker Function(BuildContext context, FormattedLocation location);
-typedef CurrentLocationMarkerCallback = Marker Function(BuildContext context, LatLng location);
+typedef LocationMarkerCallback = Marker Function(
+    BuildContext context, FormattedLocation location);
+typedef CurrentLocationMarkerCallback = Marker Function(
+    BuildContext context, LatLng location);
 
 /// global settings for map
 /// You can wrap material app with it or wrap entire screen to ovveride the globals

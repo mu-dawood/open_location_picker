@@ -12,7 +12,8 @@ class MyCurrentLocationMarker extends StatefulWidget {
   const MyCurrentLocationMarker({Key? key}) : super(key: key);
 
   @override
-  _MyCurrentLocationMarkerState createState() => _MyCurrentLocationMarkerState();
+  _MyCurrentLocationMarkerState createState() =>
+      _MyCurrentLocationMarkerState();
 }
 
 class _MyCurrentLocationMarkerState extends State<MyCurrentLocationMarker> {
@@ -32,7 +33,8 @@ class _MyCurrentLocationMarkerState extends State<MyCurrentLocationMarker> {
     }
     if (settings?.getLocationStream != null) {
       _lisner = settings!.getLocationStream!().listen((event) {
-        if (_currentLocation?.latitude == event.latitude && _currentLocation?.longitude == event.longitude) {
+        if (_currentLocation?.latitude == event.latitude &&
+            _currentLocation?.longitude == event.longitude) {
           return;
         }
         if (mounted) {
@@ -67,7 +69,8 @@ class _MyCurrentLocationMarkerState extends State<MyCurrentLocationMarker> {
                       borderRadius: BorderRadius.circular(20),
                       boxShadow: [
                         BoxShadow(
-                          color: Theme.of(context).primaryColor.withOpacity(0.5),
+                          color:
+                              Theme.of(context).primaryColor.withOpacity(0.5),
                           blurRadius: 5,
                         )
                       ],
@@ -101,7 +104,8 @@ class MapMarkers extends StatelessWidget {
         } else {
           var loading = currentState.whenOrNull(reversing: (_, r) => r);
           return currentState.selected.when(
-            single: (value) => _markers(context, value == null ? [] : [value], loading),
+            single: (value) =>
+                _markers(context, value == null ? [] : [value], loading),
             multi: (values) => _markers(context, values, loading),
           );
         }
@@ -109,7 +113,8 @@ class MapMarkers extends StatelessWidget {
     );
   }
 
-  Widget _markers(BuildContext context, List<FormattedLocation> locations, LatLng? loadingPoint) {
+  Widget _markers(BuildContext context, List<FormattedLocation> locations,
+      LatLng? loadingPoint) {
     var settings = OpenMapSettings.of(context);
     var marker = settings?.locationMarker;
     return MarkerLayerWidget(

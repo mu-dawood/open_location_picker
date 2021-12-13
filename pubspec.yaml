@@ -1,7 +1,7 @@
 name: open_location_picker
-description: A new Flutter package project.
+description: FormField to pick one or more locations from open streat map
 version: 0.0.1
-# homepage:
+homepage: https://github.com/mo-ah-dawood/open_location_picker
 
 environment:
   sdk: ">=2.15.0 <3.0.0"
@@ -13,6 +13,7 @@ dependencies:
   flutter_map: ^0.14.0
   freezed_annotation: ^1.1.0
   http: ^0.13.4
+  latlong2: ^0.8.1
   
   
 

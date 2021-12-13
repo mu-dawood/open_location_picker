@@ -89,22 +89,27 @@ class FormattedLocation with _$FormattedLocation {
     return FormattedLocation(
       placeId: json["place_id"]!.toString(),
       address: Address.fromMap(json["address"] ?? {}),
-      names: (json["namedetails"] as Map).map((key, value) => MapEntry(key.toString(), value)),
+      names: (json["namedetails"] as Map)
+          .map((key, value) => MapEntry(key.toString(), value)),
       lat: double.parse(json['lat']?.toString() ?? ''),
       lon: double.parse(json['lon']?.toString() ?? ''),
       addresstype: json["addresstype"] ?? '',
       boundingbox: LatLngBounds.fromPoints([
-        LatLng(double.parse(boundingBox[0].toString()), double.parse(boundingBox[2].toString())),
-        LatLng(double.parse(boundingBox[1].toString()), double.parse(boundingBox[3].toString())),
+        LatLng(double.parse(boundingBox[0].toString()),
+            double.parse(boundingBox[2].toString())),
+        LatLng(double.parse(boundingBox[1].toString()),
+            double.parse(boundingBox[3].toString())),
       ]),
       category: json["category"] ?? '',
       displayName: json["display_name"] ?? '',
-      extratags: (json["extratags"] as Map).map((key, value) => MapEntry(key.toString(), value)),
+      extratags: (json["extratags"] as Map)
+          .map((key, value) => MapEntry(key.toString(), value)),
       geojson: GeoGeometry.fromMap(json["geojson"]),
       importance: double.parse(json["importance"]?.toString() ?? ''),
       licence: json["licence"] ?? '',
       name: json["name"] ?? '',
-      namedetails: (json["namedetails"] as Map).map((key, value) => MapEntry(key.toString(), value)),
+      namedetails: (json["namedetails"] as Map)
+          .map((key, value) => MapEntry(key.toString(), value)),
       osmId: int.parse(json["osm_id"]?.toString() ?? '0'),
       osmType: json["osm_type"] ?? '',
       placeRank: int.parse(json["place_rank"]?.toString() ?? '0'),
@@ -156,17 +161,21 @@ class Address {
 class GeoGeometry with _$GeoGeometry {
   const GeoGeometry._();
   factory GeoGeometry.point(LatLng point, Color randomColor) = GeoPoint;
-  factory GeoGeometry.linestring(List<LatLng> points, Color randomColor) = GeoLinestring;
-  factory GeoGeometry.polygon(List<LatLng> points, Color randomColor) = GeoPolygon;
+  factory GeoGeometry.linestring(List<LatLng> points, Color randomColor) =
+      GeoLinestring;
+  factory GeoGeometry.polygon(List<LatLng> points, Color randomColor) =
+      GeoPolygon;
   static GeoGeometry fromMap(Map<String, dynamic> json) {
     var coords = json["coordinates"] as List;
-    var color = Color((math.Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(1.0);
+    var color =
+        Color((math.Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(1.0);
 
     if (json["type"] == "Polygon") {
       var points = coords.map((e) {
         return (e as List).map((e) => _latLng(e)).toList();
       }).toList();
-      return GeoGeometry.polygon(points.expand((element) => element).toList(), color);
+      return GeoGeometry.polygon(
+          points.expand((element) => element).toList(), color);
     } else if (json["type"] == "LineString") {
       var points = coords.map((e) => _latLng(e)).toList();
       return GeoGeometry.linestring(points, color);

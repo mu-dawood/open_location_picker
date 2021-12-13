@@ -66,7 +66,8 @@ class _MapAppBarState extends State<MapAppBar> {
             "polygon_geojson": "1",
             "extratags": "1",
             "polygon_threshold": "1",
-            if (widget.searchFilters != null) ...(widget.searchFilters!.toJson())
+            if (widget.searchFilters != null)
+              ...(widget.searchFilters!.toJson())
           },
         );
         var response = await http.get(url);
