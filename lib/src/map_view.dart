@@ -262,25 +262,18 @@ class _OpenStreetMapsState extends State<OpenStreetMaps>
   FlutterMap _buildMap(MapOptions options, OpenMapSettings? settings) {
     var background = Theme.of(context).scaffoldBackgroundColor;
     var isDark = Theme.of(context).brightness == Brightness.dark;
+    var _layerOptions = settings?.getMapTileOptions ?? _getLayerOptions;
     return FlutterMap(
       options: options,
       mapController: _controller,
       children: [
         TileLayerWidget(
-          options: TileLayerOptions(
-            urlTemplate: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-            subdomains: ['a', 'b', 'c'],
-            tileBuilder: (context, tileWidget, tile) {
-              if (!isDark) return tileWidget;
-              return ColorFiltered(
-                colorFilter: ColorFilter.mode(background, BlendMode.saturation),
-                child: tileWidget,
-              );
-            },
-            tileProvider: widget.tileProvider ??
-                settings?.defaultTileProvider ??
-                const NonCachingNetworkTileProvider(),
-          ),
+          options: _layerOptions(
+              isDark,
+              background,
+              widget.tileProvider ??
+                  settings?.defaultTileProvider ??
+                  const NonCachingNetworkTileProvider()),
         ),
       ],
       nonRotatedChildren: [
@@ -294,6 +287,22 @@ class _OpenStreetMapsState extends State<OpenStreetMaps>
             settings?.getLocationStream != null)
           const MyCurrentLocationMarker()
       ],
+    );
+  }
+
+  TileLayerOptions _getLayerOptions(
+      bool isDark, Color background, TileProvider provider) {
+    return TileLayerOptions(
+      urlTemplate: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+      subdomains: ['a', 'b', 'c'],
+      tileBuilder: (context, tileWidget, tile) {
+        if (!isDark) return tileWidget;
+        return ColorFiltered(
+          colorFilter: ColorFilter.mode(background, BlendMode.saturation),
+          child: tileWidget,
+        );
+      },
+      tileProvider: provider,
     );
   }
 }

@@ -13,6 +13,8 @@ typedef LocationMarkerCallback = Marker Function(
     BuildContext context, FormattedLocation location);
 typedef CurrentLocationMarkerCallback = Marker Function(
     BuildContext context, LatLng location);
+typedef TileLayerOptionsCallBack = TileLayerOptions Function(
+    bool isDark, Color background, TileProvider provider);
 
 /// Global settings for map
 /// You can wrap material app with it or wrap entire screen to ovveride the globals
@@ -26,12 +28,34 @@ class OpenMapSettings extends InheritedWidget {
     this.onError,
     this.locationMarker,
     this.currentLocationMarker,
+    this.getMapTileOptions,
     this.srearchHint,
     this.myLocationButton,
     this.searchFilters,
     this.reverseZoom,
     this.defaultTileProvider = const NonCachingNetworkTileProvider(),
   }) : super(key: key, child: child);
+
+  /// ovveride the default map
+  /// - use this if you want to use other map or other server
+  /// - you can also use it to change the dark map
+  /// * default is
+  ///
+  /// ```dart
+  /// return TileLayerOptions(
+  ///   urlTemplate: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+  ///   subdomains: ['a', 'b', 'c'],
+  ///   tileBuilder: (context, tileWidget, tile) {
+  ///     if (!isDark) return tileWidget;
+  ///     return ColorFiltered(
+  ///       colorFilter: ColorFilter.mode(background, BlendMode.saturation),
+  ///       child: tileWidget,
+  ///     );
+  ///   },
+  ///   tileProvider: provider,
+  /// );
+  /// ```
+  final TileLayerOptionsCallBack? getMapTileOptions;
 
   /// Limiting search results to
   final SearchFilters? searchFilters;
