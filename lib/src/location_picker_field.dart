@@ -209,8 +209,13 @@ class OpenMapPicker extends StatelessWidget {
       expands: expands,
       focusNode: focusNode,
       intialValue: intialValue,
-      options: (FormattedLocation? value) =>
-          OpenMapOptions(center: value?.toLatLng()),
+      options: (FormattedLocation? value) {
+        if (value == null) {
+          return OpenMapOptions();
+        } else {
+          return OpenMapOptions.bounds(bounds: value.boundingbox);
+        }
+      },
       onDone: (field, value) {
         field.didChange(value.whenOrNull<FormattedLocation?>(
           single: (selected) {
@@ -283,7 +288,7 @@ class MultiOpenMapPicker extends StatelessWidget {
           children: v
               .map(
                 (e) => RawChip(
-                  label: Text(e.name),
+                  label: Text(e.name.isEmpty ? e.displayName : e.name),
                   visualDensity: const VisualDensity(
                     horizontal: VisualDensity.minimumDensity,
                     vertical: VisualDensity.minimumDensity,
@@ -302,8 +307,9 @@ class MultiOpenMapPicker extends StatelessWidget {
           return OpenMapOptions();
         } else {
           return OpenMapOptions.bounds(
-              bounds: LatLngBounds.fromPoints(
-                  list.map((e) => e.toLatLng()).toList()));
+            bounds:
+                LatLngBounds.fromPoints(list.map((e) => e.toLatLng()).toList()),
+          );
         }
       },
       onDone: (field, value) {

@@ -19,18 +19,17 @@ class MapPolygens extends StatelessWidget {
       bloc: bloc,
       builder: (GeoGeometryGroup group, LatLng? loadingPoint) {
         List<Polygon> list = group.polygons.map((loc) {
-          var color = loc.color(context);
+          var color = loc.shape.color(context);
           return Polygon(
-            points: loc.points,
+            points: loc.shape.points,
             color: color.withOpacity(0.3),
             borderColor: color,
             borderStrokeWidth: 2,
           );
         }).toList();
+
         return PolygonLayerWidget(
-          options: PolygonLayerOptions(
-            polygons: list,
-          ),
+          options: PolygonLayerOptions(polygons: list),
         );
       },
     );
@@ -48,18 +47,17 @@ class MapPolylines extends StatelessWidget {
     return _MapShapes(
       bloc: bloc,
       builder: (GeoGeometryGroup group, LatLng? loadingPoint) {
+        List<Polyline> list = group.lines.map((loc) {
+          var color = loc.shape.color(context);
+          return Polyline(
+            points: [...loc.shape.points],
+            color: color,
+            strokeWidth: 5,
+            isDotted: true,
+          );
+        }).toList();
         return PolylineLayerWidget(
-          options: PolylineLayerOptions(
-            polylines: [
-              for (var loc in group.lines)
-                Polyline(
-                  points: loc.points,
-                  color: loc.color(context),
-                  strokeWidth: 5,
-                  isDotted: true,
-                ),
-            ],
-          ),
+          options: PolylineLayerOptions(polylines: list),
         );
       },
     );
@@ -78,9 +76,9 @@ class MapCircles extends StatelessWidget {
       bloc: bloc,
       builder: (GeoGeometryGroup group, LatLng? loadingPoint) {
         List<CircleMarker> list = group.points.map((loc) {
-          var color = loc.color(context);
+          var color = loc.shape.color(context);
           return CircleMarker(
-            point: loc.point,
+            point: loc.location,
             color: color.withOpacity(0.3),
             borderColor: color,
             borderStrokeWidth: 2,
@@ -97,10 +95,17 @@ class MapCircles extends StatelessWidget {
 
 /// Grouping locations into one object
 
+class ILoc<Shape> {
+  final Shape shape;
+  final LatLng location;
+
+  ILoc(this.shape, this.location);
+}
+
 class GeoGeometryGroup {
-  final List<GeoPolygon> polygons;
-  final List<GeoLinestring> lines;
-  final List<GeoPoint> points;
+  final List<ILoc<GeoPolygon>> polygons;
+  final List<ILoc<GeoLinestring>> lines;
+  final List<ILoc<GeoPoint>> points;
   GeoGeometryGroup({
     required this.polygons,
     required this.lines,
@@ -143,13 +148,13 @@ class _MapShapes extends StatelessWidget {
     for (var loc in locations) {
       loc.geojson.mapOrNull(
         polygon: (state) {
-          group.polygons.add(state);
+          group.polygons.add(ILoc(state, loc.toLatLng()));
         },
         linestring: (state) {
-          group.lines.add(state);
+          group.lines.add(ILoc(state, loc.toLatLng()));
         },
         point: (state) {
-          group.points.add(state);
+          group.points.add(ILoc(state, loc.toLatLng()));
         },
       );
     }

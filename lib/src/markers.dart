@@ -135,10 +135,13 @@ class MapMarkers extends StatelessWidget {
                   width: 40,
                   height: 40,
                   anchorPos: AnchorPos.align(AnchorAlign.top),
-                  builder: (ctx) => Icon(
-                    Icons.place,
-                    size: 40,
-                    color: loc.geojson.color(context),
+                  builder: (ctx) => Transform.translate(
+                    offset: const Offset(0, 5),
+                    child: Icon(
+                      Icons.fmd_good,
+                      size: 40,
+                      color: loc.geojson.color(context),
+                    ),
                   ),
                 ),
         ],

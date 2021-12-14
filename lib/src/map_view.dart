@@ -1,11 +1,7 @@
-import 'dart:convert';
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/plugin_api.dart';
-import 'package:http/http.dart' as http;
 
-import './location_model.dart';
 import './map_app_bar.dart';
 import './markers.dart';
 import './my_location_button.dart';
@@ -17,7 +13,8 @@ import 'reverse_options.dart';
 import 'selected_location_view.dart';
 import 'shapes.dart';
 
-typedef MyLocationButtonCallBack = Widget Function(Function(LatLng destLocation, [double destZoom]) callback);
+typedef MyLocationButtonCallBack = Widget Function(
+    Function(LatLng destLocation, [double destZoom]) callback);
 
 /// Map screen
 /// - it can be used to display location
@@ -84,7 +81,8 @@ class OpenStreetMaps extends StatefulWidget {
   _OpenStreetMapsState createState() => _OpenStreetMapsState();
 }
 
-class _OpenStreetMapsState extends State<OpenStreetMaps> with TickerProviderStateMixin {
+class _OpenStreetMapsState extends State<OpenStreetMaps>
+    with TickerProviderStateMixin {
   late final _MapControllerImpl _controller;
   late final _MyAnimationController _animationController;
   @override
@@ -94,31 +92,6 @@ class _OpenStreetMapsState extends State<OpenStreetMaps> with TickerProviderStat
     super.initState();
   }
 
-  Future<FormattedLocation> _reverse(LatLng loc) async {
-    var settings = OpenMapSettings.of(context);
-    Locale locale = Localizations.localeOf(context);
-    var url = Uri.parse("https://nominatim.openstreetmap.org/reverse");
-    var zoom = (widget.reverseZoom ?? settings?.reverseZoom)?.zoom();
-    url = url.replace(
-      queryParameters: {
-        "lat": loc.latitude.toString(),
-        "lon": loc.longitude.toString(),
-        "format": "jsonv2",
-        "namedetails": "1",
-        "accept-language": locale.languageCode,
-        if (zoom != null) "zoom": zoom,
-        "addressdetails": "1",
-        "polygon_geojson": "1",
-        "extratags": "1",
-      },
-    );
-    var response = await http.get(url);
-
-    var parsed = jsonDecode(response.body);
-    var res = FormattedLocation.from(parsed);
-    return res;
-  }
-
   void _onTap(LatLng latLng) async {
     var bloc = widget.bloc;
     if (bloc != null) {
@@ -126,15 +99,26 @@ class _OpenStreetMapsState extends State<OpenStreetMaps> with TickerProviderStat
       var _reversing = OpenMapState.reversing(bloc.state.selected, latLng);
       try {
         bloc.emit(_reversing);
-        var result = await _reverse(latLng);
+        var settings = OpenMapSettings.of(context);
+        Locale locale = Localizations.localeOf(context);
+        var zoom = (widget.reverseZoom ?? settings?.reverseZoom);
+        var result = await bloc.reverseLocation(
+          locale: locale,
+          location: latLng,
+          zoom: zoom,
+        );
         _reversing.selected.when(
           single: (sub) {
             bloc.emit(OpenMapState.selected(SelectedLocation.single(result)));
           },
           multi: (old) {
-            var exists = old.any((element) => element.identifier == result.identifier);
-            var _new =
-                exists ? old.map((e) => e.identifier == result.identifier ? result : e).toList() : [result, ...old];
+            var exists =
+                old.any((element) => element.identifier == result.identifier);
+            var _new = exists
+                ? old
+                    .map((e) => e.identifier == result.identifier ? result : e)
+                    .toList()
+                : [result, ...old];
             bloc.emit(OpenMapState.selected(SelectedLocation.multi(_new)));
           },
         );
@@ -148,7 +132,8 @@ class _OpenStreetMapsState extends State<OpenStreetMaps> with TickerProviderStat
     }
   }
 
-  void _onMapCreated(MapController controller, OpenMapSettings? settings) async {
+  void _onMapCreated(
+      MapController controller, OpenMapSettings? settings) async {
     try {
       if (settings?.getCurrentLocation != null) {
         if (widget.options.center != null) return;
@@ -190,7 +175,8 @@ class _OpenStreetMapsState extends State<OpenStreetMaps> with TickerProviderStat
       _animationController.addListener(() {
         if (mounted) {
           _controller.move(
-            LatLng(_latTween.evaluate(animation), _lngTween.evaluate(animation)),
+            LatLng(
+                _latTween.evaluate(animation), _lngTween.evaluate(animation)),
             _zoomTween.evaluate(animation),
           );
         }
@@ -250,9 +236,12 @@ class _OpenStreetMapsState extends State<OpenStreetMaps> with TickerProviderStat
             moveTo: moveTo,
             onDone: widget.onDone,
             searchFilters: widget.searchFilters ?? settings?.searchFilters,
-            srearchHint: widget.srearchHint ?? settings?.srearchHint?.call(context) ?? 'Search here',
+            srearchHint: widget.srearchHint ??
+                settings?.srearchHint?.call(context) ??
+                'Search here',
           ),
-          bottomNavigationBar: SelectedLocationView(bloc: bloc, fitBounds: fitBounds),
+          bottomNavigationBar:
+              SelectedLocationView(bloc: bloc, fitBounds: fitBounds),
           floatingActionButton: _myCurrentLocation,
           resizeToAvoidBottomInset: false,
           body: _buildMap(options, settings),
@@ -288,7 +277,9 @@ class _OpenStreetMapsState extends State<OpenStreetMaps> with TickerProviderStat
                 child: tileWidget,
               );
             },
-            tileProvider: widget.tileProvider ?? settings?.defaultTileProvider ?? const NonCachingNetworkTileProvider(),
+            tileProvider: widget.tileProvider ??
+                settings?.defaultTileProvider ??
+                const NonCachingNetworkTileProvider(),
           ),
         ),
       ],
@@ -299,7 +290,8 @@ class _OpenStreetMapsState extends State<OpenStreetMaps> with TickerProviderStat
           MapPolylines(bloc: widget.bloc!),
           MapMarkers(bloc: widget.bloc!),
         ],
-        if (settings?.currentLocationMarker != null || settings?.getLocationStream != null)
+        if (settings?.currentLocationMarker != null ||
+            settings?.getLocationStream != null)
           const MyCurrentLocationMarker()
       ],
     );
@@ -307,7 +299,8 @@ class _OpenStreetMapsState extends State<OpenStreetMaps> with TickerProviderStat
 }
 
 class _MyAnimationController extends AnimationController {
-  _MyAnimationController(TickerProvider vsync) : super(vsync: vsync, duration: const Duration(milliseconds: 400));
+  _MyAnimationController(TickerProvider vsync)
+      : super(vsync: vsync, duration: const Duration(milliseconds: 400));
 
   @override
   void reset() {

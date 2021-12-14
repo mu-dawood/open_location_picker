@@ -23,6 +23,7 @@ class FormattedLocation with _$FormattedLocation {
 
     ///reference to the OSM object
     required String osmType,
+    required String? icon,
 
     /// reference to the OSM object
     required int osmId,
@@ -89,8 +90,8 @@ class FormattedLocation with _$FormattedLocation {
       "namedetails": namedetails,
       "boundingbox": [
         boundingbox.southWest?.latitude,
-        boundingbox.southWest?.longitude,
         boundingbox.northEast?.latitude,
+        boundingbox.southWest?.longitude,
         boundingbox.northEast?.longitude
       ],
       "geojson": geojson.when(
@@ -115,13 +116,15 @@ class FormattedLocation with _$FormattedLocation {
       throw Exception(json["error"]);
     }
     var boundingBox = json["boundingbox"] as List;
+    var lat = double.parse(json['lat']?.toString() ?? '');
+    var lon = double.parse(json['lon']?.toString() ?? '');
     return FormattedLocation(
       placeId: json["place_id"]!.toString(),
       address: Address.fromMap(json["address"] ?? {}),
       names: (json["namedetails"] as Map)
           .map((key, value) => MapEntry(key.toString(), value)),
-      lat: double.parse(json['lat']?.toString() ?? ''),
-      lon: double.parse(json['lon']?.toString() ?? ''),
+      lat: lat,
+      lon: lon,
       addresstype: json["addresstype"] ?? '',
       boundingbox: LatLngBounds.fromPoints([
         LatLng(double.parse(boundingBox[0].toString()),
@@ -133,7 +136,11 @@ class FormattedLocation with _$FormattedLocation {
       displayName: json["display_name"] ?? '',
       extratags: (json["extratags"] as Map)
           .map((key, value) => MapEntry(key.toString(), value)),
-      geojson: GeoGeometry.fromMap(json["geojson"]),
+      geojson: GeoGeometry.fromMap(json["geojson"] ??
+          {
+            "type": "Point",
+            "coordinates": [lon, lat]
+          }),
       importance: double.parse(json["importance"]?.toString() ?? ''),
       licence: json["licence"] ?? '',
       name: json["name"] ?? '',
@@ -143,6 +150,7 @@ class FormattedLocation with _$FormattedLocation {
       osmType: json["osm_type"] ?? '',
       placeRank: int.parse(json["place_rank"]?.toString() ?? '0'),
       type: json["type"] ?? '',
+      icon: json["icon"],
     );
   }
 }

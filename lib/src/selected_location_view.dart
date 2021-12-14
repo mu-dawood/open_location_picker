@@ -58,7 +58,13 @@ class SelectedLocationView extends StatelessWidget {
       BuildContext context, FormattedLocation e, SelectedLocation state) {
     return ListTile(
       title: Text(e.toString()),
-      leading: const Icon(Icons.pin_drop),
+      leading: Icon(
+        e.geojson.map(
+          point: (_) => Icons.pin_drop_rounded,
+          linestring: (_) => Icons.navigation_rounded,
+          polygon: (_) => Icons.place_rounded,
+        ),
+      ),
       trailing: IconButton(
         icon: const Icon(Icons.delete),
         onPressed: () {

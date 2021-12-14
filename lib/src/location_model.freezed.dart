@@ -23,6 +23,7 @@ class _$FormattedLocationTearOff {
       required double lon,
       required String licence,
       required String osmType,
+      required String? icon,
       required int osmId,
       required int placeRank,
       required String category,
@@ -43,6 +44,7 @@ class _$FormattedLocationTearOff {
       lon: lon,
       licence: licence,
       osmType: osmType,
+      icon: icon,
       osmId: osmId,
       placeRank: placeRank,
       category: category,
@@ -78,6 +80,7 @@ mixin _$FormattedLocation {
 
   ///reference to the OSM object
   String get osmType => throw _privateConstructorUsedError;
+  String? get icon => throw _privateConstructorUsedError;
 
   /// reference to the OSM object
   int get osmId => throw _privateConstructorUsedError;
@@ -131,6 +134,7 @@ abstract class $FormattedLocationCopyWith<$Res> {
       double lon,
       String licence,
       String osmType,
+      String? icon,
       int osmId,
       int placeRank,
       String category,
@@ -165,6 +169,7 @@ class _$FormattedLocationCopyWithImpl<$Res>
     Object? lon = freezed,
     Object? licence = freezed,
     Object? osmType = freezed,
+    Object? icon = freezed,
     Object? osmId = freezed,
     Object? placeRank = freezed,
     Object? category = freezed,
@@ -201,6 +206,10 @@ class _$FormattedLocationCopyWithImpl<$Res>
           ? _value.osmType
           : osmType // ignore: cast_nullable_to_non_nullable
               as String,
+      icon: icon == freezed
+          ? _value.icon
+          : icon // ignore: cast_nullable_to_non_nullable
+              as String?,
       osmId: osmId == freezed
           ? _value.osmId
           : osmId // ignore: cast_nullable_to_non_nullable
@@ -281,6 +290,7 @@ abstract class _$FormattedLocationCopyWith<$Res>
       double lon,
       String licence,
       String osmType,
+      String? icon,
       int osmId,
       int placeRank,
       String category,
@@ -318,6 +328,7 @@ class __$FormattedLocationCopyWithImpl<$Res>
     Object? lon = freezed,
     Object? licence = freezed,
     Object? osmType = freezed,
+    Object? icon = freezed,
     Object? osmId = freezed,
     Object? placeRank = freezed,
     Object? category = freezed,
@@ -354,6 +365,10 @@ class __$FormattedLocationCopyWithImpl<$Res>
           ? _value.osmType
           : osmType // ignore: cast_nullable_to_non_nullable
               as String,
+      icon: icon == freezed
+          ? _value.icon
+          : icon // ignore: cast_nullable_to_non_nullable
+              as String?,
       osmId: osmId == freezed
           ? _value.osmId
           : osmId // ignore: cast_nullable_to_non_nullable
@@ -423,6 +438,7 @@ class _$_FormattedLocation extends _FormattedLocation {
       required this.lon,
       required this.licence,
       required this.osmType,
+      required this.icon,
       required this.osmId,
       required this.placeRank,
       required this.category,
@@ -458,6 +474,8 @@ class _$_FormattedLocation extends _FormattedLocation {
 
   ///reference to the OSM object
   final String osmType;
+  @override
+  final String? icon;
   @override
 
   /// reference to the OSM object
@@ -520,6 +538,7 @@ class _$_FormattedLocation extends _FormattedLocation {
             const DeepCollectionEquality().equals(other.lon, lon) &&
             const DeepCollectionEquality().equals(other.licence, licence) &&
             const DeepCollectionEquality().equals(other.osmType, osmType) &&
+            const DeepCollectionEquality().equals(other.icon, icon) &&
             const DeepCollectionEquality().equals(other.osmId, osmId) &&
             const DeepCollectionEquality().equals(other.placeRank, placeRank) &&
             const DeepCollectionEquality().equals(other.category, category) &&
@@ -549,6 +568,7 @@ class _$_FormattedLocation extends _FormattedLocation {
         const DeepCollectionEquality().hash(lon),
         const DeepCollectionEquality().hash(licence),
         const DeepCollectionEquality().hash(osmType),
+        const DeepCollectionEquality().hash(icon),
         const DeepCollectionEquality().hash(osmId),
         const DeepCollectionEquality().hash(placeRank),
         const DeepCollectionEquality().hash(category),
@@ -578,6 +598,7 @@ abstract class _FormattedLocation extends FormattedLocation {
       required double lon,
       required String licence,
       required String osmType,
+      required String? icon,
       required int osmId,
       required int placeRank,
       required String category,
@@ -612,6 +633,8 @@ abstract class _FormattedLocation extends FormattedLocation {
 
   ///reference to the OSM object
   String get osmType;
+  @override
+  String? get icon;
   @override
 
   /// reference to the OSM object

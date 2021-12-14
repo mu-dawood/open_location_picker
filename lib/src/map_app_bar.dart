@@ -1,9 +1,7 @@
 import 'dart:async';
-import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 import 'package:open_location_picker/open_location_picker.dart';
 
 /// search app bar
@@ -56,27 +54,12 @@ class _MapAppBarState extends State<MapAppBar> {
           oldResults: oldResults,
         ));
         Locale locale = Localizations.localeOf(context);
-        var url = Uri.parse("https://nominatim.openstreetmap.org/search");
-        url = url.replace(
-          queryParameters: {
-            "q": _q,
-            "format": "jsonv2",
-            "namedetails": "1",
-            "accept-language": locale.languageCode,
-            "addressdetails": "1",
-            "polygon_geojson": "1",
-            "extratags": "1",
-            "polygon_threshold": "1",
-            if (widget.searchFilters != null)
-              ...(widget.searchFilters!.toJson())
-          },
-        );
-        var response = await http.get(url);
-        var parsed = jsonDecode(response.body) as List;
 
-        List<FormattedLocation> results = parsed.map((loc) {
-          return FormattedLocation.from(loc);
-        }).toList();
+        var results = await widget.bloc.search(
+          locale: locale,
+          searchFilters: widget.searchFilters,
+          query: _q,
+        );
         widget.bloc.emit(OpenMapState.results(
           selected: state.selected,
           query: _q,

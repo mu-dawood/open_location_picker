@@ -74,6 +74,9 @@ class SearchResults extends StatelessWidget {
               fitBounds(loc.boundingbox);
             },
             title: Text(loc.toString()),
+            leading: loc.icon == null
+                ? const Icon(Icons.pin_drop)
+                : ImageIcon(NetworkImage(loc.icon!)),
           );
         },
         separatorBuilder: (BuildContext context, int index) {
