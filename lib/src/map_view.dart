@@ -77,8 +77,8 @@ class OpenStreetMaps extends StatefulWidget {
     this.srearchHint,
     this.reverseZoom,
     this.searchFilters,
-    this.zoomIn = const Icon(Icons.zoom_in_rounded),
-    this.zoomOut = const Icon(Icons.zoom_out_rounded),
+    this.zoomIn,
+    this.zoomOut,
   }) : super(key: key);
 
   @override
@@ -235,8 +235,8 @@ class _OpenStreetMapsState extends State<OpenStreetMaps>
       children: [
         Scaffold(
           appBar: MapAppBar(
-            zoomIn: widget.zoomIn!,
-            zoomOut: widget.zoomOut!,
+            zoomIn: widget.zoomIn,
+            zoomOut: widget.zoomOut,
             bloc: bloc,
             controller: _controller,
             moveTo: moveTo,

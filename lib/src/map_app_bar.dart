@@ -12,8 +12,8 @@ class MapAppBar extends StatefulWidget with PreferredSizeWidget {
   final String srearchHint;
   final SearchFilters? searchFilters;
   final Function(LatLng latLng, double zoom) moveTo;
-  final Icon zoomIn;
-  final Icon zoomOut;
+  final Icon? zoomIn;
+  final Icon? zoomOut;
 
   const MapAppBar({
     Key? key,
@@ -23,8 +23,8 @@ class MapAppBar extends StatefulWidget with PreferredSizeWidget {
     required this.onDone,
     required this.srearchHint,
     required this.searchFilters,
-    required this.zoomIn,
-    required this.zoomOut,
+    this.zoomIn,
+    this.zoomOut,
   }) : super(key: key);
 
   @override
@@ -150,7 +150,7 @@ class _MapAppBarState extends State<MapAppBar> {
                 builder: (context, snapshot) {
                   return IconButton(
                     onPressed: (widget.controller.zoom < 18) ? zoomIn : null,
-                    icon: widget.zoomIn,
+                    icon: widget.zoomIn ?? const Icon(Icons.zoom_in_rounded),
                   );
                 }),
             StreamBuilder(
@@ -158,7 +158,7 @@ class _MapAppBarState extends State<MapAppBar> {
                 builder: (context, snapshot) {
                   return IconButton(
                     onPressed: (widget.controller.zoom > 1) ? zoomOut : null,
-                    icon: widget.zoomOut,
+                    icon: widget.zoomOut ?? const Icon(Icons.zoom_out_rounded),
                   );
                 }),
             state.when(
