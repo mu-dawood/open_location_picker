@@ -29,6 +29,8 @@ class _BaseFormField<T> extends StatefulWidget {
   final bool expands;
   final Function(FormFieldState<T> field) onRemove;
   final Icon locationIcon;
+  final BorderRadius? borderRadius;
+  final String searchHint;
   const _BaseFormField({
     Key? key,
     required this.intialValue,
@@ -47,6 +49,8 @@ class _BaseFormField<T> extends StatefulWidget {
     required this.expands,
     required this.display,
     required this.onRemove,
+    this.borderRadius,
+    this.searchHint = '',
     this.locationIcon = const Icon(Icons.my_location_rounded),
   }) : super(key: key);
 
@@ -121,6 +125,7 @@ class __BaseFormFieldState<T> extends State<_BaseFormField<T>> {
                 : effectiveDecoration.suffixIcon);
 
         return InkWell(
+          borderRadius: widget.borderRadius,
           onTap: () => _pick(field),
           child: MouseRegion(
             onEnter: (PointerEnterEvent event) => _handleHover(true),
@@ -151,6 +156,7 @@ class __BaseFormFieldState<T> extends State<_BaseFormField<T>> {
         context,
         MaterialPageRoute(
           builder: (_) => OpenStreetMaps(
+            srearchHint: widget.searchHint,
             options: widget.options(field.value),
             bloc: _bloc,
             onDone: (value) {
@@ -185,6 +191,8 @@ class OpenMapPicker extends StatelessWidget {
   final FocusNode? focusNode;
   final bool expands;
   final Icon locationIcon;
+  final BorderRadius? splashBorderRadius;
+  final String searchHint;
   const OpenMapPicker({
     Key? key,
     this.intialValue,
@@ -202,6 +210,8 @@ class OpenMapPicker extends StatelessWidget {
     this.focusNode,
     this.expands = false,
     this.locationIcon = const Icon(Icons.my_location_rounded),
+    this.splashBorderRadius,
+    this.searchHint = "Search",
   }) : super(key: key);
 
   @override
@@ -210,6 +220,8 @@ class OpenMapPicker extends StatelessWidget {
       state: (value) => OpenMapState.selected(SelectedLocation.single(value)),
       decoration: decoration,
       locationIcon: locationIcon,
+      borderRadius: splashBorderRadius,
+      searchHint: searchHint,
       display: (FormattedLocation? value) => Text(value?.toString() ?? ''),
       expands: expands,
       focusNode: focusNode,
@@ -259,6 +271,8 @@ class MultiOpenMapPicker extends StatelessWidget {
   final FocusNode? focusNode;
   final bool expands;
   final Icon locationIcon;
+  final BorderRadius? splashBorderRadius;
+  final String searchHint;
   const MultiOpenMapPicker({
     Key? key,
     this.intialValue,
@@ -276,6 +290,8 @@ class MultiOpenMapPicker extends StatelessWidget {
     this.focusNode,
     this.expands = false,
     this.locationIcon = const Icon(Icons.my_location_rounded),
+    this.splashBorderRadius,
+    this.searchHint = "Search",
   }) : super(key: key);
 
   @override
@@ -285,6 +301,8 @@ class MultiOpenMapPicker extends StatelessWidget {
           OpenMapState.selected(SelectedLocation.multi(value ?? [])),
       decoration: decoration,
       locationIcon: locationIcon,
+      borderRadius: splashBorderRadius,
+      searchHint: searchHint,
       display: (value) {
         var v = value ?? [];
         if (v.isEmpty) return const Text('');
