@@ -150,8 +150,6 @@ class _MyHomePageState extends State<MyHomePage> {
           padding: const EdgeInsets.all(20),
           children: <Widget>[
             OpenMapPicker(
-              splashBorderRadius: BorderRadius.circular(10),
-              locationIcon: Icon(Icons.location_on),
               decoration: const InputDecoration(
                 hintText: "My location",
               ),
