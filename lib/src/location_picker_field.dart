@@ -31,6 +31,8 @@ class _BaseFormField<T> extends StatefulWidget {
   final Icon locationIcon;
   final BorderRadius? borderRadius;
   final String searchHint;
+  final Icon? zoomInIcon;
+  final Icon? zoomOutIcon;
   const _BaseFormField({
     Key? key,
     required this.intialValue,
@@ -52,6 +54,8 @@ class _BaseFormField<T> extends StatefulWidget {
     this.borderRadius,
     this.searchHint = '',
     this.locationIcon = const Icon(Icons.my_location_rounded),
+    this.zoomInIcon,
+    this.zoomOutIcon,
   }) : super(key: key);
 
   @override
@@ -156,6 +160,8 @@ class __BaseFormFieldState<T> extends State<_BaseFormField<T>> {
         context,
         MaterialPageRoute(
           builder: (_) => OpenStreetMaps(
+            zoomIn: widget.zoomInIcon,
+            zoomOut: widget.zoomOutIcon,
             srearchHint: widget.searchHint,
             options: widget.options(field.value),
             bloc: _bloc,
@@ -193,6 +199,8 @@ class OpenMapPicker extends StatelessWidget {
   final Icon locationIcon;
   final BorderRadius? splashBorderRadius;
   final String searchHint;
+  final Icon? zoomInIcon;
+  final Icon? zoomOutIcon;
   const OpenMapPicker({
     Key? key,
     this.intialValue,
@@ -212,6 +220,8 @@ class OpenMapPicker extends StatelessWidget {
     this.locationIcon = const Icon(Icons.my_location_rounded),
     this.splashBorderRadius,
     this.searchHint = "Search",
+    this.zoomInIcon,
+    this.zoomOutIcon,
   }) : super(key: key);
 
   @override
@@ -222,6 +232,8 @@ class OpenMapPicker extends StatelessWidget {
       locationIcon: locationIcon,
       borderRadius: splashBorderRadius,
       searchHint: searchHint,
+      zoomInIcon: zoomInIcon,
+      zoomOutIcon: zoomOutIcon,
       display: (FormattedLocation? value) => Text(value?.toString() ?? ''),
       expands: expands,
       focusNode: focusNode,
@@ -273,6 +285,8 @@ class MultiOpenMapPicker extends StatelessWidget {
   final Icon locationIcon;
   final BorderRadius? splashBorderRadius;
   final String searchHint;
+  final Icon? zoomInIcon;
+  final Icon? zoomOutIcon;
   const MultiOpenMapPicker({
     Key? key,
     this.intialValue,
@@ -292,6 +306,8 @@ class MultiOpenMapPicker extends StatelessWidget {
     this.locationIcon = const Icon(Icons.my_location_rounded),
     this.splashBorderRadius,
     this.searchHint = "Search",
+    this.zoomInIcon,
+    this.zoomOutIcon,
   }) : super(key: key);
 
   @override
@@ -303,6 +319,8 @@ class MultiOpenMapPicker extends StatelessWidget {
       locationIcon: locationIcon,
       borderRadius: splashBorderRadius,
       searchHint: searchHint,
+      zoomInIcon: zoomInIcon,
+      zoomOutIcon: zoomOutIcon,
       display: (value) {
         var v = value ?? [];
         if (v.isEmpty) return const Text('');

@@ -65,6 +65,8 @@ class OpenStreetMaps extends StatefulWidget {
   /// Limiting search results to
   /// You can set it alos using `OpenMapSettings`
   final SearchFilters? searchFilters;
+  final Icon? zoomIn;
+  final Icon? zoomOut;
   const OpenStreetMaps({
     Key? key,
     required this.options,
@@ -75,6 +77,8 @@ class OpenStreetMaps extends StatefulWidget {
     this.srearchHint,
     this.reverseZoom,
     this.searchFilters,
+    this.zoomIn = const Icon(Icons.zoom_in_rounded),
+    this.zoomOut = const Icon(Icons.zoom_out_rounded),
   }) : super(key: key);
 
   @override
@@ -231,6 +235,8 @@ class _OpenStreetMapsState extends State<OpenStreetMaps>
       children: [
         Scaffold(
           appBar: MapAppBar(
+            zoomIn: widget.zoomIn!,
+            zoomOut: widget.zoomOut!,
             bloc: bloc,
             controller: _controller,
             moveTo: moveTo,
