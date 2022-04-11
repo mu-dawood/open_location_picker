@@ -130,7 +130,7 @@ class _MapAppBarState extends State<MapAppBar> {
 
         return AppBar(
           leading: state.mapOrNull(
-            searching: (_) => const Center(child: CupertinoActivityIndicator()),
+            searching: (_) => const Center(child: CircularProgressIndicator.adaptive()),
           ),
           backgroundColor: Theme.of(context).colorScheme.surface,
           titleTextStyle: Theme.of(context).textTheme.bodyText1,
