@@ -28,6 +28,7 @@ class _BaseFormField<T> extends StatefulWidget {
   final FocusNode? focusNode;
   final bool expands;
   final Function(FormFieldState<T> field) onRemove;
+  final Icon locationIcon;
   const _BaseFormField({
     Key? key,
     required this.intialValue,
@@ -46,6 +47,7 @@ class _BaseFormField<T> extends StatefulWidget {
     required this.expands,
     required this.display,
     required this.onRemove,
+    this.locationIcon = const Icon(Icons.my_location_rounded),
   }) : super(key: key);
 
   @override
@@ -107,7 +109,7 @@ class __BaseFormFieldState<T> extends State<_BaseFormField<T>> {
         effectiveDecoration = effectiveDecoration.copyWith(
             errorText: field.errorText,
             prefixIcon: effectiveDecoration.prefixIcon ??
-                const Icon(Icons.my_location_rounded),
+                widget.locationIcon,
             suffixIcon: _showRemove
                 ? IconButton(
                     onPressed: () {
@@ -182,6 +184,7 @@ class OpenMapPicker extends StatelessWidget {
   final TextAlignVertical? textAlignVertical;
   final FocusNode? focusNode;
   final bool expands;
+  final Icon locationIcon;
   const OpenMapPicker({
     Key? key,
     this.intialValue,
@@ -198,6 +201,7 @@ class OpenMapPicker extends StatelessWidget {
     this.textAlignVertical,
     this.focusNode,
     this.expands = false,
+    this.locationIcon = const Icon(Icons.my_location_rounded),
   }) : super(key: key);
 
   @override
@@ -205,6 +209,7 @@ class OpenMapPicker extends StatelessWidget {
     return _BaseFormField<FormattedLocation>(
       state: (value) => OpenMapState.selected(SelectedLocation.single(value)),
       decoration: decoration,
+      locationIcon: locationIcon,
       display: (FormattedLocation? value) => Text(value?.toString() ?? ''),
       expands: expands,
       focusNode: focusNode,
@@ -253,6 +258,7 @@ class MultiOpenMapPicker extends StatelessWidget {
   final TextAlignVertical? textAlignVertical;
   final FocusNode? focusNode;
   final bool expands;
+  final Icon locationIcon;
   const MultiOpenMapPicker({
     Key? key,
     this.intialValue,
@@ -269,6 +275,7 @@ class MultiOpenMapPicker extends StatelessWidget {
     this.textAlignVertical,
     this.focusNode,
     this.expands = false,
+    this.locationIcon = const Icon(Icons.my_location_rounded),
   }) : super(key: key);
 
   @override
@@ -277,6 +284,7 @@ class MultiOpenMapPicker extends StatelessWidget {
       state: (value) =>
           OpenMapState.selected(SelectedLocation.multi(value ?? [])),
       decoration: decoration,
+      locationIcon: locationIcon,
       display: (value) {
         var v = value ?? [];
         if (v.isEmpty) return const Text('');
