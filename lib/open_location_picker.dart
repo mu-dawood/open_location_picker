@@ -10,3 +10,4 @@ export 'src/map_view.dart';
 export 'src/map_view_settings.dart';
 export 'src/options.dart';
 export 'src/reverse_options.dart';
+export 'src/map_view_config.dart';

@@ -160,8 +160,6 @@ class __BaseFormFieldState<T> extends State<_BaseFormField<T>> {
         context,
         MaterialPageRoute(
           builder: (_) => OpenStreetMaps(
-            zoomIn: widget.zoomInIcon,
-            zoomOut: widget.zoomOutIcon,
             searchHint: widget.searchHint,
             options: widget.options(field.value),
             bloc: _bloc,

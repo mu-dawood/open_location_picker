@@ -4,7 +4,6 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:location/location.dart';
 import 'package:open_location_picker/open_location_picker.dart';
-import 'package:open_location_picker/src/map_view_config.dart';
 
 void main() {
   runApp(MyApp(
@@ -150,15 +149,13 @@ class _MyHomePageState extends State<MyHomePage> {
         child: ListView(
           padding: const EdgeInsets.all(20),
           children: <Widget>[
-            OpenMapSettings(
-              child: OpenMapPicker(
-                decoration: const InputDecoration(
-                hintText: "My Location",
-              ),
-                onSaved: (FormattedLocation? newValue) {
-                  /// save new value
-                },
-              ),
+            OpenMapPicker(
+              decoration: const InputDecoration(
+              hintText: "My Location",
+            ),
+              onSaved: (FormattedLocation? newValue) {
+                /// save new value
+              },
             ),
             MultiOpenMapPicker(
               decoration: const InputDecoration(hintText: "My  multi location"),

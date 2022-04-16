@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/plugin_api.dart';
@@ -247,7 +245,7 @@ class _OpenStreetMapsState extends State<OpenStreetMaps>
             searchDoneIcon: settings?.mapViewConfig?.searchDoneIcon,
             mapBackIcon: settings?.mapViewConfig?.mapBackIcon,
             searchHint: widget.searchHint ??
-                settings?.srearchHint?.call(context) ??
+                settings?.searchHint?.call(context) ??
                 'Search here',
           ),
           bottomNavigationBar:
