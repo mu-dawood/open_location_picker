@@ -151,8 +151,8 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             OpenMapPicker(
               decoration: const InputDecoration(
-              hintText: "My Location",
-            ),
+                hintText: "My Location",
+              ),
               onSaved: (FormattedLocation? newValue) {
                 /// save new value
               },
