@@ -11,7 +11,7 @@ import 'map_view_settings.dart';
 import 'options.dart';
 
 class _BaseFormField<T> extends StatefulWidget {
-  final T? intialValue;
+  final T? initialValue;
   final Function(FormFieldState<T> field, SelectedLocation selectedLocation)
       onDone;
   final FormFieldSetter<T>? onSaved;
@@ -28,14 +28,9 @@ class _BaseFormField<T> extends StatefulWidget {
   final FocusNode? focusNode;
   final bool expands;
   final Function(FormFieldState<T> field) onRemove;
-  final Icon locationIcon;
-  final BorderRadius? borderRadius;
-  final String searchHint;
-  final Icon? zoomInIcon;
-  final Icon? zoomOutIcon;
   const _BaseFormField({
     Key? key,
-    required this.intialValue,
+    required this.initialValue,
     required this.onDone,
     required this.onSaved,
     required this.validator,
@@ -51,11 +46,6 @@ class _BaseFormField<T> extends StatefulWidget {
     required this.expands,
     required this.display,
     required this.onRemove,
-    this.borderRadius,
-    this.searchHint = '',
-    this.locationIcon = const Icon(Icons.my_location_rounded),
-    this.zoomInIcon,
-    this.zoomOutIcon,
   }) : super(key: key);
 
   @override
@@ -107,7 +97,7 @@ class __BaseFormFieldState<T> extends State<_BaseFormField<T>> {
   Widget build(BuildContext context) {
     return FormField<T>(
       validator: widget.validator,
-      initialValue: widget.intialValue,
+      initialValue: widget.initialValue,
       onSaved: widget.onSaved,
       builder: (FormFieldState<T> field) {
         var effectiveDecoration = widget.decoration
@@ -117,7 +107,7 @@ class __BaseFormFieldState<T> extends State<_BaseFormField<T>> {
         effectiveDecoration = effectiveDecoration.copyWith(
             errorText: field.errorText,
             prefixIcon: effectiveDecoration.prefixIcon ??
-                widget.locationIcon,
+                const Icon(Icons.my_location_rounded),
             suffixIcon: _showRemove
                 ? IconButton(
                     onPressed: () {
@@ -129,7 +119,6 @@ class __BaseFormFieldState<T> extends State<_BaseFormField<T>> {
                 : effectiveDecoration.suffixIcon);
 
         return InkWell(
-          borderRadius: widget.borderRadius,
           onTap: () => _pick(field),
           child: MouseRegion(
             onEnter: (PointerEnterEvent event) => _handleHover(true),
@@ -160,7 +149,6 @@ class __BaseFormFieldState<T> extends State<_BaseFormField<T>> {
         context,
         MaterialPageRoute(
           builder: (_) => OpenStreetMaps(
-            searchHint: widget.searchHint,
             options: widget.options(field.value),
             bloc: _bloc,
             onDone: (value) {
@@ -194,11 +182,6 @@ class OpenMapPicker extends StatelessWidget {
   final TextAlignVertical? textAlignVertical;
   final FocusNode? focusNode;
   final bool expands;
-  final Icon locationIcon;
-  final BorderRadius? splashBorderRadius;
-  final String searchHint;
-  final Icon? zoomInIcon;
-  final Icon? zoomOutIcon;
   const OpenMapPicker({
     Key? key,
     this.initialValue,
@@ -215,11 +198,6 @@ class OpenMapPicker extends StatelessWidget {
     this.textAlignVertical,
     this.focusNode,
     this.expands = false,
-    this.locationIcon = const Icon(Icons.my_location_rounded),
-    this.splashBorderRadius,
-    this.searchHint = "Search",
-    this.zoomInIcon,
-    this.zoomOutIcon,
   }) : super(key: key);
 
   @override
@@ -227,15 +205,10 @@ class OpenMapPicker extends StatelessWidget {
     return _BaseFormField<FormattedLocation>(
       state: (value) => OpenMapState.selected(SelectedLocation.single(value)),
       decoration: decoration,
-      locationIcon: locationIcon,
-      borderRadius: splashBorderRadius,
-      searchHint: searchHint,
-      zoomInIcon: zoomInIcon,
-      zoomOutIcon: zoomOutIcon,
       display: (FormattedLocation? value) => Text(value?.toString() ?? ''),
       expands: expands,
       focusNode: focusNode,
-      intialValue: initialValue,
+      initialValue: initialValue,
       options: (FormattedLocation? value) {
         if (value == null) {
           return OpenMapOptions();
@@ -280,11 +253,6 @@ class MultiOpenMapPicker extends StatelessWidget {
   final TextAlignVertical? textAlignVertical;
   final FocusNode? focusNode;
   final bool expands;
-  final Icon locationIcon;
-  final BorderRadius? splashBorderRadius;
-  final String searchHint;
-  final Icon? zoomInIcon;
-  final Icon? zoomOutIcon;
   const MultiOpenMapPicker({
     Key? key,
     this.intialValue,
@@ -301,11 +269,6 @@ class MultiOpenMapPicker extends StatelessWidget {
     this.textAlignVertical,
     this.focusNode,
     this.expands = false,
-    this.locationIcon = const Icon(Icons.my_location_rounded),
-    this.splashBorderRadius,
-    this.searchHint = "Search",
-    this.zoomInIcon,
-    this.zoomOutIcon,
   }) : super(key: key);
 
   @override
@@ -314,11 +277,6 @@ class MultiOpenMapPicker extends StatelessWidget {
       state: (value) =>
           OpenMapState.selected(SelectedLocation.multi(value ?? [])),
       decoration: decoration,
-      locationIcon: locationIcon,
-      borderRadius: splashBorderRadius,
-      searchHint: searchHint,
-      zoomInIcon: zoomInIcon,
-      zoomOutIcon: zoomOutIcon,
       display: (value) {
         var v = value ?? [];
         if (v.isEmpty) return const Text('');
@@ -342,7 +300,7 @@ class MultiOpenMapPicker extends StatelessWidget {
       },
       expands: expands,
       focusNode: focusNode,
-      intialValue: intialValue ?? [],
+      initialValue: intialValue ?? [],
       options: (value) {
         var list = value ?? [];
         if (list.isEmpty) {
