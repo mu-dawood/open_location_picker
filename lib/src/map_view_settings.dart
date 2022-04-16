@@ -29,7 +29,7 @@ class OpenMapSettings extends InheritedWidget {
     this.locationMarker,
     this.currentLocationMarker,
     this.getMapTileOptions,
-    this.srearchHint,
+    this.searchHint,
     this.myLocationButton,
     this.searchFilters,
     this.reverseZoom,
@@ -61,7 +61,7 @@ class OpenMapSettings extends InheritedWidget {
   final SearchFilters? searchFilters;
 
   /// hint to display in search box
-  final String Function(BuildContext context)? srearchHint;
+  final String Function(BuildContext context)? searchHint;
 
   /// global error handler
   final void Function(BuildContext context, dynamic error)? onError;
@@ -117,7 +117,7 @@ class OpenMapSettings extends InheritedWidget {
     return oldWidget.getCurrentLocation != getCurrentLocation ||
         defaultOptions != oldWidget.defaultOptions ||
         searchFilters != oldWidget.searchFilters ||
-        srearchHint != oldWidget.srearchHint ||
+        searchHint != oldWidget.searchHint ||
         reverseZoom != oldWidget.reverseZoom ||
         currentLocationMarker != oldWidget.currentLocationMarker ||
         getLocationStream != oldWidget.getLocationStream ||

@@ -76,6 +76,7 @@ class MyApp extends StatelessWidget {
 
   Widget _buildLocationPackage() {
     return OpenMapSettings(
+      searchHint: (context) => 'asd',
       onError: (context, error) {},
       getCurrentLocation: _getCurrentLocationUsingLocationPackage,
       reverseZoom: ReverseZoom.building,
@@ -104,6 +105,7 @@ class MyApp extends StatelessWidget {
 
   Widget _buildGeolocatorPackage() {
     return OpenMapSettings(
+      searchHint: (context) => 'asd',
       onError: (context, error) {},
       getCurrentLocation: _determinePosition,
       reverseZoom: ReverseZoom.building,

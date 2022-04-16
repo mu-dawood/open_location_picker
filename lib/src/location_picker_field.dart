@@ -162,7 +162,7 @@ class __BaseFormFieldState<T> extends State<_BaseFormField<T>> {
           builder: (_) => OpenStreetMaps(
             zoomIn: widget.zoomInIcon,
             zoomOut: widget.zoomOutIcon,
-            srearchHint: widget.searchHint,
+            searchHint: widget.searchHint,
             options: widget.options(field.value),
             bloc: _bloc,
             onDone: (value) {

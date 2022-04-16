@@ -55,15 +55,15 @@ class OpenStreetMaps extends StatefulWidget {
   final ValueChanged<SelectedLocation>? onDone;
 
   /// hint to display in search box
-  /// You can set it alos using `OpenMapSettings`
-  final String? srearchHint;
+  /// You can set it also using `OpenMapSettings`
+  final String? searchHint;
 
   /// handle what type of address you want when you tap on map
-  /// You can set it alos using `OpenMapSettings`
+  /// You can set it also using `OpenMapSettings`
   final ReverseZoom? reverseZoom;
 
   /// Limiting search results to
-  /// You can set it alos using `OpenMapSettings`
+  /// You can set it also using `OpenMapSettings`
   final SearchFilters? searchFilters;
   final Icon? zoomIn;
   final Icon? zoomOut;
@@ -74,7 +74,7 @@ class OpenStreetMaps extends StatefulWidget {
     this.tileProvider,
     this.myLocationButton,
     this.onDone,
-    this.srearchHint,
+    this.searchHint,
     this.reverseZoom,
     this.searchFilters,
     this.zoomIn,
@@ -242,8 +242,8 @@ class _OpenStreetMapsState extends State<OpenStreetMaps>
             moveTo: moveTo,
             onDone: widget.onDone,
             searchFilters: widget.searchFilters ?? settings?.searchFilters,
-            srearchHint: widget.srearchHint ??
-                settings?.srearchHint?.call(context) ??
+            srearchHint: widget.searchHint ??
+                settings?.searchHint?.call(context) ??
                 'Search here',
           ),
           bottomNavigationBar:
