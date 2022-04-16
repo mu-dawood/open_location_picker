@@ -4,6 +4,7 @@ import 'package:latlong2/latlong.dart';
 
 import './location_model.dart';
 import 'map_view.dart';
+import 'map_view_config.dart';
 import 'options.dart';
 import 'reverse_options.dart';
 
@@ -34,6 +35,7 @@ class OpenMapSettings extends InheritedWidget {
     this.searchFilters,
     this.reverseZoom,
     this.defaultTileProvider = const NonCachingNetworkTileProvider(),
+    this.mapViewConfig,
   }) : super(key: key, child: child);
 
   /// ovveride the default map
@@ -106,6 +108,9 @@ class OpenMapSettings extends InheritedWidget {
   /// ```
   final TileProvider defaultTileProvider;
 
+  ///Let you define visual map configurations
+  final MapViewConfig? mapViewConfig;
+
   /// handle what type of address you want when you tap on map
   final ReverseZoom? reverseZoom;
   static OpenMapSettings? of(BuildContext context) {
@@ -124,6 +129,7 @@ class OpenMapSettings extends InheritedWidget {
         locationMarker != oldWidget.locationMarker ||
         child != oldWidget.child ||
         myLocationButton != oldWidget.myLocationButton ||
+        mapViewConfig != oldWidget.mapViewConfig ||
         defaultTileProvider != oldWidget.defaultTileProvider;
   }
 }

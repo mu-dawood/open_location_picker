@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/plugin_api.dart';
@@ -19,7 +21,7 @@ typedef MyLocationButtonCallBack = Widget Function(
 /// Map screen
 /// - it can be used to display location
 /// - when you pass bloc this means you want to pick location so the ui changed to map picker
-/// - When you pass bloc this mean there was Scaffold so you dont need one
+/// - When you pass bloc this mean there was Scaffold so you don't need one
 class OpenStreetMaps extends StatefulWidget {
   /// Set the map options you can use center or bounds
   final OpenMapOptions options;
@@ -33,7 +35,7 @@ class OpenStreetMaps extends StatefulWidget {
   /// You can set it alos using `OpenMapSettings`
   final MyLocationButtonCallBack? myLocationButton;
 
-  /// You can ovveride how map images downloaded
+  /// You can override how map images downloaded
   /// You can cache images like that
   /// ``` dart
   /// import 'package:cached_network_image/cached_network_image.dart';
@@ -55,18 +57,16 @@ class OpenStreetMaps extends StatefulWidget {
   final ValueChanged<SelectedLocation>? onDone;
 
   /// hint to display in search box
-  /// You can set it also using `OpenMapSettings`
+  /// You can set it alos using `OpenMapSettings`
   final String? searchHint;
 
   /// handle what type of address you want when you tap on map
-  /// You can set it also using `OpenMapSettings`
+  /// You can set it alos using `OpenMapSettings`
   final ReverseZoom? reverseZoom;
 
   /// Limiting search results to
-  /// You can set it also using `OpenMapSettings`
+  /// You can set it alos using `OpenMapSettings`
   final SearchFilters? searchFilters;
-  final Icon? zoomIn;
-  final Icon? zoomOut;
   const OpenStreetMaps({
     Key? key,
     required this.options,
@@ -77,8 +77,6 @@ class OpenStreetMaps extends StatefulWidget {
     this.searchHint,
     this.reverseZoom,
     this.searchFilters,
-    this.zoomIn,
-    this.zoomOut,
   }) : super(key: key);
 
   @override
@@ -222,7 +220,10 @@ class _OpenStreetMapsState extends State<OpenStreetMaps>
     Widget? _myCurrentLocation = widget.myLocationButton?.call(moveTo);
     _myCurrentLocation ??= settings?.myLocationButton?.call(moveTo);
     if (_myCurrentLocation == null && settings?.getCurrentLocation != null) {
-      _myCurrentLocation = MyLocationButton(moveTo: moveTo);
+      _myCurrentLocation = MyLocationButton(
+        moveTo: moveTo,
+        selectCurrentLocationIcon: settings?.mapViewConfig?.selectCurrentLocationIcon,
+      );
     }
     var options = widget.options.create(
       controller: _controller,
@@ -235,15 +236,18 @@ class _OpenStreetMapsState extends State<OpenStreetMaps>
       children: [
         Scaffold(
           appBar: MapAppBar(
-            zoomIn: widget.zoomIn,
-            zoomOut: widget.zoomOut,
             bloc: bloc,
             controller: _controller,
             moveTo: moveTo,
             onDone: widget.onDone,
             searchFilters: widget.searchFilters ?? settings?.searchFilters,
-            srearchHint: widget.searchHint ??
-                settings?.searchHint?.call(context) ??
+            zoomInIcon: settings?.mapViewConfig?.zoomInIcon,
+            zoomOutIcon: settings?.mapViewConfig?.zoomOutIcon,
+            searchLoadingIndicator: settings?.mapViewConfig?.searchLoadingIndicator,
+            searchDoneIcon: settings?.mapViewConfig?.searchDoneIcon,
+            mapBackIcon: settings?.mapViewConfig?.mapBackIcon,
+            searchHint: widget.searchHint ??
+                settings?.srearchHint?.call(context) ??
                 'Search here',
           ),
           bottomNavigationBar:

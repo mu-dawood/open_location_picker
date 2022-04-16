@@ -4,6 +4,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:location/location.dart';
 import 'package:open_location_picker/open_location_picker.dart';
+import 'package:open_location_picker/src/map_view_config.dart';
 
 void main() {
   runApp(MyApp(
@@ -76,7 +77,6 @@ class MyApp extends StatelessWidget {
 
   Widget _buildLocationPackage() {
     return OpenMapSettings(
-      searchHint: (context) => 'asd',
       onError: (context, error) {},
       getCurrentLocation: _getCurrentLocationUsingLocationPackage,
       reverseZoom: ReverseZoom.building,
@@ -105,7 +105,6 @@ class MyApp extends StatelessWidget {
 
   Widget _buildGeolocatorPackage() {
     return OpenMapSettings(
-      searchHint: (context) => 'asd',
       onError: (context, error) {},
       getCurrentLocation: _determinePosition,
       reverseZoom: ReverseZoom.building,
@@ -151,13 +150,15 @@ class _MyHomePageState extends State<MyHomePage> {
         child: ListView(
           padding: const EdgeInsets.all(20),
           children: <Widget>[
-            OpenMapPicker(
-              decoration: const InputDecoration(
-                hintText: "My location",
+            OpenMapSettings(
+              child: OpenMapPicker(
+                decoration: const InputDecoration(
+                hintText: "My Location",
               ),
-              onSaved: (FormattedLocation? newValue) {
-                /// save new value
-              },
+                onSaved: (FormattedLocation? newValue) {
+                  /// save new value
+                },
+              ),
             ),
             MultiOpenMapPicker(
               decoration: const InputDecoration(hintText: "My  multi location"),

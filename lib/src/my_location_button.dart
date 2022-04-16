@@ -5,8 +5,13 @@ import 'map_view_settings.dart';
 
 /// Default Floating button for user location
 class MyLocationButton extends StatefulWidget {
+  const MyLocationButton({
+    Key? key,
+    required this.moveTo,
+    this.selectCurrentLocationIcon,
+  }) : super(key: key);
   final ValueChanged<LatLng> moveTo;
-  const MyLocationButton({Key? key, required this.moveTo}) : super(key: key);
+  final IconData? selectCurrentLocationIcon;
 
   @override
   State<MyLocationButton> createState() => _MyLocationButtonState();
@@ -42,8 +47,8 @@ class _MyLocationButtonState extends State<MyLocationButton> {
             ? CircularProgressIndicator(
                 color: IconTheme.of(context).color,
               )
-            : const Icon(
-                Icons.my_location,
+            : Icon(
+                widget.selectCurrentLocationIcon ?? Icons.my_location,
                 color: Colors.white,
               );
       }),
