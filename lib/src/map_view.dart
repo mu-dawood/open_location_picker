@@ -13,8 +13,7 @@ import 'reverse_options.dart';
 import 'selected_location_view.dart';
 import 'shapes.dart';
 
-typedef MyLocationButtonCallBack = Widget Function(
-    Function(LatLng destLocation, [double destZoom]) callback);
+typedef MyLocationButtonCallBack = Widget Function(Function(LatLng destLocation, [double destZoom]) callback);
 
 /// Map screen
 /// - it can be used to display location
@@ -55,7 +54,7 @@ class OpenStreetMaps extends StatefulWidget {
   final ValueChanged<SelectedLocation>? onDone;
 
   /// hint to display in search box
-  /// You can set it also using `OpenMapSettings`
+  /// You can set it alos using `OpenMapSettings`
   final String? searchHint;
 
   /// handle what type of address you want when you tap on map
@@ -81,8 +80,7 @@ class OpenStreetMaps extends StatefulWidget {
   _OpenStreetMapsState createState() => _OpenStreetMapsState();
 }
 
-class _OpenStreetMapsState extends State<OpenStreetMaps>
-    with TickerProviderStateMixin {
+class _OpenStreetMapsState extends State<OpenStreetMaps> with TickerProviderStateMixin {
   late final _MapControllerImpl _controller;
   late final _MyAnimationController _animationController;
   @override
@@ -112,13 +110,8 @@ class _OpenStreetMapsState extends State<OpenStreetMaps>
             bloc.emit(OpenMapState.selected(SelectedLocation.single(result)));
           },
           multi: (old) {
-            var exists =
-                old.any((element) => element.identifier == result.identifier);
-            var _new = exists
-                ? old
-                    .map((e) => e.identifier == result.identifier ? result : e)
-                    .toList()
-                : [result, ...old];
+            var exists = old.any((element) => element.identifier == result.identifier);
+            var _new = exists ? old.map((e) => e.identifier == result.identifier ? result : e).toList() : [result, ...old];
             bloc.emit(OpenMapState.selected(SelectedLocation.multi(_new)));
           },
         );
@@ -132,8 +125,7 @@ class _OpenStreetMapsState extends State<OpenStreetMaps>
     }
   }
 
-  void _onMapCreated(
-      MapController controller, OpenMapSettings? settings) async {
+  void _onMapCreated(MapController controller, OpenMapSettings? settings) async {
     try {
       if (settings?.getCurrentLocation != null) {
         if (widget.options.center != null) return;
@@ -175,8 +167,7 @@ class _OpenStreetMapsState extends State<OpenStreetMaps>
       _animationController.addListener(() {
         if (mounted) {
           _controller.move(
-            LatLng(
-                _latTween.evaluate(animation), _lngTween.evaluate(animation)),
+            LatLng(_latTween.evaluate(animation), _lngTween.evaluate(animation)),
             _zoomTween.evaluate(animation),
           );
         }
@@ -218,7 +209,10 @@ class _OpenStreetMapsState extends State<OpenStreetMaps>
     Widget? _myCurrentLocation = widget.myLocationButton?.call(moveTo);
     _myCurrentLocation ??= settings?.myLocationButton?.call(moveTo);
     if (_myCurrentLocation == null && settings?.getCurrentLocation != null) {
-      _myCurrentLocation = MyLocationButton(moveTo: moveTo);
+      _myCurrentLocation = MyLocationButton(
+        moveTo: moveTo,
+        selectCurrentLocationIcon: settings?.mapViewConfig?.selectCurrentLocationIcon,
+      );
     }
     var options = widget.options.create(
       controller: _controller,
@@ -236,12 +230,14 @@ class _OpenStreetMapsState extends State<OpenStreetMaps>
             moveTo: moveTo,
             onDone: widget.onDone,
             searchFilters: widget.searchFilters ?? settings?.searchFilters,
-            searchHint: widget.searchHint ??
-                settings?.searchHint?.call(context) ??
-                'Search here',
+            zoomInIcon: settings?.mapViewConfig?.zoomInIcon,
+            zoomOutIcon: settings?.mapViewConfig?.zoomOutIcon,
+            searchLoadingIndicator: settings?.mapViewConfig?.searchLoadingIndicator,
+            searchDoneIcon: settings?.mapViewConfig?.searchDoneIcon,
+            mapBackIcon: settings?.mapViewConfig?.mapBackIcon,
+            searchHint: widget.searchHint ?? settings?.searchHint?.call(context) ?? 'Search here',
           ),
-          bottomNavigationBar:
-              SelectedLocationView(bloc: bloc, fitBounds: fitBounds),
+          bottomNavigationBar: SelectedLocationView(bloc: bloc, fitBounds: fitBounds),
           floatingActionButton: _myCurrentLocation,
           resizeToAvoidBottomInset: false,
           body: _buildMap(options, settings),
@@ -268,12 +264,7 @@ class _OpenStreetMapsState extends State<OpenStreetMaps>
       mapController: _controller,
       children: [
         TileLayerWidget(
-          options: _layerOptions(
-              isDark,
-              background,
-              widget.tileProvider ??
-                  settings?.defaultTileProvider ??
-                  const NonCachingNetworkTileProvider()),
+          options: _layerOptions(isDark, background, widget.tileProvider ?? settings?.defaultTileProvider ?? const NonCachingNetworkTileProvider()),
         ),
       ],
       nonRotatedChildren: [
@@ -283,15 +274,12 @@ class _OpenStreetMapsState extends State<OpenStreetMaps>
           MapPolylines(bloc: widget.bloc!),
           MapMarkers(bloc: widget.bloc!),
         ],
-        if (settings?.currentLocationMarker != null ||
-            settings?.getLocationStream != null)
-          const MyCurrentLocationMarker()
+        if (settings?.currentLocationMarker != null || settings?.getLocationStream != null) const MyCurrentLocationMarker()
       ],
     );
   }
 
-  TileLayerOptions _getLayerOptions(
-      bool isDark, Color background, TileProvider provider) {
+  TileLayerOptions _getLayerOptions(bool isDark, Color background, TileProvider provider) {
     return TileLayerOptions(
       urlTemplate: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
       subdomains: ['a', 'b', 'c'],
@@ -308,8 +296,7 @@ class _OpenStreetMapsState extends State<OpenStreetMaps>
 }
 
 class _MyAnimationController extends AnimationController {
-  _MyAnimationController(TickerProvider vsync)
-      : super(vsync: vsync, duration: const Duration(milliseconds: 400));
+  _MyAnimationController(TickerProvider vsync) : super(vsync: vsync, duration: const Duration(milliseconds: 400));
 
   @override
   void reset() {

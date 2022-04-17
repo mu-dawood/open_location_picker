@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:open_location_picker/open_location_picker.dart';
 
@@ -12,6 +11,11 @@ class MapAppBar extends StatefulWidget with PreferredSizeWidget {
   final String searchHint;
   final SearchFilters? searchFilters;
   final Function(LatLng latLng, double zoom) moveTo;
+  final IconData? zoomInIcon;
+  final IconData? zoomOutIcon;
+  final Widget? searchLoadingIndicator;
+  final IconData? searchDoneIcon;
+  final IconData? mapBackIcon;
 
   const MapAppBar({
     Key? key,
@@ -21,6 +25,11 @@ class MapAppBar extends StatefulWidget with PreferredSizeWidget {
     required this.onDone,
     required this.searchHint,
     required this.searchFilters,
+    this.zoomInIcon,
+    this.zoomOutIcon,
+    this.searchLoadingIndicator,
+    this.searchDoneIcon,
+    this.mapBackIcon,
   }) : super(key: key);
 
   @override
@@ -99,7 +108,7 @@ class _MapAppBarState extends State<MapAppBar> {
     return location.when(
       multi: (List<FormattedLocation> selected) {
         return IconButton(
-          icon: const Icon(Icons.done),
+          icon: Icon(widget.searchDoneIcon ?? Icons.done),
           onPressed: selected.isNotEmpty
               ? () {
                   widget.onDone?.call(location);
@@ -109,7 +118,7 @@ class _MapAppBarState extends State<MapAppBar> {
       },
       single: (FormattedLocation? selected) {
         return IconButton(
-          icon: const Icon(Icons.done),
+          icon: Icon(widget.searchDoneIcon ?? Icons.done),
           onPressed: selected != null
               ? () {
                   widget.onDone?.call(location);
@@ -130,7 +139,15 @@ class _MapAppBarState extends State<MapAppBar> {
 
         return AppBar(
           leading: state.mapOrNull(
-            searching: (_) => const Center(child: CupertinoActivityIndicator()),
+            selected: (_) => IconButton(
+              icon: Icon(widget.mapBackIcon ?? Icons.adaptive.arrow_back),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
+            searching: (_) => Center(
+              child: widget.searchLoadingIndicator ?? const CircularProgressIndicator.adaptive()
+            ),
           ),
           backgroundColor: Theme.of(context).colorScheme.surface,
           titleTextStyle: Theme.of(context).textTheme.bodyText1,
@@ -146,7 +163,7 @@ class _MapAppBarState extends State<MapAppBar> {
                 builder: (context, snapshot) {
                   return IconButton(
                     onPressed: (widget.controller.zoom < 18) ? zoomIn : null,
-                    icon: const Icon(Icons.zoom_in_rounded),
+                    icon: Icon(widget.zoomInIcon ?? Icons.zoom_in_rounded),
                   );
                 }),
             StreamBuilder(
@@ -154,7 +171,7 @@ class _MapAppBarState extends State<MapAppBar> {
                 builder: (context, snapshot) {
                   return IconButton(
                     onPressed: (widget.controller.zoom > 1) ? zoomOut : null,
-                    icon: const Icon(Icons.zoom_out_rounded),
+                    icon: Icon(widget.zoomOutIcon ?? Icons.zoom_out_rounded),
                   );
                 }),
             state.when(
