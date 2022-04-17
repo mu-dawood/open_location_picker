@@ -1,6 +1,6 @@
 name: open_location_picker
 description: FormField to pick one or more locations from open street map
-version: 0.0.5
+version: 0.0.6
 homepage: https://github.com/mo-ah-dawood/open_location_picker
 
 environment:
