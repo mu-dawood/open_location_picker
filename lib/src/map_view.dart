@@ -54,7 +54,7 @@ class OpenStreetMaps extends StatefulWidget {
   final ValueChanged<SelectedLocation>? onDone;
 
   /// hint to display in search box
-  /// You can set it alos using `OpenMapSettings`
+  /// You can set it also using `OpenMapSettings`
   final String? searchHint;
 
   /// handle what type of address you want when you tap on map
