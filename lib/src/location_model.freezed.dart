@@ -29,13 +29,13 @@ class _$FormattedLocationTearOff {
       required String category,
       required String type,
       required double importance,
-      required String addresstype,
+      required String addressType,
       required String name,
       required String displayName,
       required Address address,
       required Map<String, dynamic> extratags,
       required Map<String, dynamic> namedetails,
-      required LatLngBounds boundingbox,
+      required LatLngBounds boundingBox,
       required GeoGeometry geojson,
       Map<String, String> names = const {}}) {
     return _FormattedLocation(
@@ -50,13 +50,13 @@ class _$FormattedLocationTearOff {
       category: category,
       type: type,
       importance: importance,
-      addresstype: addresstype,
+      addressType: addressType,
       name: name,
       displayName: displayName,
       address: address,
       extratags: extratags,
       namedetails: namedetails,
-      boundingbox: boundingbox,
+      boundingBox: boundingBox,
       geojson: geojson,
       names: names,
     );
@@ -74,7 +74,7 @@ mixin _$FormattedLocation {
   /// latitude of the centroid of the object
   double get lat => throw _privateConstructorUsedError;
 
-  /// llongitude of the centroid of the object
+  /// longitude of the centroid of the object
   double get lon => throw _privateConstructorUsedError;
   String get licence => throw _privateConstructorUsedError;
 
@@ -96,7 +96,7 @@ mixin _$FormattedLocation {
 
   /// computed importance rank
   double get importance => throw _privateConstructorUsedError;
-  String get addresstype => throw _privateConstructorUsedError;
+  String get addressType => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
 
   ///full comma-separated address
@@ -105,16 +105,16 @@ mixin _$FormattedLocation {
   /// dictionary of address details
   Address get address => throw _privateConstructorUsedError;
 
-  /// dictionary with additional useful tags like website or maxspeed
+  /// dictionary with additional useful tags like website or max speed
   Map<String, dynamic> get extratags => throw _privateConstructorUsedError;
 
-  /// ictionary with full list of available names including ref etc
+  /// dictionary with full list of available names including ref etc
   Map<String, dynamic> get namedetails => throw _privateConstructorUsedError;
 
   ///area of corner coordinates
-  LatLngBounds get boundingbox => throw _privateConstructorUsedError;
+  LatLngBounds get boundingBox => throw _privateConstructorUsedError;
 
-  /// Geobouds of object
+  /// GeoBounds of object
   GeoGeometry get geojson => throw _privateConstructorUsedError;
   Map<String, String> get names => throw _privateConstructorUsedError;
 
@@ -140,13 +140,13 @@ abstract class $FormattedLocationCopyWith<$Res> {
       String category,
       String type,
       double importance,
-      String addresstype,
+      String addressType,
       String name,
       String displayName,
       Address address,
       Map<String, dynamic> extratags,
       Map<String, dynamic> namedetails,
-      LatLngBounds boundingbox,
+      LatLngBounds boundingBox,
       GeoGeometry geojson,
       Map<String, String> names});
 
@@ -175,13 +175,13 @@ class _$FormattedLocationCopyWithImpl<$Res>
     Object? category = freezed,
     Object? type = freezed,
     Object? importance = freezed,
-    Object? addresstype = freezed,
+    Object? addressType = freezed,
     Object? name = freezed,
     Object? displayName = freezed,
     Object? address = freezed,
     Object? extratags = freezed,
     Object? namedetails = freezed,
-    Object? boundingbox = freezed,
+    Object? boundingBox = freezed,
     Object? geojson = freezed,
     Object? names = freezed,
   }) {
@@ -230,9 +230,9 @@ class _$FormattedLocationCopyWithImpl<$Res>
           ? _value.importance
           : importance // ignore: cast_nullable_to_non_nullable
               as double,
-      addresstype: addresstype == freezed
-          ? _value.addresstype
-          : addresstype // ignore: cast_nullable_to_non_nullable
+      addressType: addressType == freezed
+          ? _value.addressType
+          : addressType // ignore: cast_nullable_to_non_nullable
               as String,
       name: name == freezed
           ? _value.name
@@ -254,9 +254,9 @@ class _$FormattedLocationCopyWithImpl<$Res>
           ? _value.namedetails
           : namedetails // ignore: cast_nullable_to_non_nullable
               as Map<String, dynamic>,
-      boundingbox: boundingbox == freezed
-          ? _value.boundingbox
-          : boundingbox // ignore: cast_nullable_to_non_nullable
+      boundingBox: boundingBox == freezed
+          ? _value.boundingBox
+          : boundingBox // ignore: cast_nullable_to_non_nullable
               as LatLngBounds,
       geojson: geojson == freezed
           ? _value.geojson
@@ -296,13 +296,13 @@ abstract class _$FormattedLocationCopyWith<$Res>
       String category,
       String type,
       double importance,
-      String addresstype,
+      String addressType,
       String name,
       String displayName,
       Address address,
       Map<String, dynamic> extratags,
       Map<String, dynamic> namedetails,
-      LatLngBounds boundingbox,
+      LatLngBounds boundingBox,
       GeoGeometry geojson,
       Map<String, String> names});
 
@@ -334,13 +334,13 @@ class __$FormattedLocationCopyWithImpl<$Res>
     Object? category = freezed,
     Object? type = freezed,
     Object? importance = freezed,
-    Object? addresstype = freezed,
+    Object? addressType = freezed,
     Object? name = freezed,
     Object? displayName = freezed,
     Object? address = freezed,
     Object? extratags = freezed,
     Object? namedetails = freezed,
-    Object? boundingbox = freezed,
+    Object? boundingBox = freezed,
     Object? geojson = freezed,
     Object? names = freezed,
   }) {
@@ -389,9 +389,9 @@ class __$FormattedLocationCopyWithImpl<$Res>
           ? _value.importance
           : importance // ignore: cast_nullable_to_non_nullable
               as double,
-      addresstype: addresstype == freezed
-          ? _value.addresstype
-          : addresstype // ignore: cast_nullable_to_non_nullable
+      addressType: addressType == freezed
+          ? _value.addressType
+          : addressType // ignore: cast_nullable_to_non_nullable
               as String,
       name: name == freezed
           ? _value.name
@@ -413,9 +413,9 @@ class __$FormattedLocationCopyWithImpl<$Res>
           ? _value.namedetails
           : namedetails // ignore: cast_nullable_to_non_nullable
               as Map<String, dynamic>,
-      boundingbox: boundingbox == freezed
-          ? _value.boundingbox
-          : boundingbox // ignore: cast_nullable_to_non_nullable
+      boundingBox: boundingBox == freezed
+          ? _value.boundingBox
+          : boundingBox // ignore: cast_nullable_to_non_nullable
               as LatLngBounds,
       geojson: geojson == freezed
           ? _value.geojson
@@ -444,13 +444,13 @@ class _$_FormattedLocation extends _FormattedLocation {
       required this.category,
       required this.type,
       required this.importance,
-      required this.addresstype,
+      required this.addressType,
       required this.name,
       required this.displayName,
       required this.address,
       required this.extratags,
       required this.namedetails,
-      required this.boundingbox,
+      required this.boundingBox,
       required this.geojson,
       this.names = const {}})
       : super._();
@@ -466,7 +466,7 @@ class _$_FormattedLocation extends _FormattedLocation {
   final double lat;
   @override
 
-  /// llongitude of the centroid of the object
+  /// longitude of the centroid of the object
   final double lon;
   @override
   final String licence;
@@ -497,7 +497,7 @@ class _$_FormattedLocation extends _FormattedLocation {
   /// computed importance rank
   final double importance;
   @override
-  final String addresstype;
+  final String addressType;
   @override
   final String name;
   @override
@@ -510,19 +510,19 @@ class _$_FormattedLocation extends _FormattedLocation {
   final Address address;
   @override
 
-  /// dictionary with additional useful tags like website or maxspeed
+  /// dictionary with additional useful tags like website or max speed
   final Map<String, dynamic> extratags;
   @override
 
-  /// ictionary with full list of available names including ref etc
+  /// dictionary with full list of available names including ref etc
   final Map<String, dynamic> namedetails;
   @override
 
   ///area of corner coordinates
-  final LatLngBounds boundingbox;
+  final LatLngBounds boundingBox;
   @override
 
-  /// Geobouds of object
+  /// GeoBounds of object
   final GeoGeometry geojson;
   @JsonKey()
   @override
@@ -546,7 +546,7 @@ class _$_FormattedLocation extends _FormattedLocation {
             const DeepCollectionEquality()
                 .equals(other.importance, importance) &&
             const DeepCollectionEquality()
-                .equals(other.addresstype, addresstype) &&
+                .equals(other.addressType, addressType) &&
             const DeepCollectionEquality().equals(other.name, name) &&
             const DeepCollectionEquality()
                 .equals(other.displayName, displayName) &&
@@ -555,7 +555,7 @@ class _$_FormattedLocation extends _FormattedLocation {
             const DeepCollectionEquality()
                 .equals(other.namedetails, namedetails) &&
             const DeepCollectionEquality()
-                .equals(other.boundingbox, boundingbox) &&
+                .equals(other.boundingBox, boundingBox) &&
             const DeepCollectionEquality().equals(other.geojson, geojson) &&
             const DeepCollectionEquality().equals(other.names, names));
   }
@@ -574,13 +574,13 @@ class _$_FormattedLocation extends _FormattedLocation {
         const DeepCollectionEquality().hash(category),
         const DeepCollectionEquality().hash(type),
         const DeepCollectionEquality().hash(importance),
-        const DeepCollectionEquality().hash(addresstype),
+        const DeepCollectionEquality().hash(addressType),
         const DeepCollectionEquality().hash(name),
         const DeepCollectionEquality().hash(displayName),
         const DeepCollectionEquality().hash(address),
         const DeepCollectionEquality().hash(extratags),
         const DeepCollectionEquality().hash(namedetails),
-        const DeepCollectionEquality().hash(boundingbox),
+        const DeepCollectionEquality().hash(boundingBox),
         const DeepCollectionEquality().hash(geojson),
         const DeepCollectionEquality().hash(names)
       ]);
@@ -604,13 +604,13 @@ abstract class _FormattedLocation extends FormattedLocation {
       required String category,
       required String type,
       required double importance,
-      required String addresstype,
+      required String addressType,
       required String name,
       required String displayName,
       required Address address,
       required Map<String, dynamic> extratags,
       required Map<String, dynamic> namedetails,
-      required LatLngBounds boundingbox,
+      required LatLngBounds boundingBox,
       required GeoGeometry geojson,
       Map<String, String> names}) = _$_FormattedLocation;
   const _FormattedLocation._() : super._();
@@ -625,7 +625,7 @@ abstract class _FormattedLocation extends FormattedLocation {
   double get lat;
   @override
 
-  /// llongitude of the centroid of the object
+  /// longitude of the centroid of the object
   double get lon;
   @override
   String get licence;
@@ -656,7 +656,7 @@ abstract class _FormattedLocation extends FormattedLocation {
   /// computed importance rank
   double get importance;
   @override
-  String get addresstype;
+  String get addressType;
   @override
   String get name;
   @override
@@ -669,19 +669,19 @@ abstract class _FormattedLocation extends FormattedLocation {
   Address get address;
   @override
 
-  /// dictionary with additional useful tags like website or maxspeed
+  /// dictionary with additional useful tags like website or max speed
   Map<String, dynamic> get extratags;
   @override
 
-  /// ictionary with full list of available names including ref etc
+  /// dictionary with full list of available names including ref etc
   Map<String, dynamic> get namedetails;
   @override
 
   ///area of corner coordinates
-  LatLngBounds get boundingbox;
+  LatLngBounds get boundingBox;
   @override
 
-  /// Geobouds of object
+  /// GeoBounds of object
   GeoGeometry get geojson;
   @override
   Map<String, String> get names;

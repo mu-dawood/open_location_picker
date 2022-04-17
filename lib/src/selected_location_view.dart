@@ -61,6 +61,7 @@ class SelectedLocationView extends StatelessWidget {
       leading: Icon(
         e.geojson.map(
           point: (_) => Icons.pin_drop_rounded,
+          // cSpell: disable-next-line
           linestring: (_) => Icons.navigation_rounded,
           polygon: (_) => Icons.place_rounded,
         ),
@@ -82,7 +83,7 @@ class SelectedLocationView extends StatelessWidget {
         color: Theme.of(context).errorColor,
       ),
       onTap: () {
-        fitBounds(e.boundingbox);
+        fitBounds(e.boundingBox);
       },
     );
   }

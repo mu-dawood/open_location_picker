@@ -19,7 +19,7 @@ class MyCurrentLocationMarker extends StatefulWidget {
 
 class _MyCurrentLocationMarkerState extends State<MyCurrentLocationMarker> {
   LatLng? _currentLocation;
-  StreamSubscription<LatLng>? _lisner;
+  StreamSubscription<LatLng>? _listener;
   @override
   void didChangeDependencies() {
     var settings = OpenMapSettings.of(context);
@@ -33,7 +33,7 @@ class _MyCurrentLocationMarkerState extends State<MyCurrentLocationMarker> {
       });
     }
     if (settings?.getLocationStream != null) {
-      _lisner = settings!.getLocationStream!().listen((event) {
+      _listener = settings!.getLocationStream!().listen((event) {
         if (_currentLocation?.latitude == event.latitude &&
             _currentLocation?.longitude == event.longitude) {
           return;
@@ -50,7 +50,7 @@ class _MyCurrentLocationMarkerState extends State<MyCurrentLocationMarker> {
 
   @override
   void dispose() {
-    _lisner?.cancel();
+    _listener?.cancel();
     super.dispose();
   }
 

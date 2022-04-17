@@ -9,7 +9,7 @@ class MapAppBar extends StatefulWidget with PreferredSizeWidget {
   final OpenMapBloc bloc;
   final MapController controller;
   final ValueChanged<SelectedLocation>? onDone;
-  final String srearchHint;
+  final String searchHint;
   final SearchFilters? searchFilters;
   final Function(LatLng latLng, double zoom) moveTo;
 
@@ -19,7 +19,7 @@ class MapAppBar extends StatefulWidget with PreferredSizeWidget {
     required this.controller,
     required this.moveTo,
     required this.onDone,
-    required this.srearchHint,
+    required this.searchHint,
     required this.searchFilters,
   }) : super(key: key);
 
@@ -172,7 +172,7 @@ class _MapAppBarState extends State<MapAppBar> {
               results: (_, q, __) => q,
             ),
             decoration: InputDecoration(
-              hintText: widget.srearchHint,
+              hintText: widget.searchHint,
               contentPadding: EdgeInsets.zero,
               border: InputBorder.none,
               enabledBorder: InputBorder.none,

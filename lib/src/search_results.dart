@@ -4,7 +4,7 @@ import 'package:flutter_map/flutter_map.dart';
 import './location_model.dart';
 import 'bloc.dart';
 
-/// Display saerch results at the top of screen
+/// Display search results at the top of screen
 
 class SearchResults extends StatelessWidget {
   final OpenMapBloc bloc;
@@ -17,9 +17,9 @@ class SearchResults extends StatelessWidget {
     return StreamBuilder(
       stream: bloc.stream,
       initialData: bloc.state,
-      builder: (BuildContext context, AsyncSnapshot<OpenMapState> snapshoot) {
-        if (!snapshoot.hasData) return const SizedBox();
-        var type = snapshoot.data!;
+      builder: (BuildContext context, AsyncSnapshot<OpenMapState> snapshot) {
+        if (!snapshot.hasData) return const SizedBox();
+        var type = snapshot.data!;
         return type.maybeMap(
           orElse: () => _buildBody(context, [], type),
           searching: (search) => _buildBody(context, search.oldResults, search),
@@ -71,7 +71,7 @@ class SearchResults extends StatelessWidget {
                       OpenMapState.selected(SelectedLocation.multi(_new)));
                 },
               );
-              fitBounds(loc.boundingbox);
+              fitBounds(loc.boundingBox);
             },
             title: Text(loc.toString()),
             leading: loc.icon == null

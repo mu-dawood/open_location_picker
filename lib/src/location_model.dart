@@ -6,6 +6,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:latlong2/latlong.dart';
 
 part 'location_model.freezed.dart';
+// cSpell: disable
 
 @freezed
 class FormattedLocation with _$FormattedLocation {
@@ -17,7 +18,7 @@ class FormattedLocation with _$FormattedLocation {
     /// latitude of the centroid of the object
     required double lat,
 
-    /// llongitude of the centroid of the object
+    /// longitude of the centroid of the object
     required double lon,
     required String licence,
 
@@ -39,7 +40,7 @@ class FormattedLocation with _$FormattedLocation {
 
     /// computed importance rank
     required double importance,
-    required String addresstype,
+    required String addressType,
     required String name,
 
     ///full comma-separated address
@@ -48,16 +49,16 @@ class FormattedLocation with _$FormattedLocation {
     /// dictionary of address details
     required Address address,
 
-    /// dictionary with additional useful tags like website or maxspeed
+    /// dictionary with additional useful tags like website or max speed
     required Map<String, dynamic> extratags,
 
-    /// ictionary with full list of available names including ref etc
+    /// dictionary with full list of available names including ref etc
     required Map<String, dynamic> namedetails,
 
     ///area of corner coordinates
-    required LatLngBounds boundingbox,
+    required LatLngBounds boundingBox,
 
-    /// Geobouds of object
+    /// GeoBounds of object
     required GeoGeometry geojson,
     @Default({}) Map<String, String> names,
   }) = _FormattedLocation;
@@ -82,17 +83,17 @@ class FormattedLocation with _$FormattedLocation {
       "category": category,
       "type": type,
       "importance": importance,
-      "addresstype": addresstype,
+      "addresstype": addressType,
       "name": name,
       "display_name": displayName,
       "address": address,
       "extratags": extratags,
       "namedetails": namedetails,
       "boundingbox": [
-        boundingbox.southWest?.latitude,
-        boundingbox.northEast?.latitude,
-        boundingbox.southWest?.longitude,
-        boundingbox.northEast?.longitude
+        boundingBox.southWest?.latitude,
+        boundingBox.northEast?.latitude,
+        boundingBox.southWest?.longitude,
+        boundingBox.northEast?.longitude
       ],
       "geojson": geojson.when(
         point: (latlng, _) => {
@@ -125,8 +126,8 @@ class FormattedLocation with _$FormattedLocation {
           .map((key, value) => MapEntry(key.toString(), value)),
       lat: lat,
       lon: lon,
-      addresstype: json["addresstype"] ?? '',
-      boundingbox: LatLngBounds.fromPoints([
+      addressType: json["addresstype"] ?? '',
+      boundingBox: LatLngBounds.fromPoints([
         LatLng(double.parse(boundingBox[0].toString()),
             double.parse(boundingBox[2].toString())),
         LatLng(double.parse(boundingBox[1].toString()),

@@ -19,7 +19,7 @@ typedef MyLocationButtonCallBack = Widget Function(
 /// Map screen
 /// - it can be used to display location
 /// - when you pass bloc this means you want to pick location so the ui changed to map picker
-/// - When you pass bloc this mean there was Scaffold so you dont need one
+/// - When you pass bloc this mean there was Scaffold so you don't need one
 class OpenStreetMaps extends StatefulWidget {
   /// Set the map options you can use center or bounds
   final OpenMapOptions options;
@@ -30,10 +30,10 @@ class OpenStreetMaps extends StatefulWidget {
 
   /// The Floating button for user location button
   /// it must call the function we passed
-  /// You can set it alos using `OpenMapSettings`
+  /// You can set it also using `OpenMapSettings`
   final MyLocationButtonCallBack? myLocationButton;
 
-  /// You can ovveride how map images downloaded
+  /// You can override how map images downloaded
   /// You can cache images like that
   /// ``` dart
   /// import 'package:cached_network_image/cached_network_image.dart';
@@ -47,23 +47,23 @@ class OpenStreetMaps extends StatefulWidget {
   ///   }
   /// }
   /// ```
-  /// You can set it alos using `OpenMapSettings`
+  /// You can set it also using `OpenMapSettings`
   final TileProvider? tileProvider;
 
   /// call back on pressing to done button
-  /// You can set it alos using `OpenMapSettings`
+  /// You can set it also using `OpenMapSettings`
   final ValueChanged<SelectedLocation>? onDone;
 
   /// hint to display in search box
-  /// You can set it alos using `OpenMapSettings`
-  final String? srearchHint;
+  /// You can set it also using `OpenMapSettings`
+  final String? searchHint;
 
   /// handle what type of address you want when you tap on map
-  /// You can set it alos using `OpenMapSettings`
+  /// You can set it also using `OpenMapSettings`
   final ReverseZoom? reverseZoom;
 
   /// Limiting search results to
-  /// You can set it alos using `OpenMapSettings`
+  /// You can set it also using `OpenMapSettings`
   final SearchFilters? searchFilters;
   const OpenStreetMaps({
     Key? key,
@@ -72,7 +72,7 @@ class OpenStreetMaps extends StatefulWidget {
     this.tileProvider,
     this.myLocationButton,
     this.onDone,
-    this.srearchHint,
+    this.searchHint,
     this.reverseZoom,
     this.searchFilters,
   }) : super(key: key);
@@ -122,7 +122,7 @@ class _OpenStreetMapsState extends State<OpenStreetMaps>
             bloc.emit(OpenMapState.selected(SelectedLocation.multi(_new)));
           },
         );
-        fitBounds(result.boundingbox);
+        fitBounds(result.boundingBox);
       } catch (e) {
         if (mounted) {
           OpenMapSettings.of(context)?.onError?.call(context, e);
@@ -236,8 +236,8 @@ class _OpenStreetMapsState extends State<OpenStreetMaps>
             moveTo: moveTo,
             onDone: widget.onDone,
             searchFilters: widget.searchFilters ?? settings?.searchFilters,
-            srearchHint: widget.srearchHint ??
-                settings?.srearchHint?.call(context) ??
+            searchHint: widget.searchHint ??
+                settings?.searchHint?.call(context) ??
                 'Search here',
           ),
           bottomNavigationBar:
@@ -278,7 +278,7 @@ class _OpenStreetMapsState extends State<OpenStreetMaps>
       ],
       nonRotatedChildren: [
         if (widget.bloc != null) ...[
-          MapPolygens(bloc: widget.bloc!),
+          MapPolygons(bloc: widget.bloc!),
           MapCircles(bloc: widget.bloc!),
           MapPolylines(bloc: widget.bloc!),
           MapMarkers(bloc: widget.bloc!),

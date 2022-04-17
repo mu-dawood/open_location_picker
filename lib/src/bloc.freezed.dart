@@ -30,11 +30,11 @@ class _$OpenMapStateTearOff {
     );
   }
 
-  _Searhing searching(
+  _Searching searching(
       {required SelectedLocation selected,
       required String query,
       required List<FormattedLocation> oldResults}) {
-    return _Searhing(
+    return _Searching(
       selected: selected,
       query: query,
       oldResults: oldResults,
@@ -102,7 +102,7 @@ mixin _$OpenMapState {
   TResult map<TResult extends Object?>({
     required TResult Function(_Selected value) selected,
     required TResult Function(_Reversing value) reversing,
-    required TResult Function(_Searhing value) searching,
+    required TResult Function(_Searching value) searching,
     required TResult Function(_Results value) results,
   }) =>
       throw _privateConstructorUsedError;
@@ -110,7 +110,7 @@ mixin _$OpenMapState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Selected value)? selected,
     TResult Function(_Reversing value)? reversing,
-    TResult Function(_Searhing value)? searching,
+    TResult Function(_Searching value)? searching,
     TResult Function(_Results value)? results,
   }) =>
       throw _privateConstructorUsedError;
@@ -118,7 +118,7 @@ mixin _$OpenMapState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Selected value)? selected,
     TResult Function(_Reversing value)? reversing,
-    TResult Function(_Searhing value)? searching,
+    TResult Function(_Searching value)? searching,
     TResult Function(_Results value)? results,
     required TResult orElse(),
   }) =>
@@ -285,7 +285,7 @@ class _$_Selected implements _Selected {
   TResult map<TResult extends Object?>({
     required TResult Function(_Selected value) selected,
     required TResult Function(_Reversing value) reversing,
-    required TResult Function(_Searhing value) searching,
+    required TResult Function(_Searching value) searching,
     required TResult Function(_Results value) results,
   }) {
     return selected(this);
@@ -296,7 +296,7 @@ class _$_Selected implements _Selected {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Selected value)? selected,
     TResult Function(_Reversing value)? reversing,
-    TResult Function(_Searhing value)? searching,
+    TResult Function(_Searching value)? searching,
     TResult Function(_Results value)? results,
   }) {
     return selected?.call(this);
@@ -307,7 +307,7 @@ class _$_Selected implements _Selected {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Selected value)? selected,
     TResult Function(_Reversing value)? reversing,
-    TResult Function(_Searhing value)? searching,
+    TResult Function(_Searching value)? searching,
     TResult Function(_Results value)? results,
     required TResult orElse(),
   }) {
@@ -459,7 +459,7 @@ class _$_Reversing implements _Reversing {
   TResult map<TResult extends Object?>({
     required TResult Function(_Selected value) selected,
     required TResult Function(_Reversing value) reversing,
-    required TResult Function(_Searhing value) searching,
+    required TResult Function(_Searching value) searching,
     required TResult Function(_Results value) results,
   }) {
     return reversing(this);
@@ -470,7 +470,7 @@ class _$_Reversing implements _Reversing {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Selected value)? selected,
     TResult Function(_Reversing value)? reversing,
-    TResult Function(_Searhing value)? searching,
+    TResult Function(_Searching value)? searching,
     TResult Function(_Results value)? results,
   }) {
     return reversing?.call(this);
@@ -481,7 +481,7 @@ class _$_Reversing implements _Reversing {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Selected value)? selected,
     TResult Function(_Reversing value)? reversing,
-    TResult Function(_Searhing value)? searching,
+    TResult Function(_Searching value)? searching,
     TResult Function(_Results value)? results,
     required TResult orElse(),
   }) {
@@ -506,9 +506,11 @@ abstract class _Reversing implements OpenMapState {
 }
 
 /// @nodoc
-abstract class _$SearhingCopyWith<$Res> implements $OpenMapStateCopyWith<$Res> {
-  factory _$SearhingCopyWith(_Searhing value, $Res Function(_Searhing) then) =
-      __$SearhingCopyWithImpl<$Res>;
+abstract class _$SearchingCopyWith<$Res>
+    implements $OpenMapStateCopyWith<$Res> {
+  factory _$SearchingCopyWith(
+          _Searching value, $Res Function(_Searching) then) =
+      __$SearchingCopyWithImpl<$Res>;
   @override
   $Res call(
       {SelectedLocation selected,
@@ -520,13 +522,13 @@ abstract class _$SearhingCopyWith<$Res> implements $OpenMapStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$SearhingCopyWithImpl<$Res> extends _$OpenMapStateCopyWithImpl<$Res>
-    implements _$SearhingCopyWith<$Res> {
-  __$SearhingCopyWithImpl(_Searhing _value, $Res Function(_Searhing) _then)
-      : super(_value, (v) => _then(v as _Searhing));
+class __$SearchingCopyWithImpl<$Res> extends _$OpenMapStateCopyWithImpl<$Res>
+    implements _$SearchingCopyWith<$Res> {
+  __$SearchingCopyWithImpl(_Searching _value, $Res Function(_Searching) _then)
+      : super(_value, (v) => _then(v as _Searching));
 
   @override
-  _Searhing get _value => super._value as _Searhing;
+  _Searching get _value => super._value as _Searching;
 
   @override
   $Res call({
@@ -534,7 +536,7 @@ class __$SearhingCopyWithImpl<$Res> extends _$OpenMapStateCopyWithImpl<$Res>
     Object? query = freezed,
     Object? oldResults = freezed,
   }) {
-    return _then(_Searhing(
+    return _then(_Searching(
       selected: selected == freezed
           ? _value.selected
           : selected // ignore: cast_nullable_to_non_nullable
@@ -553,8 +555,8 @@ class __$SearhingCopyWithImpl<$Res> extends _$OpenMapStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Searhing implements _Searhing {
-  const _$_Searhing(
+class _$_Searching implements _Searching {
+  const _$_Searching(
       {required this.selected, required this.query, required this.oldResults});
 
   @override
@@ -573,7 +575,7 @@ class _$_Searhing implements _Searhing {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Searhing &&
+            other is _Searching &&
             const DeepCollectionEquality().equals(other.selected, selected) &&
             const DeepCollectionEquality().equals(other.query, query) &&
             const DeepCollectionEquality()
@@ -589,8 +591,8 @@ class _$_Searhing implements _Searhing {
 
   @JsonKey(ignore: true)
   @override
-  _$SearhingCopyWith<_Searhing> get copyWith =>
-      __$SearhingCopyWithImpl<_Searhing>(this, _$identity);
+  _$SearchingCopyWith<_Searching> get copyWith =>
+      __$SearchingCopyWithImpl<_Searching>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -647,7 +649,7 @@ class _$_Searhing implements _Searhing {
   TResult map<TResult extends Object?>({
     required TResult Function(_Selected value) selected,
     required TResult Function(_Reversing value) reversing,
-    required TResult Function(_Searhing value) searching,
+    required TResult Function(_Searching value) searching,
     required TResult Function(_Results value) results,
   }) {
     return searching(this);
@@ -658,7 +660,7 @@ class _$_Searhing implements _Searhing {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Selected value)? selected,
     TResult Function(_Reversing value)? reversing,
-    TResult Function(_Searhing value)? searching,
+    TResult Function(_Searching value)? searching,
     TResult Function(_Results value)? results,
   }) {
     return searching?.call(this);
@@ -669,7 +671,7 @@ class _$_Searhing implements _Searhing {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Selected value)? selected,
     TResult Function(_Reversing value)? reversing,
-    TResult Function(_Searhing value)? searching,
+    TResult Function(_Searching value)? searching,
     TResult Function(_Results value)? results,
     required TResult orElse(),
   }) {
@@ -680,11 +682,11 @@ class _$_Searhing implements _Searhing {
   }
 }
 
-abstract class _Searhing implements OpenMapState {
-  const factory _Searhing(
+abstract class _Searching implements OpenMapState {
+  const factory _Searching(
       {required SelectedLocation selected,
       required String query,
-      required List<FormattedLocation> oldResults}) = _$_Searhing;
+      required List<FormattedLocation> oldResults}) = _$_Searching;
 
   @override
   SelectedLocation get selected;
@@ -692,7 +694,7 @@ abstract class _Searhing implements OpenMapState {
   List<FormattedLocation> get oldResults;
   @override
   @JsonKey(ignore: true)
-  _$SearhingCopyWith<_Searhing> get copyWith =>
+  _$SearchingCopyWith<_Searching> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -840,7 +842,7 @@ class _$_Results implements _Results {
   TResult map<TResult extends Object?>({
     required TResult Function(_Selected value) selected,
     required TResult Function(_Reversing value) reversing,
-    required TResult Function(_Searhing value) searching,
+    required TResult Function(_Searching value) searching,
     required TResult Function(_Results value) results,
   }) {
     return results(this);
@@ -851,7 +853,7 @@ class _$_Results implements _Results {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Selected value)? selected,
     TResult Function(_Reversing value)? reversing,
-    TResult Function(_Searhing value)? searching,
+    TResult Function(_Searching value)? searching,
     TResult Function(_Results value)? results,
   }) {
     return results?.call(this);
@@ -862,7 +864,7 @@ class _$_Results implements _Results {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Selected value)? selected,
     TResult Function(_Reversing value)? reversing,
-    TResult Function(_Searhing value)? searching,
+    TResult Function(_Searching value)? searching,
     TResult Function(_Results value)? results,
     required TResult orElse(),
   }) {

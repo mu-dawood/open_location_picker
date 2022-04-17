@@ -26,7 +26,7 @@ class OpenMapState with _$OpenMapState {
     required SelectedLocation selected,
     required String query,
     required List<FormattedLocation> oldResults,
-  }) = _Searhing;
+  }) = _Searching;
 
   const factory OpenMapState.results({
     required SelectedLocation selected,

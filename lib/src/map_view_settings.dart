@@ -17,7 +17,7 @@ typedef TileLayerOptionsCallBack = TileLayerOptions Function(
     bool isDark, Color background, TileProvider provider);
 
 /// Global settings for map
-/// You can wrap material app with it or wrap entire screen to ovveride the globals
+/// You can wrap material app with it or wrap entire screen to override the globals
 class OpenMapSettings extends InheritedWidget {
   const OpenMapSettings({
     Key? key,
@@ -29,14 +29,14 @@ class OpenMapSettings extends InheritedWidget {
     this.locationMarker,
     this.currentLocationMarker,
     this.getMapTileOptions,
-    this.srearchHint,
+    this.searchHint,
     this.myLocationButton,
     this.searchFilters,
     this.reverseZoom,
     this.defaultTileProvider = const NonCachingNetworkTileProvider(),
   }) : super(key: key, child: child);
 
-  /// ovveride the default map
+  /// override the default map
   /// - use this if you want to use other map or other server
   /// - you can also use it to change the dark map
   /// * default is
@@ -61,36 +61,36 @@ class OpenMapSettings extends InheritedWidget {
   final SearchFilters? searchFilters;
 
   /// hint to display in search box
-  final String Function(BuildContext context)? srearchHint;
+  final String Function(BuildContext context)? searchHint;
 
   /// global error handler
   final void Function(BuildContext context, dynamic error)? onError;
 
-  /// we dont need to depend in any package except maps
+  /// we don't need to depend in any package except maps
   /// so we let you choose how you get user current location
-  /// you can use location or geolocator or any thing else
+  /// you can use location or geo locator or any thing else
   final GetCurrentLocationCallBack? getCurrentLocation;
 
   /// call back to build custom marker
   final LocationMarkerCallback? locationMarker;
 
-  /// use it if you want to ovveride the default user location circle
+  /// use it if you want to override the default user location circle
   final CurrentLocationMarkerCallback? currentLocationMarker;
 
-  /// we dont need to depend in any package except maps
+  /// we don't need to depend in any package except maps
   /// so we let you choose how you get user current location
-  /// you can use location or geolocator or any thing else
+  /// you can use location or geo locator or any thing else
   final GetLocationStreamCallBack? getLocationStream;
 
   /// default map options
-  /// it will be ovverided by the map spaciefied options
+  /// it will be override by the map specified options
   final OpenMapOptions? defaultOptions;
 
   /// The Floating button for user location button
   /// it must call the function we passed
   final MyLocationButtonCallBack? myLocationButton;
 
-  /// You can ovveride how map images downloaded
+  /// You can override how map images downloaded
   /// You can cache images like that
   /// ``` dart
   /// import 'package:cached_network_image/cached_network_image.dart';
@@ -117,7 +117,7 @@ class OpenMapSettings extends InheritedWidget {
     return oldWidget.getCurrentLocation != getCurrentLocation ||
         defaultOptions != oldWidget.defaultOptions ||
         searchFilters != oldWidget.searchFilters ||
-        srearchHint != oldWidget.srearchHint ||
+        searchHint != oldWidget.searchHint ||
         reverseZoom != oldWidget.reverseZoom ||
         currentLocationMarker != oldWidget.currentLocationMarker ||
         getLocationStream != oldWidget.getLocationStream ||

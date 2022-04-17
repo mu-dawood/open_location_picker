@@ -9,9 +9,9 @@ import 'bloc.dart';
 export 'package:latlong2/latlong.dart';
 
 /// List of Polygon of selected locations
-class MapPolygens extends StatelessWidget {
+class MapPolygons extends StatelessWidget {
   final OpenMapBloc bloc;
-  const MapPolygens({Key? key, required this.bloc}) : super(key: key);
+  const MapPolygons({Key? key, required this.bloc}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +36,7 @@ class MapPolygens extends StatelessWidget {
   }
 }
 
-/// List of Polylines of selected locations
+/// List of PolyLines of selected locations
 
 class MapPolylines extends StatelessWidget {
   final OpenMapBloc bloc;
@@ -124,8 +124,8 @@ class _MapShapes extends StatelessWidget {
     return StreamBuilder(
       stream: bloc.stream,
       initialData: bloc.state,
-      builder: (BuildContext context, AsyncSnapshot<OpenMapState> snapshoot) {
-        var currentState = snapshoot.data;
+      builder: (BuildContext context, AsyncSnapshot<OpenMapState> snapshot) {
+        var currentState = snapshot.data;
         if (currentState == null) {
           return _markers([], null);
         } else {

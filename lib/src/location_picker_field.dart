@@ -11,7 +11,7 @@ import 'map_view_settings.dart';
 import 'options.dart';
 
 class _BaseFormField<T> extends StatefulWidget {
-  final T? intialValue;
+  final T? initialValue;
   final Function(FormFieldState<T> field, SelectedLocation selectedLocation)
       onDone;
   final FormFieldSetter<T>? onSaved;
@@ -30,7 +30,7 @@ class _BaseFormField<T> extends StatefulWidget {
   final Function(FormFieldState<T> field) onRemove;
   const _BaseFormField({
     Key? key,
-    required this.intialValue,
+    required this.initialValue,
     required this.onDone,
     required this.onSaved,
     required this.validator,
@@ -97,7 +97,7 @@ class __BaseFormFieldState<T> extends State<_BaseFormField<T>> {
   Widget build(BuildContext context) {
     return FormField<T>(
       validator: widget.validator,
-      initialValue: widget.intialValue,
+      initialValue: widget.initialValue,
       onSaved: widget.onSaved,
       builder: (FormFieldState<T> field) {
         var effectiveDecoration = widget.decoration
@@ -169,9 +169,9 @@ class __BaseFormFieldState<T> extends State<_BaseFormField<T>> {
 }
 
 /// Pick single location and it ui is same as Inputs in your app
-/// You can set your prefered options for map using `OpenMapSettings`
+/// You can set your preferred options for map using `OpenMapSettings`
 class OpenMapPicker extends StatelessWidget {
-  final FormattedLocation? intialValue;
+  final FormattedLocation? initialValue;
   final FormFieldSetter<FormattedLocation>? onChanged;
   final FormFieldSetter<FormattedLocation>? onSaved;
   final FormFieldValidator<FormattedLocation>? validator;
@@ -184,7 +184,7 @@ class OpenMapPicker extends StatelessWidget {
   final bool expands;
   const OpenMapPicker({
     Key? key,
-    this.intialValue,
+    this.initialValue,
     this.onChanged,
     this.onSaved,
     this.validator,
@@ -208,12 +208,12 @@ class OpenMapPicker extends StatelessWidget {
       display: (FormattedLocation? value) => Text(value?.toString() ?? ''),
       expands: expands,
       focusNode: focusNode,
-      intialValue: intialValue,
+      initialValue: initialValue,
       options: (FormattedLocation? value) {
         if (value == null) {
           return OpenMapOptions();
         } else {
-          return OpenMapOptions.bounds(bounds: value.boundingbox);
+          return OpenMapOptions.bounds(bounds: value.boundingBox);
         }
       },
       onDone: (field, value) {
@@ -239,10 +239,10 @@ class OpenMapPicker extends StatelessWidget {
   }
 }
 
-/// Pick multible location and it ui is same as Inputs in your app
-/// You can set your prefered options for map using `OpenMapSettings`
+/// Pick multiple location and it ui is same as Inputs in your app
+/// You can set your preferred options for map using `OpenMapSettings`
 class MultiOpenMapPicker extends StatelessWidget {
-  final List<FormattedLocation>? intialValue;
+  final List<FormattedLocation>? initialValue;
   final ValueChanged<List<FormattedLocation>>? onChanged;
   final ValueChanged<List<FormattedLocation>>? onSaved;
   final String? Function(List<FormattedLocation> value)? validator;
@@ -255,7 +255,7 @@ class MultiOpenMapPicker extends StatelessWidget {
   final bool expands;
   const MultiOpenMapPicker({
     Key? key,
-    this.intialValue,
+    this.initialValue,
     this.onChanged,
     this.onSaved,
     this.validator,
@@ -300,7 +300,7 @@ class MultiOpenMapPicker extends StatelessWidget {
       },
       expands: expands,
       focusNode: focusNode,
-      intialValue: intialValue ?? [],
+      initialValue: initialValue ?? [],
       options: (value) {
         var list = value ?? [];
         if (list.isEmpty) {
