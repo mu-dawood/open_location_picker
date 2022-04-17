@@ -150,7 +150,9 @@ class _MyHomePageState extends State<MyHomePage> {
           padding: const EdgeInsets.all(20),
           children: <Widget>[
             OpenMapPicker(
-              decoration: const InputDecoration(hintText: "My location"),
+              decoration: const InputDecoration(
+                hintText: "My Location",
+              ),
               onSaved: (FormattedLocation? newValue) {
                 /// save new value
               },

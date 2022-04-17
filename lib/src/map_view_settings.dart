@@ -4,6 +4,7 @@ import 'package:latlong2/latlong.dart';
 
 import './location_model.dart';
 import 'map_view.dart';
+import 'map_view_config.dart';
 import 'options.dart';
 import 'reverse_options.dart';
 
@@ -29,11 +30,12 @@ class OpenMapSettings extends InheritedWidget {
     this.locationMarker,
     this.currentLocationMarker,
     this.getMapTileOptions,
-    this.srearchHint,
+    this.searchHint,
     this.myLocationButton,
     this.searchFilters,
     this.reverseZoom,
     this.defaultTileProvider = const NonCachingNetworkTileProvider(),
+    this.mapViewConfig,
   }) : super(key: key, child: child);
 
   /// ovveride the default map
@@ -61,7 +63,7 @@ class OpenMapSettings extends InheritedWidget {
   final SearchFilters? searchFilters;
 
   /// hint to display in search box
-  final String Function(BuildContext context)? srearchHint;
+  final String Function(BuildContext context)? searchHint;
 
   /// global error handler
   final void Function(BuildContext context, dynamic error)? onError;
@@ -106,6 +108,9 @@ class OpenMapSettings extends InheritedWidget {
   /// ```
   final TileProvider defaultTileProvider;
 
+  ///Let you define visual map configurations
+  final MapViewConfig? mapViewConfig;
+
   /// handle what type of address you want when you tap on map
   final ReverseZoom? reverseZoom;
   static OpenMapSettings? of(BuildContext context) {
@@ -117,13 +122,14 @@ class OpenMapSettings extends InheritedWidget {
     return oldWidget.getCurrentLocation != getCurrentLocation ||
         defaultOptions != oldWidget.defaultOptions ||
         searchFilters != oldWidget.searchFilters ||
-        srearchHint != oldWidget.srearchHint ||
+        searchHint != oldWidget.searchHint ||
         reverseZoom != oldWidget.reverseZoom ||
         currentLocationMarker != oldWidget.currentLocationMarker ||
         getLocationStream != oldWidget.getLocationStream ||
         locationMarker != oldWidget.locationMarker ||
         child != oldWidget.child ||
         myLocationButton != oldWidget.myLocationButton ||
+        mapViewConfig != oldWidget.mapViewConfig ||
         defaultTileProvider != oldWidget.defaultTileProvider;
   }
 }
