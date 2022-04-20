@@ -122,23 +122,26 @@ class __BaseFormFieldState<T> extends State<_BaseFormField<T>> {
           clipper: ShapeBorderClipper(
               shape:
                   effectiveDecoration.border ?? const RoundedRectangleBorder()),
-          child: Material(
-            color: Colors.transparent,
-            child: InkWell(
-              onTap: () => _pick(field),
-              child: MouseRegion(
-                onEnter: (PointerEnterEvent event) => _handleHover(true),
-                onExit: (PointerExitEvent event) => _handleHover(false),
-                child: InputDecorator(
-                  baseStyle: widget.textStyle,
-                  decoration: effectiveDecoration,
-                  isEmpty: widget.isEmpty(field.value),
-                  textAlign: widget.textAlign,
-                  textAlignVertical: widget.textAlignVertical,
-                  isFocused: _isFocused,
-                  isHovering: _isHovering,
-                  expands: widget.expands,
-                  child: widget.display(field.value),
+          child: Padding(
+            padding: const EdgeInsets.only(top: 8.0),
+            child: Material(
+              color: Colors.transparent,
+              child: InkWell(
+                onTap: () => _pick(field),
+                child: MouseRegion(
+                  onEnter: (PointerEnterEvent event) => _handleHover(true),
+                  onExit: (PointerExitEvent event) => _handleHover(false),
+                  child: InputDecorator(
+                    baseStyle: widget.textStyle,
+                    decoration: effectiveDecoration,
+                    isEmpty: widget.isEmpty(field.value),
+                    textAlign: widget.textAlign,
+                    textAlignVertical: widget.textAlignVertical,
+                    isFocused: _isFocused,
+                    isHovering: _isHovering,
+                    expands: widget.expands,
+                    child: widget.display(field.value),
+                  ),
                 ),
               ),
             ),
