@@ -98,15 +98,15 @@ class FormattedLocation with _$FormattedLocation {
       "geojson": geojson.when(
         point: (latlng, _) => {
           "type": "Point",
-          "coordinates": latlng.toGeoPoint(),
+          "coordinates": latlng.toGeoPoint().toList(),
         },
         linestring: (list, _) => {
           "type": "LineString",
-          "coordinates": list.map((latlng) => latlng.toGeoPoint()),
+          "coordinates": list.map((latlng) => latlng.toGeoPoint()).toList(),
         },
         polygon: (polygon, _) => {
           "type": "Polygon",
-          "coordinates": polygon.map((e) => e.toGeoPoint()),
+          "coordinates": polygon.map((e) => e.toGeoPoint()).toList(),
         },
       )
     };
@@ -191,7 +191,7 @@ class Address {
       "postcode": postcode,
       "country": country,
       "countryCode": countryCode
-    }
+    };
   }
 
   factory Address.fromMap(Map<String, dynamic> map) {
