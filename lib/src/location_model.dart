@@ -86,7 +86,7 @@ class FormattedLocation with _$FormattedLocation {
       "addresstype": addressType,
       "name": name,
       "display_name": displayName,
-      "address": address,
+      "address": address.toJson(),
       "extratags": extratags,
       "namedetails": namedetails,
       "boundingbox": [
@@ -98,15 +98,15 @@ class FormattedLocation with _$FormattedLocation {
       "geojson": geojson.when(
         point: (latlng, _) => {
           "type": "Point",
-          "coordinates": latlng.toGeoPoint(),
+          "coordinates": latlng.toGeoPoint().toList(),
         },
         linestring: (list, _) => {
           "type": "LineString",
-          "coordinates": list.map((latlng) => latlng.toGeoPoint()),
+          "coordinates": list.map((latlng) => latlng.toGeoPoint()).toList(),
         },
         polygon: (polygon, _) => {
           "type": "Polygon",
-          "coordinates": polygon.map((e) => e.toGeoPoint()),
+          "coordinates": polygon.map((e) => e.toGeoPoint()).toList(),
         },
       )
     };
@@ -180,6 +180,19 @@ class Address {
   final String postcode;
   final String country;
   final String countryCode;
+
+  Map<String, dynamic> toJson() {
+    return {
+      "highway": highway,
+      "road": road,
+      "city": city,
+      "stateDistrict": stateDistrict,
+      "state": state,
+      "postcode": postcode,
+      "country": country,
+      "countryCode": countryCode
+    };
+  }
 
   factory Address.fromMap(Map<String, dynamic> map) {
     return Address(

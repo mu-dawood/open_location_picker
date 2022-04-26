@@ -146,8 +146,8 @@ class _MapAppBarState extends State<MapAppBar> {
               },
             ),
             searching: (_) => Center(
-              child: widget.searchLoadingIndicator ?? const CircularProgressIndicator.adaptive()
-            ),
+                child: widget.searchLoadingIndicator ??
+                    const CircularProgressIndicator.adaptive()),
           ),
           backgroundColor: Theme.of(context).colorScheme.surface,
           titleTextStyle: Theme.of(context).textTheme.bodyText1,
