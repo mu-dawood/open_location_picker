@@ -122,6 +122,7 @@ class __BaseFormFieldState<T> extends State<_BaseFormField<T>> {
           clipper: ShapeBorderClipper(
               shape:
                   effectiveDecoration.border ?? const RoundedRectangleBorder()),
+
           child: Material(
             color: Colors.transparent,
             child: InkWell(
@@ -190,6 +191,8 @@ class OpenMapPicker extends StatelessWidget {
   final TextAlignVertical? textAlignVertical;
   final FocusNode? focusNode;
   final bool expands;
+  final OpenMapOptions? options;
+
   const OpenMapPicker({
     Key? key,
     this.initialValue,
@@ -206,6 +209,7 @@ class OpenMapPicker extends StatelessWidget {
     this.textAlignVertical,
     this.focusNode,
     this.expands = false,
+    this.options,
   }) : super(key: key);
 
   @override
@@ -219,9 +223,10 @@ class OpenMapPicker extends StatelessWidget {
       initialValue: initialValue,
       options: (FormattedLocation? value) {
         if (value == null) {
-          return OpenMapOptions();
+          return options ?? OpenMapOptions();
         } else {
-          return OpenMapOptions.bounds(bounds: value.boundingBox);
+          return options?.copyWithBounds(bounds: value.boundingBox) ??
+              OpenMapOptions.bounds(bounds: value.boundingBox);
         }
       },
       onDone: (field, value) {
