@@ -122,7 +122,6 @@ class __BaseFormFieldState<T> extends State<_BaseFormField<T>> {
           clipper: ShapeBorderClipper(
               shape:
                   effectiveDecoration.border ?? const RoundedRectangleBorder()),
-
           child: Material(
             color: Colors.transparent,
             child: InkWell(

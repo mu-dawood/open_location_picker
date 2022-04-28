@@ -285,8 +285,6 @@ class _OpenStreetMapsState extends State<OpenStreetMaps>
                   settings?.defaultTileProvider ??
                   const NonCachingNetworkTileProvider()),
         ),
-      ],
-      nonRotatedChildren: [
         if (widget.bloc != null) ...[
           MapPolygons(bloc: widget.bloc!),
           MapCircles(bloc: widget.bloc!),
