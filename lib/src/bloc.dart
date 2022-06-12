@@ -92,10 +92,16 @@ extension BlocExtension on OpenMapBloc {
     var response = await http.get(url);
     var parsed = jsonDecode(response.body);
     if (parsed is List) {
-      return parsed.map((loc) {
-        var res = FormattedLocation.from(loc);
-        return res;
-      }).toList();
+      List<FormattedLocation> resList = [];
+      for (var loc in parsed) {
+        try {
+          var res = FormattedLocation.from(loc);
+          resList.add(res);
+        } catch (e) {
+          print(e);
+        }
+      }
+      return Future<List<FormattedLocation>>.value(resList);
     } else {
       throw Exception(parsed);
     }
