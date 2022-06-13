@@ -13,55 +13,56 @@ class FormattedLocation with _$FormattedLocation {
   const FormattedLocation._();
   const factory FormattedLocation({
     ///reference to the Nominatim internal database ID
-    @Default('') String placeId,
+    required String placeId,
 
     /// latitude of the centroid of the object
     required double lat,
 
     /// longitude of the centroid of the object
     required double lon,
-    @Default('') String licence,
+    required String licence,
 
     ///reference to the OSM object
-    @Default('') String osmType,
+    required String osmType,
     String? icon,
 
     /// reference to the OSM object
-    int? osmId,
+    required int osmId,
 
     /// search rank of the object
-    int? placeRank,
+    required int placeRank,
 
     ///key of the main OSM tag
-    @Default('') String category,
+    required String category,
 
     /// value of the main OSM tag
-    @Default('') String type,
+    required String type,
 
     /// computed importance rank
-    double? importance,
-    @Default('') String addressType,
-    @Default('') String name,
+    required double importance,
+    required String addressType,
+    required String name,
 
     ///full comma-separated address
-    @Default('') String displayName,
+    required String displayName,
 
     /// dictionary of address details
-    @Default(Address()) Address address,
+    required Address address,
 
     /// dictionary with additional useful tags like website or max speed
-    @Default({}) Map<String, dynamic> extratags,
+    required Map<String, dynamic> extratags,
 
     /// dictionary with full list of available names including ref etc
-    @Default({}) Map<String, dynamic> namedetails,
+    required Map<String, dynamic> namedetails,
 
     ///area of corner coordinates
-    LatLngBounds? boundingBox,
+    required LatLngBounds? boundingBox,
 
     /// GeoBounds of object
     required GeoGeometry geojson,
-    @Default({}) Map<String, String> names,
+    required Map<String, String> names,
   }) = _FormattedLocation;
+
   String get identifier => "$category-$osmId-$osmType";
   @override
   String toString() {
@@ -111,6 +112,57 @@ class FormattedLocation with _$FormattedLocation {
         },
       )
     };
+  }
+
+  static FormattedLocation fromLatLng({
+    required double lat,
+    required double lon,
+    String placeId = '',
+    String addressType = '',
+    String category = '',
+    String licence = '',
+    String type = '',
+    String name = '',
+    String osmType = '',
+    String? displayName,
+    String? icon,
+    Address address = const Address(),
+    Map<String, String> names = const {},
+    Map<String, String> extratags = const {},
+    Map<String, String> namedetails = const {},
+    LatLngBounds? boundingBox,
+    GeoGeometry? geojson,
+    double importance = 0,
+    int placeRank = 0,
+    int osmId = 0,
+  }) {
+    return FormattedLocation(
+      placeId: placeId,
+      address: address,
+      names: names,
+      lat: lat,
+      lon: lon,
+      addressType: addressType,
+      boundingBox: boundingBox,
+      category: category,
+      displayName: displayName ?? '$lat, $lon',
+      extratags: extratags,
+      geojson: geojson ??
+          GeoGeometry.point(
+            LatLng(lon, lat),
+            Color((math.Random().nextDouble() * 0xFFFFFF).toInt())
+                .withOpacity(1.0),
+          ),
+      importance: importance,
+      licence: licence,
+      name: name,
+      namedetails: namedetails,
+      osmId: osmId,
+      osmType: osmType,
+      placeRank: placeRank,
+      type: type,
+      icon: icon,
+    );
   }
 
   static FormattedLocation fromJson(Map<String, dynamic> json) {

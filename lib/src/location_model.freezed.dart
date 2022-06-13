@@ -31,10 +31,10 @@ mixin _$FormattedLocation {
   String? get icon => throw _privateConstructorUsedError;
 
   /// reference to the OSM object
-  int? get osmId => throw _privateConstructorUsedError;
+  int get osmId => throw _privateConstructorUsedError;
 
   /// search rank of the object
-  int? get placeRank => throw _privateConstructorUsedError;
+  int get placeRank => throw _privateConstructorUsedError;
 
   ///key of the main OSM tag
   String get category => throw _privateConstructorUsedError;
@@ -43,7 +43,7 @@ mixin _$FormattedLocation {
   String get type => throw _privateConstructorUsedError;
 
   /// computed importance rank
-  double? get importance => throw _privateConstructorUsedError;
+  double get importance => throw _privateConstructorUsedError;
   String get addressType => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
 
@@ -83,11 +83,11 @@ abstract class $FormattedLocationCopyWith<$Res> {
       String licence,
       String osmType,
       String? icon,
-      int? osmId,
-      int? placeRank,
+      int osmId,
+      int placeRank,
       String category,
       String type,
-      double? importance,
+      double importance,
       String addressType,
       String name,
       String displayName,
@@ -161,11 +161,11 @@ class _$FormattedLocationCopyWithImpl<$Res>
       osmId: osmId == freezed
           ? _value.osmId
           : osmId // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as int,
       placeRank: placeRank == freezed
           ? _value.placeRank
           : placeRank // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as int,
       category: category == freezed
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
@@ -177,7 +177,7 @@ class _$FormattedLocationCopyWithImpl<$Res>
       importance: importance == freezed
           ? _value.importance
           : importance // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as double,
       addressType: addressType == freezed
           ? _value.addressType
           : addressType // ignore: cast_nullable_to_non_nullable
@@ -239,11 +239,11 @@ abstract class _$$_FormattedLocationCopyWith<$Res>
       String licence,
       String osmType,
       String? icon,
-      int? osmId,
-      int? placeRank,
+      int osmId,
+      int placeRank,
       String category,
       String type,
-      double? importance,
+      double importance,
       String addressType,
       String name,
       String displayName,
@@ -320,11 +320,11 @@ class __$$_FormattedLocationCopyWithImpl<$Res>
       osmId: osmId == freezed
           ? _value.osmId
           : osmId // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as int,
       placeRank: placeRank == freezed
           ? _value.placeRank
           : placeRank // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as int,
       category: category == freezed
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
@@ -336,7 +336,7 @@ class __$$_FormattedLocationCopyWithImpl<$Res>
       importance: importance == freezed
           ? _value.importance
           : importance // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as double,
       addressType: addressType == freezed
           ? _value.addressType
           : addressType // ignore: cast_nullable_to_non_nullable
@@ -381,26 +381,26 @@ class __$$_FormattedLocationCopyWithImpl<$Res>
 
 class _$_FormattedLocation extends _FormattedLocation {
   const _$_FormattedLocation(
-      {this.placeId = '',
+      {required this.placeId,
       required this.lat,
       required this.lon,
-      this.licence = '',
-      this.osmType = '',
+      required this.licence,
+      required this.osmType,
       this.icon,
-      this.osmId,
-      this.placeRank,
-      this.category = '',
-      this.type = '',
-      this.importance,
-      this.addressType = '',
-      this.name = '',
-      this.displayName = '',
-      this.address = const Address(),
-      final Map<String, dynamic> extratags = const {},
-      final Map<String, dynamic> namedetails = const {},
-      this.boundingBox,
+      required this.osmId,
+      required this.placeRank,
+      required this.category,
+      required this.type,
+      required this.importance,
+      required this.addressType,
+      required this.name,
+      required this.displayName,
+      required this.address,
+      required final Map<String, dynamic> extratags,
+      required final Map<String, dynamic> namedetails,
+      required this.boundingBox,
       required this.geojson,
-      final Map<String, String> names = const {}})
+      required final Map<String, String> names})
       : _extratags = extratags,
         _namedetails = namedetails,
         _names = names,
@@ -408,7 +408,6 @@ class _$_FormattedLocation extends _FormattedLocation {
 
   ///reference to the Nominatim internal database ID
   @override
-  @JsonKey()
   final String placeId;
 
   /// latitude of the centroid of the object
@@ -419,52 +418,44 @@ class _$_FormattedLocation extends _FormattedLocation {
   @override
   final double lon;
   @override
-  @JsonKey()
   final String licence;
 
   ///reference to the OSM object
   @override
-  @JsonKey()
   final String osmType;
   @override
   final String? icon;
 
   /// reference to the OSM object
   @override
-  final int? osmId;
+  final int osmId;
 
   /// search rank of the object
   @override
-  final int? placeRank;
+  final int placeRank;
 
   ///key of the main OSM tag
   @override
-  @JsonKey()
   final String category;
 
   /// value of the main OSM tag
   @override
-  @JsonKey()
   final String type;
 
   /// computed importance rank
   @override
-  final double? importance;
+  final double importance;
   @override
-  @JsonKey()
   final String addressType;
   @override
-  @JsonKey()
   final String name;
 
   ///full comma-separated address
   @override
-  @JsonKey()
   final String displayName;
 
   /// dictionary of address details
   @override
-  @JsonKey()
   final Address address;
 
   /// dictionary with additional useful tags like website or max speed
@@ -472,7 +463,6 @@ class _$_FormattedLocation extends _FormattedLocation {
 
   /// dictionary with additional useful tags like website or max speed
   @override
-  @JsonKey()
   Map<String, dynamic> get extratags {
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableMapView(_extratags);
@@ -483,7 +473,6 @@ class _$_FormattedLocation extends _FormattedLocation {
 
   /// dictionary with full list of available names including ref etc
   @override
-  @JsonKey()
   Map<String, dynamic> get namedetails {
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableMapView(_namedetails);
@@ -498,7 +487,6 @@ class _$_FormattedLocation extends _FormattedLocation {
   final GeoGeometry geojson;
   final Map<String, String> _names;
   @override
-  @JsonKey()
   Map<String, String> get names {
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableMapView(_names);
@@ -571,26 +559,26 @@ class _$_FormattedLocation extends _FormattedLocation {
 
 abstract class _FormattedLocation extends FormattedLocation {
   const factory _FormattedLocation(
-      {final String placeId,
+      {required final String placeId,
       required final double lat,
       required final double lon,
-      final String licence,
-      final String osmType,
+      required final String licence,
+      required final String osmType,
       final String? icon,
-      final int? osmId,
-      final int? placeRank,
-      final String category,
-      final String type,
-      final double? importance,
-      final String addressType,
-      final String name,
-      final String displayName,
-      final Address address,
-      final Map<String, dynamic> extratags,
-      final Map<String, dynamic> namedetails,
-      final LatLngBounds? boundingBox,
+      required final int osmId,
+      required final int placeRank,
+      required final String category,
+      required final String type,
+      required final double importance,
+      required final String addressType,
+      required final String name,
+      required final String displayName,
+      required final Address address,
+      required final Map<String, dynamic> extratags,
+      required final Map<String, dynamic> namedetails,
+      required final LatLngBounds? boundingBox,
       required final GeoGeometry geojson,
-      final Map<String, String> names}) = _$_FormattedLocation;
+      required final Map<String, String> names}) = _$_FormattedLocation;
   const _FormattedLocation._() : super._();
 
   @override
@@ -616,11 +604,11 @@ abstract class _FormattedLocation extends FormattedLocation {
   @override
 
   /// reference to the OSM object
-  int? get osmId => throw _privateConstructorUsedError;
+  int get osmId => throw _privateConstructorUsedError;
   @override
 
   /// search rank of the object
-  int? get placeRank => throw _privateConstructorUsedError;
+  int get placeRank => throw _privateConstructorUsedError;
   @override
 
   ///key of the main OSM tag
@@ -632,7 +620,7 @@ abstract class _FormattedLocation extends FormattedLocation {
   @override
 
   /// computed importance rank
-  double? get importance => throw _privateConstructorUsedError;
+  double get importance => throw _privateConstructorUsedError;
   @override
   String get addressType => throw _privateConstructorUsedError;
   @override
