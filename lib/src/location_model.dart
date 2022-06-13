@@ -20,43 +20,43 @@ class FormattedLocation with _$FormattedLocation {
 
     /// longitude of the centroid of the object
     required double lon,
-    required String licence,
+    @Default('') String licence,
 
     ///reference to the OSM object
-    required String osmType,
-    required String? icon,
+    @Default('') String osmType,
+    String? icon,
 
     /// reference to the OSM object
-    required int osmId,
+    int? osmId,
 
     /// search rank of the object
-    required int placeRank,
+    int? placeRank,
 
     ///key of the main OSM tag
-    required String category,
+    @Default('') String category,
 
     /// value of the main OSM tag
-    required String type,
+    @Default('') String type,
 
     /// computed importance rank
-    required double importance,
-    required String addressType,
-    required String name,
+    double? importance,
+    @Default('') String addressType,
+    @Default('') String name,
 
     ///full comma-separated address
-    required String displayName,
+    @Default('') String displayName,
 
     /// dictionary of address details
-    required Address address,
+    @Default(Address()) Address address,
 
     /// dictionary with additional useful tags like website or max speed
-    required Map<String, dynamic> extratags,
+    @Default({}) Map<String, dynamic> extratags,
 
     /// dictionary with full list of available names including ref etc
-    required Map<String, dynamic> namedetails,
+    @Default({}) Map<String, dynamic> namedetails,
 
     ///area of corner coordinates
-    required LatLngBounds boundingBox,
+    LatLngBounds? boundingBox,
 
     /// GeoBounds of object
     required GeoGeometry geojson,
@@ -89,12 +89,13 @@ class FormattedLocation with _$FormattedLocation {
       "address": address.toJson(),
       "extratags": extratags,
       "namedetails": namedetails,
-      "boundingbox": [
-        boundingBox.southWest?.latitude,
-        boundingBox.northEast?.latitude,
-        boundingBox.southWest?.longitude,
-        boundingBox.northEast?.longitude
-      ],
+      if (boundingBox != null)
+        "boundingbox": [
+          boundingBox!.southWest?.latitude,
+          boundingBox!.northEast?.latitude,
+          boundingBox!.southWest?.longitude,
+          boundingBox!.northEast?.longitude
+        ],
       "geojson": geojson.when(
         point: (latlng, _) => {
           "type": "Point",
@@ -112,7 +113,7 @@ class FormattedLocation with _$FormattedLocation {
     };
   }
 
-  static FormattedLocation from(Map<String, dynamic> json) {
+  static FormattedLocation fromJson(Map<String, dynamic> json) {
     if (json["error"] != null) {
       throw Exception(json["error"]);
     }
@@ -128,10 +129,14 @@ class FormattedLocation with _$FormattedLocation {
       lon: lon,
       addressType: json["addresstype"] ?? '',
       boundingBox: LatLngBounds.fromPoints([
-        LatLng(double.parse(boundingBox[0].toString()),
-            double.parse(boundingBox[2].toString())),
-        LatLng(double.parse(boundingBox[1].toString()),
-            double.parse(boundingBox[3].toString())),
+        LatLng(
+          double.parse(boundingBox[0].toString()),
+          double.parse(boundingBox[2].toString()),
+        ),
+        LatLng(
+          double.parse(boundingBox[1].toString()),
+          double.parse(boundingBox[3].toString()),
+        ),
       ]),
       category: json["category"] ?? '',
       displayName: json["display_name"] ?? '',
@@ -161,15 +166,15 @@ extension LatLngExt on LatLng {
 }
 
 class Address {
-  Address({
-    required this.highway,
-    required this.road,
-    required this.city,
-    required this.stateDistrict,
-    required this.state,
-    required this.postcode,
-    required this.country,
-    required this.countryCode,
+  const Address({
+    this.highway = "",
+    this.road = "",
+    this.city = "",
+    this.stateDistrict = "",
+    this.state = "",
+    this.postcode = "",
+    this.country = "",
+    this.countryCode = "",
   });
 
   final String highway;

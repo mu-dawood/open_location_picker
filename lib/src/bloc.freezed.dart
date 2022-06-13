@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'bloc.dart';
@@ -11,55 +12,11 @@ part of 'bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$OpenMapStateTearOff {
-  const _$OpenMapStateTearOff();
-
-  _Selected selected(SelectedLocation selected) {
-    return _Selected(
-      selected,
-    );
-  }
-
-  _Reversing reversing(SelectedLocation selected, LatLng reversing) {
-    return _Reversing(
-      selected,
-      reversing,
-    );
-  }
-
-  _Searching searching(
-      {required SelectedLocation selected,
-      required String query,
-      required List<FormattedLocation> oldResults}) {
-    return _Searching(
-      selected: selected,
-      query: query,
-      oldResults: oldResults,
-    );
-  }
-
-  _Results results(
-      {required SelectedLocation selected,
-      required String query,
-      required List<FormattedLocation> searchResults}) {
-    return _Results(
-      selected: selected,
-      query: query,
-      searchResults: searchResults,
-    );
-  }
-}
-
-/// @nodoc
-const $OpenMapState = _$OpenMapStateTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$OpenMapState {
   SelectedLocation get selected => throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(SelectedLocation selected) selected,
@@ -168,9 +125,11 @@ class _$OpenMapStateCopyWithImpl<$Res> implements $OpenMapStateCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$SelectedCopyWith<$Res> implements $OpenMapStateCopyWith<$Res> {
-  factory _$SelectedCopyWith(_Selected value, $Res Function(_Selected) then) =
-      __$SelectedCopyWithImpl<$Res>;
+abstract class _$$_SelectedCopyWith<$Res>
+    implements $OpenMapStateCopyWith<$Res> {
+  factory _$$_SelectedCopyWith(
+          _$_Selected value, $Res Function(_$_Selected) then) =
+      __$$_SelectedCopyWithImpl<$Res>;
   @override
   $Res call({SelectedLocation selected});
 
@@ -179,19 +138,20 @@ abstract class _$SelectedCopyWith<$Res> implements $OpenMapStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$SelectedCopyWithImpl<$Res> extends _$OpenMapStateCopyWithImpl<$Res>
-    implements _$SelectedCopyWith<$Res> {
-  __$SelectedCopyWithImpl(_Selected _value, $Res Function(_Selected) _then)
-      : super(_value, (v) => _then(v as _Selected));
+class __$$_SelectedCopyWithImpl<$Res> extends _$OpenMapStateCopyWithImpl<$Res>
+    implements _$$_SelectedCopyWith<$Res> {
+  __$$_SelectedCopyWithImpl(
+      _$_Selected _value, $Res Function(_$_Selected) _then)
+      : super(_value, (v) => _then(v as _$_Selected));
 
   @override
-  _Selected get _value => super._value as _Selected;
+  _$_Selected get _value => super._value as _$_Selected;
 
   @override
   $Res call({
     Object? selected = freezed,
   }) {
-    return _then(_Selected(
+    return _then(_$_Selected(
       selected == freezed
           ? _value.selected
           : selected // ignore: cast_nullable_to_non_nullable
@@ -202,22 +162,30 @@ class __$SelectedCopyWithImpl<$Res> extends _$OpenMapStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Selected implements _Selected {
+class _$_Selected with DiagnosticableTreeMixin implements _Selected {
   const _$_Selected(this.selected);
 
   @override
   final SelectedLocation selected;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'OpenMapState.selected(selected: $selected)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'OpenMapState.selected'))
+      ..add(DiagnosticsProperty('selected', selected));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Selected &&
+            other is _$_Selected &&
             const DeepCollectionEquality().equals(other.selected, selected));
   }
 
@@ -227,8 +195,8 @@ class _$_Selected implements _Selected {
 
   @JsonKey(ignore: true)
   @override
-  _$SelectedCopyWith<_Selected> get copyWith =>
-      __$SelectedCopyWithImpl<_Selected>(this, _$identity);
+  _$$_SelectedCopyWith<_$_Selected> get copyWith =>
+      __$$_SelectedCopyWithImpl<_$_Selected>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -319,22 +287,22 @@ class _$_Selected implements _Selected {
 }
 
 abstract class _Selected implements OpenMapState {
-  const factory _Selected(SelectedLocation selected) = _$_Selected;
+  const factory _Selected(final SelectedLocation selected) = _$_Selected;
 
   @override
-  SelectedLocation get selected;
+  SelectedLocation get selected => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$SelectedCopyWith<_Selected> get copyWith =>
+  _$$_SelectedCopyWith<_$_Selected> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$ReversingCopyWith<$Res>
+abstract class _$$_ReversingCopyWith<$Res>
     implements $OpenMapStateCopyWith<$Res> {
-  factory _$ReversingCopyWith(
-          _Reversing value, $Res Function(_Reversing) then) =
-      __$ReversingCopyWithImpl<$Res>;
+  factory _$$_ReversingCopyWith(
+          _$_Reversing value, $Res Function(_$_Reversing) then) =
+      __$$_ReversingCopyWithImpl<$Res>;
   @override
   $Res call({SelectedLocation selected, LatLng reversing});
 
@@ -343,20 +311,21 @@ abstract class _$ReversingCopyWith<$Res>
 }
 
 /// @nodoc
-class __$ReversingCopyWithImpl<$Res> extends _$OpenMapStateCopyWithImpl<$Res>
-    implements _$ReversingCopyWith<$Res> {
-  __$ReversingCopyWithImpl(_Reversing _value, $Res Function(_Reversing) _then)
-      : super(_value, (v) => _then(v as _Reversing));
+class __$$_ReversingCopyWithImpl<$Res> extends _$OpenMapStateCopyWithImpl<$Res>
+    implements _$$_ReversingCopyWith<$Res> {
+  __$$_ReversingCopyWithImpl(
+      _$_Reversing _value, $Res Function(_$_Reversing) _then)
+      : super(_value, (v) => _then(v as _$_Reversing));
 
   @override
-  _Reversing get _value => super._value as _Reversing;
+  _$_Reversing get _value => super._value as _$_Reversing;
 
   @override
   $Res call({
     Object? selected = freezed,
     Object? reversing = freezed,
   }) {
-    return _then(_Reversing(
+    return _then(_$_Reversing(
       selected == freezed
           ? _value.selected
           : selected // ignore: cast_nullable_to_non_nullable
@@ -371,7 +340,7 @@ class __$ReversingCopyWithImpl<$Res> extends _$OpenMapStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Reversing implements _Reversing {
+class _$_Reversing with DiagnosticableTreeMixin implements _Reversing {
   const _$_Reversing(this.selected, this.reversing);
 
   @override
@@ -380,15 +349,24 @@ class _$_Reversing implements _Reversing {
   final LatLng reversing;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'OpenMapState.reversing(selected: $selected, reversing: $reversing)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'OpenMapState.reversing'))
+      ..add(DiagnosticsProperty('selected', selected))
+      ..add(DiagnosticsProperty('reversing', reversing));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Reversing &&
+            other is _$_Reversing &&
             const DeepCollectionEquality().equals(other.selected, selected) &&
             const DeepCollectionEquality().equals(other.reversing, reversing));
   }
@@ -401,8 +379,8 @@ class _$_Reversing implements _Reversing {
 
   @JsonKey(ignore: true)
   @override
-  _$ReversingCopyWith<_Reversing> get copyWith =>
-      __$ReversingCopyWithImpl<_Reversing>(this, _$identity);
+  _$$_ReversingCopyWith<_$_Reversing> get copyWith =>
+      __$$_ReversingCopyWithImpl<_$_Reversing>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -493,24 +471,24 @@ class _$_Reversing implements _Reversing {
 }
 
 abstract class _Reversing implements OpenMapState {
-  const factory _Reversing(SelectedLocation selected, LatLng reversing) =
-      _$_Reversing;
+  const factory _Reversing(
+      final SelectedLocation selected, final LatLng reversing) = _$_Reversing;
 
   @override
-  SelectedLocation get selected;
-  LatLng get reversing;
+  SelectedLocation get selected => throw _privateConstructorUsedError;
+  LatLng get reversing => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$ReversingCopyWith<_Reversing> get copyWith =>
+  _$$_ReversingCopyWith<_$_Reversing> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$SearchingCopyWith<$Res>
+abstract class _$$_SearchingCopyWith<$Res>
     implements $OpenMapStateCopyWith<$Res> {
-  factory _$SearchingCopyWith(
-          _Searching value, $Res Function(_Searching) then) =
-      __$SearchingCopyWithImpl<$Res>;
+  factory _$$_SearchingCopyWith(
+          _$_Searching value, $Res Function(_$_Searching) then) =
+      __$$_SearchingCopyWithImpl<$Res>;
   @override
   $Res call(
       {SelectedLocation selected,
@@ -522,13 +500,14 @@ abstract class _$SearchingCopyWith<$Res>
 }
 
 /// @nodoc
-class __$SearchingCopyWithImpl<$Res> extends _$OpenMapStateCopyWithImpl<$Res>
-    implements _$SearchingCopyWith<$Res> {
-  __$SearchingCopyWithImpl(_Searching _value, $Res Function(_Searching) _then)
-      : super(_value, (v) => _then(v as _Searching));
+class __$$_SearchingCopyWithImpl<$Res> extends _$OpenMapStateCopyWithImpl<$Res>
+    implements _$$_SearchingCopyWith<$Res> {
+  __$$_SearchingCopyWithImpl(
+      _$_Searching _value, $Res Function(_$_Searching) _then)
+      : super(_value, (v) => _then(v as _$_Searching));
 
   @override
-  _Searching get _value => super._value as _Searching;
+  _$_Searching get _value => super._value as _$_Searching;
 
   @override
   $Res call({
@@ -536,7 +515,7 @@ class __$SearchingCopyWithImpl<$Res> extends _$OpenMapStateCopyWithImpl<$Res>
     Object? query = freezed,
     Object? oldResults = freezed,
   }) {
-    return _then(_Searching(
+    return _then(_$_Searching(
       selected: selected == freezed
           ? _value.selected
           : selected // ignore: cast_nullable_to_non_nullable
@@ -546,7 +525,7 @@ class __$SearchingCopyWithImpl<$Res> extends _$OpenMapStateCopyWithImpl<$Res>
           : query // ignore: cast_nullable_to_non_nullable
               as String,
       oldResults: oldResults == freezed
-          ? _value.oldResults
+          ? _value._oldResults
           : oldResults // ignore: cast_nullable_to_non_nullable
               as List<FormattedLocation>,
     ));
@@ -555,31 +534,48 @@ class __$SearchingCopyWithImpl<$Res> extends _$OpenMapStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Searching implements _Searching {
+class _$_Searching with DiagnosticableTreeMixin implements _Searching {
   const _$_Searching(
-      {required this.selected, required this.query, required this.oldResults});
+      {required this.selected,
+      required this.query,
+      required final List<FormattedLocation> oldResults})
+      : _oldResults = oldResults;
 
   @override
   final SelectedLocation selected;
   @override
   final String query;
+  final List<FormattedLocation> _oldResults;
   @override
-  final List<FormattedLocation> oldResults;
+  List<FormattedLocation> get oldResults {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_oldResults);
+  }
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'OpenMapState.searching(selected: $selected, query: $query, oldResults: $oldResults)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'OpenMapState.searching'))
+      ..add(DiagnosticsProperty('selected', selected))
+      ..add(DiagnosticsProperty('query', query))
+      ..add(DiagnosticsProperty('oldResults', oldResults));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Searching &&
+            other is _$_Searching &&
             const DeepCollectionEquality().equals(other.selected, selected) &&
             const DeepCollectionEquality().equals(other.query, query) &&
             const DeepCollectionEquality()
-                .equals(other.oldResults, oldResults));
+                .equals(other._oldResults, _oldResults));
   }
 
   @override
@@ -587,12 +583,12 @@ class _$_Searching implements _Searching {
       runtimeType,
       const DeepCollectionEquality().hash(selected),
       const DeepCollectionEquality().hash(query),
-      const DeepCollectionEquality().hash(oldResults));
+      const DeepCollectionEquality().hash(_oldResults));
 
   @JsonKey(ignore: true)
   @override
-  _$SearchingCopyWith<_Searching> get copyWith =>
-      __$SearchingCopyWithImpl<_Searching>(this, _$identity);
+  _$$_SearchingCopyWith<_$_Searching> get copyWith =>
+      __$$_SearchingCopyWithImpl<_$_Searching>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -684,24 +680,26 @@ class _$_Searching implements _Searching {
 
 abstract class _Searching implements OpenMapState {
   const factory _Searching(
-      {required SelectedLocation selected,
-      required String query,
-      required List<FormattedLocation> oldResults}) = _$_Searching;
+      {required final SelectedLocation selected,
+      required final String query,
+      required final List<FormattedLocation> oldResults}) = _$_Searching;
 
   @override
-  SelectedLocation get selected;
-  String get query;
-  List<FormattedLocation> get oldResults;
+  SelectedLocation get selected => throw _privateConstructorUsedError;
+  String get query => throw _privateConstructorUsedError;
+  List<FormattedLocation> get oldResults => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$SearchingCopyWith<_Searching> get copyWith =>
+  _$$_SearchingCopyWith<_$_Searching> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$ResultsCopyWith<$Res> implements $OpenMapStateCopyWith<$Res> {
-  factory _$ResultsCopyWith(_Results value, $Res Function(_Results) then) =
-      __$ResultsCopyWithImpl<$Res>;
+abstract class _$$_ResultsCopyWith<$Res>
+    implements $OpenMapStateCopyWith<$Res> {
+  factory _$$_ResultsCopyWith(
+          _$_Results value, $Res Function(_$_Results) then) =
+      __$$_ResultsCopyWithImpl<$Res>;
   @override
   $Res call(
       {SelectedLocation selected,
@@ -713,13 +711,13 @@ abstract class _$ResultsCopyWith<$Res> implements $OpenMapStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$ResultsCopyWithImpl<$Res> extends _$OpenMapStateCopyWithImpl<$Res>
-    implements _$ResultsCopyWith<$Res> {
-  __$ResultsCopyWithImpl(_Results _value, $Res Function(_Results) _then)
-      : super(_value, (v) => _then(v as _Results));
+class __$$_ResultsCopyWithImpl<$Res> extends _$OpenMapStateCopyWithImpl<$Res>
+    implements _$$_ResultsCopyWith<$Res> {
+  __$$_ResultsCopyWithImpl(_$_Results _value, $Res Function(_$_Results) _then)
+      : super(_value, (v) => _then(v as _$_Results));
 
   @override
-  _Results get _value => super._value as _Results;
+  _$_Results get _value => super._value as _$_Results;
 
   @override
   $Res call({
@@ -727,7 +725,7 @@ class __$ResultsCopyWithImpl<$Res> extends _$OpenMapStateCopyWithImpl<$Res>
     Object? query = freezed,
     Object? searchResults = freezed,
   }) {
-    return _then(_Results(
+    return _then(_$_Results(
       selected: selected == freezed
           ? _value.selected
           : selected // ignore: cast_nullable_to_non_nullable
@@ -737,7 +735,7 @@ class __$ResultsCopyWithImpl<$Res> extends _$OpenMapStateCopyWithImpl<$Res>
           : query // ignore: cast_nullable_to_non_nullable
               as String,
       searchResults: searchResults == freezed
-          ? _value.searchResults
+          ? _value._searchResults
           : searchResults // ignore: cast_nullable_to_non_nullable
               as List<FormattedLocation>,
     ));
@@ -746,33 +744,48 @@ class __$ResultsCopyWithImpl<$Res> extends _$OpenMapStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Results implements _Results {
+class _$_Results with DiagnosticableTreeMixin implements _Results {
   const _$_Results(
       {required this.selected,
       required this.query,
-      required this.searchResults});
+      required final List<FormattedLocation> searchResults})
+      : _searchResults = searchResults;
 
   @override
   final SelectedLocation selected;
   @override
   final String query;
+  final List<FormattedLocation> _searchResults;
   @override
-  final List<FormattedLocation> searchResults;
+  List<FormattedLocation> get searchResults {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_searchResults);
+  }
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'OpenMapState.results(selected: $selected, query: $query, searchResults: $searchResults)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'OpenMapState.results'))
+      ..add(DiagnosticsProperty('selected', selected))
+      ..add(DiagnosticsProperty('query', query))
+      ..add(DiagnosticsProperty('searchResults', searchResults));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Results &&
+            other is _$_Results &&
             const DeepCollectionEquality().equals(other.selected, selected) &&
             const DeepCollectionEquality().equals(other.query, query) &&
             const DeepCollectionEquality()
-                .equals(other.searchResults, searchResults));
+                .equals(other._searchResults, _searchResults));
   }
 
   @override
@@ -780,12 +793,12 @@ class _$_Results implements _Results {
       runtimeType,
       const DeepCollectionEquality().hash(selected),
       const DeepCollectionEquality().hash(query),
-      const DeepCollectionEquality().hash(searchResults));
+      const DeepCollectionEquality().hash(_searchResults));
 
   @JsonKey(ignore: true)
   @override
-  _$ResultsCopyWith<_Results> get copyWith =>
-      __$ResultsCopyWithImpl<_Results>(this, _$identity);
+  _$$_ResultsCopyWith<_$_Results> get copyWith =>
+      __$$_ResultsCopyWithImpl<_$_Results>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -877,39 +890,20 @@ class _$_Results implements _Results {
 
 abstract class _Results implements OpenMapState {
   const factory _Results(
-      {required SelectedLocation selected,
-      required String query,
-      required List<FormattedLocation> searchResults}) = _$_Results;
+      {required final SelectedLocation selected,
+      required final String query,
+      required final List<FormattedLocation> searchResults}) = _$_Results;
 
   @override
-  SelectedLocation get selected;
-  String get query;
-  List<FormattedLocation> get searchResults;
+  SelectedLocation get selected => throw _privateConstructorUsedError;
+  String get query => throw _privateConstructorUsedError;
+  List<FormattedLocation> get searchResults =>
+      throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$ResultsCopyWith<_Results> get copyWith =>
+  _$$_ResultsCopyWith<_$_Results> get copyWith =>
       throw _privateConstructorUsedError;
 }
-
-/// @nodoc
-class _$SelectedLocationTearOff {
-  const _$SelectedLocationTearOff();
-
-  _Single single(FormattedLocation? selected) {
-    return _Single(
-      selected,
-    );
-  }
-
-  _Multi multi(List<FormattedLocation> selected) {
-    return _Multi(
-      selected,
-    );
-  }
-}
-
-/// @nodoc
-const $SelectedLocation = _$SelectedLocationTearOff();
 
 /// @nodoc
 mixin _$SelectedLocation {
@@ -971,28 +965,28 @@ class _$SelectedLocationCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$SingleCopyWith<$Res> {
-  factory _$SingleCopyWith(_Single value, $Res Function(_Single) then) =
-      __$SingleCopyWithImpl<$Res>;
+abstract class _$$_SingleCopyWith<$Res> {
+  factory _$$_SingleCopyWith(_$_Single value, $Res Function(_$_Single) then) =
+      __$$_SingleCopyWithImpl<$Res>;
   $Res call({FormattedLocation? selected});
 
   $FormattedLocationCopyWith<$Res>? get selected;
 }
 
 /// @nodoc
-class __$SingleCopyWithImpl<$Res> extends _$SelectedLocationCopyWithImpl<$Res>
-    implements _$SingleCopyWith<$Res> {
-  __$SingleCopyWithImpl(_Single _value, $Res Function(_Single) _then)
-      : super(_value, (v) => _then(v as _Single));
+class __$$_SingleCopyWithImpl<$Res> extends _$SelectedLocationCopyWithImpl<$Res>
+    implements _$$_SingleCopyWith<$Res> {
+  __$$_SingleCopyWithImpl(_$_Single _value, $Res Function(_$_Single) _then)
+      : super(_value, (v) => _then(v as _$_Single));
 
   @override
-  _Single get _value => super._value as _Single;
+  _$_Single get _value => super._value as _$_Single;
 
   @override
   $Res call({
     Object? selected = freezed,
   }) {
-    return _then(_Single(
+    return _then(_$_Single(
       selected == freezed
           ? _value.selected
           : selected // ignore: cast_nullable_to_non_nullable
@@ -1014,22 +1008,30 @@ class __$SingleCopyWithImpl<$Res> extends _$SelectedLocationCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Single implements _Single {
+class _$_Single with DiagnosticableTreeMixin implements _Single {
   const _$_Single(this.selected);
 
   @override
   final FormattedLocation? selected;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'SelectedLocation.single(selected: $selected)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'SelectedLocation.single'))
+      ..add(DiagnosticsProperty('selected', selected));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Single &&
+            other is _$_Single &&
             const DeepCollectionEquality().equals(other.selected, selected));
   }
 
@@ -1039,8 +1041,8 @@ class _$_Single implements _Single {
 
   @JsonKey(ignore: true)
   @override
-  _$SingleCopyWith<_Single> get copyWith =>
-      __$SingleCopyWithImpl<_Single>(this, _$identity);
+  _$$_SingleCopyWith<_$_Single> get copyWith =>
+      __$$_SingleCopyWithImpl<_$_Single>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1106,36 +1108,37 @@ class _$_Single implements _Single {
 }
 
 abstract class _Single implements SelectedLocation {
-  const factory _Single(FormattedLocation? selected) = _$_Single;
+  const factory _Single(final FormattedLocation? selected) = _$_Single;
 
-  FormattedLocation? get selected;
+  FormattedLocation? get selected => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$SingleCopyWith<_Single> get copyWith => throw _privateConstructorUsedError;
+  _$$_SingleCopyWith<_$_Single> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$MultiCopyWith<$Res> {
-  factory _$MultiCopyWith(_Multi value, $Res Function(_Multi) then) =
-      __$MultiCopyWithImpl<$Res>;
+abstract class _$$_MultiCopyWith<$Res> {
+  factory _$$_MultiCopyWith(_$_Multi value, $Res Function(_$_Multi) then) =
+      __$$_MultiCopyWithImpl<$Res>;
   $Res call({List<FormattedLocation> selected});
 }
 
 /// @nodoc
-class __$MultiCopyWithImpl<$Res> extends _$SelectedLocationCopyWithImpl<$Res>
-    implements _$MultiCopyWith<$Res> {
-  __$MultiCopyWithImpl(_Multi _value, $Res Function(_Multi) _then)
-      : super(_value, (v) => _then(v as _Multi));
+class __$$_MultiCopyWithImpl<$Res> extends _$SelectedLocationCopyWithImpl<$Res>
+    implements _$$_MultiCopyWith<$Res> {
+  __$$_MultiCopyWithImpl(_$_Multi _value, $Res Function(_$_Multi) _then)
+      : super(_value, (v) => _then(v as _$_Multi));
 
   @override
-  _Multi get _value => super._value as _Multi;
+  _$_Multi get _value => super._value as _$_Multi;
 
   @override
   $Res call({
     Object? selected = freezed,
   }) {
-    return _then(_Multi(
+    return _then(_$_Multi(
       selected == freezed
-          ? _value.selected
+          ? _value._selected
           : selected // ignore: cast_nullable_to_non_nullable
               as List<FormattedLocation>,
     ));
@@ -1144,33 +1147,45 @@ class __$MultiCopyWithImpl<$Res> extends _$SelectedLocationCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Multi implements _Multi {
-  const _$_Multi(this.selected);
+class _$_Multi with DiagnosticableTreeMixin implements _Multi {
+  const _$_Multi(final List<FormattedLocation> selected) : _selected = selected;
+
+  final List<FormattedLocation> _selected;
+  @override
+  List<FormattedLocation> get selected {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_selected);
+  }
 
   @override
-  final List<FormattedLocation> selected;
-
-  @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'SelectedLocation.multi(selected: $selected)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'SelectedLocation.multi'))
+      ..add(DiagnosticsProperty('selected', selected));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Multi &&
-            const DeepCollectionEquality().equals(other.selected, selected));
+            other is _$_Multi &&
+            const DeepCollectionEquality().equals(other._selected, _selected));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(selected));
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_selected));
 
   @JsonKey(ignore: true)
   @override
-  _$MultiCopyWith<_Multi> get copyWith =>
-      __$MultiCopyWithImpl<_Multi>(this, _$identity);
+  _$$_MultiCopyWith<_$_Multi> get copyWith =>
+      __$$_MultiCopyWithImpl<_$_Multi>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1236,9 +1251,10 @@ class _$_Multi implements _Multi {
 }
 
 abstract class _Multi implements SelectedLocation {
-  const factory _Multi(List<FormattedLocation> selected) = _$_Multi;
+  const factory _Multi(final List<FormattedLocation> selected) = _$_Multi;
 
-  List<FormattedLocation> get selected;
+  List<FormattedLocation> get selected => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$MultiCopyWith<_Multi> get copyWith => throw _privateConstructorUsedError;
+  _$$_MultiCopyWith<_$_Multi> get copyWith =>
+      throw _privateConstructorUsedError;
 }

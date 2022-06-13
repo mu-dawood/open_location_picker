@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
+import 'package:latlong2/latlong.dart';
 
 import 'bloc.dart';
 import 'location_model.dart';
@@ -9,10 +10,14 @@ import 'location_model.dart';
 class SelectedLocationView extends StatelessWidget {
   final OpenMapBloc bloc;
   final ValueChanged<LatLngBounds> fitBounds;
+  final ValueChanged<LatLng> moveTo;
 
-  const SelectedLocationView(
-      {Key? key, required this.bloc, required this.fitBounds})
-      : super(key: key);
+  const SelectedLocationView({
+    Key? key,
+    required this.bloc,
+    required this.fitBounds,
+    required this.moveTo,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -83,7 +88,11 @@ class SelectedLocationView extends StatelessWidget {
         color: Theme.of(context).errorColor,
       ),
       onTap: () {
-        fitBounds(e.boundingBox);
+        if (e.boundingBox != null) {
+          fitBounds(e.boundingBox!);
+        } else {
+          moveTo(LatLng(e.lat, e.lon));
+        }
       },
     );
   }

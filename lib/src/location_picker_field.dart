@@ -103,12 +103,12 @@ class __BaseFormFieldState<T> extends State<_BaseFormField<T>> {
         var effectiveDecoration = widget.decoration
             .applyDefaults(Theme.of(context).inputDecorationTheme);
         var removeIcon = widget.removeIcon;
-        var _showRemove = !widget.isEmpty(field.value) && removeIcon != null;
+        var showRemove = !widget.isEmpty(field.value) && removeIcon != null;
         effectiveDecoration = effectiveDecoration.copyWith(
             errorText: field.errorText,
             prefixIcon: effectiveDecoration.prefixIcon ??
                 const Icon(Icons.my_location_rounded),
-            suffixIcon: _showRemove
+            suffixIcon: showRemove
                 ? IconButton(
                     onPressed: () {
                       widget.onRemove(field);
@@ -151,14 +151,14 @@ class __BaseFormFieldState<T> extends State<_BaseFormField<T>> {
   void _pick(FormFieldState<T> field) async {
     var context = field.context;
 
-    var _bloc = _OpenMapBloc(widget.state(field.value));
+    var bloc = _OpenMapBloc(widget.state(field.value));
     try {
       await Navigator.push(
         context,
         MaterialPageRoute(
           builder: (_) => OpenStreetMaps(
             options: widget.options(field.value),
-            bloc: _bloc,
+            bloc: bloc,
             onDone: (value) {
               widget.onDone.call(field, value);
               Navigator.of(_).pop();
@@ -166,12 +166,12 @@ class __BaseFormFieldState<T> extends State<_BaseFormField<T>> {
           ),
         ),
       );
-      _bloc.close();
+      bloc.close();
     } catch (e) {
       if (mounted) {
         OpenMapSettings.of(context)?.onError?.call(context, e);
       }
-      _bloc.close();
+      bloc.close();
     }
   }
 }
@@ -221,11 +221,11 @@ class OpenMapPicker extends StatelessWidget {
       focusNode: focusNode,
       initialValue: initialValue,
       options: (FormattedLocation? value) {
-        if (value == null) {
+        if (value == null || value.boundingBox == null) {
           return options ?? OpenMapOptions();
         } else {
-          return options?.copyWithBounds(bounds: value.boundingBox) ??
-              OpenMapOptions.bounds(bounds: value.boundingBox);
+          return options?.copyWithBounds(bounds: value.boundingBox!) ??
+              OpenMapOptions.bounds(bounds: value.boundingBox!);
         }
       },
       onDone: (field, value) {

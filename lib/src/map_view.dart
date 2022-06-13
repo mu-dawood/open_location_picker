@@ -78,7 +78,7 @@ class OpenStreetMaps extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _OpenStreetMapsState createState() => _OpenStreetMapsState();
+  State<OpenStreetMaps> createState() => _OpenStreetMapsState();
 }
 
 class _OpenStreetMapsState extends State<OpenStreetMaps>
@@ -95,10 +95,10 @@ class _OpenStreetMapsState extends State<OpenStreetMaps>
   void _onTap(LatLng latLng) async {
     var bloc = widget.bloc;
     if (bloc != null) {
-      var _oldState = bloc.state;
-      var _reversing = OpenMapState.reversing(bloc.state.selected, latLng);
+      var oldState = bloc.state;
+      var reversing = OpenMapState.reversing(bloc.state.selected, latLng);
       try {
-        bloc.emit(_reversing);
+        bloc.emit(reversing);
         var settings = OpenMapSettings.of(context);
         Locale locale = Localizations.localeOf(context);
         var zoom = (widget.reverseZoom ?? settings?.reverseZoom);
@@ -107,27 +107,29 @@ class _OpenStreetMapsState extends State<OpenStreetMaps>
           location: latLng,
           zoom: zoom,
         );
-        _reversing.selected.when(
+        reversing.selected.when(
           single: (sub) {
             bloc.emit(OpenMapState.selected(SelectedLocation.single(result)));
           },
           multi: (old) {
             var exists =
                 old.any((element) => element.identifier == result.identifier);
-            var _new = exists
+            var newList = exists
                 ? old
                     .map((e) => e.identifier == result.identifier ? result : e)
                     .toList()
                 : [result, ...old];
-            bloc.emit(OpenMapState.selected(SelectedLocation.multi(_new)));
+            bloc.emit(OpenMapState.selected(SelectedLocation.multi(newList)));
           },
         );
-        fitBounds(result.boundingBox);
+        if (result.boundingBox != null) {
+          fitBounds(result.boundingBox!);
+        }
       } catch (e) {
         if (mounted) {
           OpenMapSettings.of(context)?.onError?.call(context, e);
         }
-        bloc.emit(_oldState);
+        bloc.emit(oldState);
       }
     }
   }
@@ -154,15 +156,15 @@ class _OpenStreetMapsState extends State<OpenStreetMaps>
 
   void moveTo(LatLng destLocation, [double destZoom = 13]) {
     try {
-      final _latTween = Tween<double>(
+      final latTween = Tween<double>(
         begin: _controller.center.latitude,
         end: destLocation.latitude,
       );
-      final _lngTween = Tween<double>(
+      final lngTween = Tween<double>(
         begin: _controller.center.longitude,
         end: destLocation.longitude,
       );
-      final _zoomTween = Tween<double>(
+      final zoomTween = Tween<double>(
         begin: _controller.zoom,
         end: destZoom,
       );
@@ -175,9 +177,8 @@ class _OpenStreetMapsState extends State<OpenStreetMaps>
       _animationController.addListener(() {
         if (mounted) {
           _controller.move(
-            LatLng(
-                _latTween.evaluate(animation), _lngTween.evaluate(animation)),
-            _zoomTween.evaluate(animation),
+            LatLng(latTween.evaluate(animation), lngTween.evaluate(animation)),
+            zoomTween.evaluate(animation),
           );
         }
       });
@@ -215,10 +216,10 @@ class _OpenStreetMapsState extends State<OpenStreetMaps>
   @override
   Widget build(BuildContext context) {
     var settings = OpenMapSettings.of(context);
-    Widget? _myCurrentLocation = widget.myLocationButton?.call(moveTo);
-    _myCurrentLocation ??= settings?.myLocationButton?.call(moveTo);
-    if (_myCurrentLocation == null && settings?.getCurrentLocation != null) {
-      _myCurrentLocation = MyLocationButton(
+    Widget? myCurrentLocation = widget.myLocationButton?.call(moveTo);
+    myCurrentLocation ??= settings?.myLocationButton?.call(moveTo);
+    if (myCurrentLocation == null && settings?.getCurrentLocation != null) {
+      myCurrentLocation = MyLocationButton(
         moveTo: moveTo,
         selectCurrentLocationIcon:
             settings?.mapViewConfig?.selectCurrentLocationIcon,
@@ -250,9 +251,12 @@ class _OpenStreetMapsState extends State<OpenStreetMaps>
                 settings?.searchHint?.call(context) ??
                 'Search here',
           ),
-          bottomNavigationBar:
-              SelectedLocationView(bloc: bloc, fitBounds: fitBounds),
-          floatingActionButton: _myCurrentLocation,
+          bottomNavigationBar: SelectedLocationView(
+            bloc: bloc,
+            fitBounds: fitBounds,
+            moveTo: moveTo,
+          ),
+          floatingActionButton: myCurrentLocation,
           resizeToAvoidBottomInset: false,
           body: _buildMap(options, settings),
         ),
@@ -263,6 +267,7 @@ class _OpenStreetMapsState extends State<OpenStreetMaps>
           child: SearchResults(
             bloc: widget.bloc!,
             fitBounds: fitBounds,
+            moveTo: moveTo,
           ),
         )
       ],
@@ -272,13 +277,13 @@ class _OpenStreetMapsState extends State<OpenStreetMaps>
   FlutterMap _buildMap(MapOptions options, OpenMapSettings? settings) {
     var background = Theme.of(context).scaffoldBackgroundColor;
     var isDark = Theme.of(context).brightness == Brightness.dark;
-    var _layerOptions = settings?.getMapTileOptions ?? _getLayerOptions;
+    var layerOptions = settings?.getMapTileOptions ?? _getLayerOptions;
     return FlutterMap(
       options: options,
       mapController: _controller,
       children: [
         TileLayerWidget(
-          options: _layerOptions(
+          options: layerOptions(
               isDark,
               background,
               widget.tileProvider ??
