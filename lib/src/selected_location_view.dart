@@ -69,6 +69,7 @@ class SelectedLocationView extends StatelessWidget {
           // cSpell: disable-next-line
           linestring: (_) => Icons.navigation_rounded,
           polygon: (_) => Icons.place_rounded,
+          multiPolygon: (_) => Icons.place_outlined,
         ),
       ),
       trailing: IconButton(

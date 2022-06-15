@@ -658,6 +658,44 @@ abstract class _FormattedLocation extends FormattedLocation {
 }
 
 /// @nodoc
+class _$GeoGeometryTearOff {
+  const _$GeoGeometryTearOff();
+
+  GeoPoint point(LatLng point, Color randomColor) {
+    return GeoPoint(
+      point,
+      randomColor,
+    );
+  }
+
+  GeoLinestring linestring(List<LatLng> points, Color randomColor) {
+    return GeoLinestring(
+      points,
+      randomColor,
+    );
+  }
+
+  GeoPolygon polygon(List<LatLng> points, Color randomColor) {
+    return GeoPolygon(
+      points,
+      randomColor,
+    );
+  }
+
+  GeoMultiPolygon multiPolygon(
+      List<List<List<LatLng>>> points, Color randomColor) {
+    return GeoMultiPolygon(
+      points,
+      randomColor,
+    );
+  }
+}
+
+/// @nodoc
+const $GeoGeometry = _$GeoGeometryTearOff();
+
+/// @nodoc
+
 mixin _$GeoGeometry {
   Color get randomColor => throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -666,6 +704,9 @@ mixin _$GeoGeometry {
     required TResult Function(List<LatLng> points, Color randomColor)
         linestring,
     required TResult Function(List<LatLng> points, Color randomColor) polygon,
+    required TResult Function(
+            List<List<List<LatLng>>> points, Color randomColor)
+        multiPolygon,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -673,6 +714,8 @@ mixin _$GeoGeometry {
     TResult Function(LatLng point, Color randomColor)? point,
     TResult Function(List<LatLng> points, Color randomColor)? linestring,
     TResult Function(List<LatLng> points, Color randomColor)? polygon,
+    TResult Function(List<List<List<LatLng>>> points, Color randomColor)?
+        multiPolygon,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -680,6 +723,8 @@ mixin _$GeoGeometry {
     TResult Function(LatLng point, Color randomColor)? point,
     TResult Function(List<LatLng> points, Color randomColor)? linestring,
     TResult Function(List<LatLng> points, Color randomColor)? polygon,
+    TResult Function(List<List<List<LatLng>>> points, Color randomColor)?
+        multiPolygon,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -688,6 +733,7 @@ mixin _$GeoGeometry {
     required TResult Function(GeoPoint value) point,
     required TResult Function(GeoLinestring value) linestring,
     required TResult Function(GeoPolygon value) polygon,
+    required TResult Function(GeoMultiPolygon value) multiPolygon,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -695,6 +741,7 @@ mixin _$GeoGeometry {
     TResult Function(GeoPoint value)? point,
     TResult Function(GeoLinestring value)? linestring,
     TResult Function(GeoPolygon value)? polygon,
+    TResult Function(GeoMultiPolygon value)? multiPolygon,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -702,6 +749,7 @@ mixin _$GeoGeometry {
     TResult Function(GeoPoint value)? point,
     TResult Function(GeoLinestring value)? linestring,
     TResult Function(GeoPolygon value)? polygon,
+    TResult Function(GeoMultiPolygon value)? multiPolygon,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -819,6 +867,9 @@ class _$GeoPoint extends GeoPoint {
     required TResult Function(List<LatLng> points, Color randomColor)
         linestring,
     required TResult Function(List<LatLng> points, Color randomColor) polygon,
+    required TResult Function(
+            List<List<List<LatLng>>> points, Color randomColor)
+        multiPolygon,
   }) {
     return point(this.point, randomColor);
   }
@@ -829,6 +880,8 @@ class _$GeoPoint extends GeoPoint {
     TResult Function(LatLng point, Color randomColor)? point,
     TResult Function(List<LatLng> points, Color randomColor)? linestring,
     TResult Function(List<LatLng> points, Color randomColor)? polygon,
+    TResult Function(List<List<List<LatLng>>> points, Color randomColor)?
+        multiPolygon,
   }) {
     return point?.call(this.point, randomColor);
   }
@@ -839,6 +892,8 @@ class _$GeoPoint extends GeoPoint {
     TResult Function(LatLng point, Color randomColor)? point,
     TResult Function(List<LatLng> points, Color randomColor)? linestring,
     TResult Function(List<LatLng> points, Color randomColor)? polygon,
+    TResult Function(List<List<List<LatLng>>> points, Color randomColor)?
+        multiPolygon,
     required TResult orElse(),
   }) {
     if (point != null) {
@@ -853,6 +908,7 @@ class _$GeoPoint extends GeoPoint {
     required TResult Function(GeoPoint value) point,
     required TResult Function(GeoLinestring value) linestring,
     required TResult Function(GeoPolygon value) polygon,
+    required TResult Function(GeoMultiPolygon value) multiPolygon,
   }) {
     return point(this);
   }
@@ -863,6 +919,7 @@ class _$GeoPoint extends GeoPoint {
     TResult Function(GeoPoint value)? point,
     TResult Function(GeoLinestring value)? linestring,
     TResult Function(GeoPolygon value)? polygon,
+    TResult Function(GeoMultiPolygon value)? multiPolygon,
   }) {
     return point?.call(this);
   }
@@ -873,6 +930,7 @@ class _$GeoPoint extends GeoPoint {
     TResult Function(GeoPoint value)? point,
     TResult Function(GeoLinestring value)? linestring,
     TResult Function(GeoPolygon value)? polygon,
+    TResult Function(GeoMultiPolygon value)? multiPolygon,
     required TResult orElse(),
   }) {
     if (point != null) {
@@ -984,6 +1042,9 @@ class _$GeoLinestring extends GeoLinestring {
     required TResult Function(List<LatLng> points, Color randomColor)
         linestring,
     required TResult Function(List<LatLng> points, Color randomColor) polygon,
+    required TResult Function(
+            List<List<List<LatLng>>> points, Color randomColor)
+        multiPolygon,
   }) {
     return linestring(points, randomColor);
   }
@@ -994,6 +1055,8 @@ class _$GeoLinestring extends GeoLinestring {
     TResult Function(LatLng point, Color randomColor)? point,
     TResult Function(List<LatLng> points, Color randomColor)? linestring,
     TResult Function(List<LatLng> points, Color randomColor)? polygon,
+    TResult Function(List<List<List<LatLng>>> points, Color randomColor)?
+        multiPolygon,
   }) {
     return linestring?.call(points, randomColor);
   }
@@ -1004,6 +1067,8 @@ class _$GeoLinestring extends GeoLinestring {
     TResult Function(LatLng point, Color randomColor)? point,
     TResult Function(List<LatLng> points, Color randomColor)? linestring,
     TResult Function(List<LatLng> points, Color randomColor)? polygon,
+    TResult Function(List<List<List<LatLng>>> points, Color randomColor)?
+        multiPolygon,
     required TResult orElse(),
   }) {
     if (linestring != null) {
@@ -1018,6 +1083,7 @@ class _$GeoLinestring extends GeoLinestring {
     required TResult Function(GeoPoint value) point,
     required TResult Function(GeoLinestring value) linestring,
     required TResult Function(GeoPolygon value) polygon,
+    required TResult Function(GeoMultiPolygon value) multiPolygon,
   }) {
     return linestring(this);
   }
@@ -1028,6 +1094,7 @@ class _$GeoLinestring extends GeoLinestring {
     TResult Function(GeoPoint value)? point,
     TResult Function(GeoLinestring value)? linestring,
     TResult Function(GeoPolygon value)? polygon,
+    TResult Function(GeoMultiPolygon value)? multiPolygon,
   }) {
     return linestring?.call(this);
   }
@@ -1038,6 +1105,7 @@ class _$GeoLinestring extends GeoLinestring {
     TResult Function(GeoPoint value)? point,
     TResult Function(GeoLinestring value)? linestring,
     TResult Function(GeoPolygon value)? polygon,
+    TResult Function(GeoMultiPolygon value)? multiPolygon,
     required TResult orElse(),
   }) {
     if (linestring != null) {
@@ -1149,6 +1217,9 @@ class _$GeoPolygon extends GeoPolygon {
     required TResult Function(List<LatLng> points, Color randomColor)
         linestring,
     required TResult Function(List<LatLng> points, Color randomColor) polygon,
+    required TResult Function(
+            List<List<List<LatLng>>> points, Color randomColor)
+        multiPolygon,
   }) {
     return polygon(points, randomColor);
   }
@@ -1159,6 +1230,8 @@ class _$GeoPolygon extends GeoPolygon {
     TResult Function(LatLng point, Color randomColor)? point,
     TResult Function(List<LatLng> points, Color randomColor)? linestring,
     TResult Function(List<LatLng> points, Color randomColor)? polygon,
+    TResult Function(List<List<List<LatLng>>> points, Color randomColor)?
+        multiPolygon,
   }) {
     return polygon?.call(points, randomColor);
   }
@@ -1169,6 +1242,8 @@ class _$GeoPolygon extends GeoPolygon {
     TResult Function(LatLng point, Color randomColor)? point,
     TResult Function(List<LatLng> points, Color randomColor)? linestring,
     TResult Function(List<LatLng> points, Color randomColor)? polygon,
+    TResult Function(List<List<List<LatLng>>> points, Color randomColor)?
+        multiPolygon,
     required TResult orElse(),
   }) {
     if (polygon != null) {
@@ -1183,6 +1258,7 @@ class _$GeoPolygon extends GeoPolygon {
     required TResult Function(GeoPoint value) point,
     required TResult Function(GeoLinestring value) linestring,
     required TResult Function(GeoPolygon value) polygon,
+    required TResult Function(GeoMultiPolygon value) multiPolygon,
   }) {
     return polygon(this);
   }
@@ -1193,6 +1269,7 @@ class _$GeoPolygon extends GeoPolygon {
     TResult Function(GeoPoint value)? point,
     TResult Function(GeoLinestring value)? linestring,
     TResult Function(GeoPolygon value)? polygon,
+    TResult Function(GeoMultiPolygon value)? multiPolygon,
   }) {
     return polygon?.call(this);
   }
@@ -1203,6 +1280,7 @@ class _$GeoPolygon extends GeoPolygon {
     TResult Function(GeoPoint value)? point,
     TResult Function(GeoLinestring value)? linestring,
     TResult Function(GeoPolygon value)? polygon,
+    TResult Function(GeoMultiPolygon value)? multiPolygon,
     required TResult orElse(),
   }) {
     if (polygon != null) {
@@ -1223,5 +1301,174 @@ abstract class GeoPolygon extends GeoGeometry {
   @override
   @JsonKey(ignore: true)
   _$$GeoPolygonCopyWith<_$GeoPolygon> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $GeoMultiPolygonCopyWith<$Res>
+    implements $GeoGeometryCopyWith<$Res> {
+  factory $GeoMultiPolygonCopyWith(
+          GeoMultiPolygon value, $Res Function(GeoMultiPolygon) then) =
+      _$GeoMultiPolygonCopyWithImpl<$Res>;
+  @override
+  $Res call({List<List<List<LatLng>>> points, Color randomColor});
+}
+
+/// @nodoc
+class _$GeoMultiPolygonCopyWithImpl<$Res>
+    extends _$GeoGeometryCopyWithImpl<$Res>
+    implements $GeoMultiPolygonCopyWith<$Res> {
+  _$GeoMultiPolygonCopyWithImpl(
+      GeoMultiPolygon _value, $Res Function(GeoMultiPolygon) _then)
+      : super(_value, (v) => _then(v as GeoMultiPolygon));
+
+  @override
+  GeoMultiPolygon get _value => super._value as GeoMultiPolygon;
+
+  @override
+  $Res call({
+    Object? points = freezed,
+    Object? randomColor = freezed,
+  }) {
+    return _then(GeoMultiPolygon(
+      points == freezed
+          ? _value.points
+          : points // ignore: cast_nullable_to_non_nullable
+              as List<List<List<LatLng>>>,
+      randomColor == freezed
+          ? _value.randomColor
+          : randomColor // ignore: cast_nullable_to_non_nullable
+              as Color,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$GeoMultiPolygon extends GeoMultiPolygon {
+  _$GeoMultiPolygon(this.points, this.randomColor) : super._();
+
+  @override
+  final List<List<List<LatLng>>> points;
+  @override
+  final Color randomColor;
+
+  @override
+  String toString() {
+    return 'GeoGeometry.multiPolygon(points: $points, randomColor: $randomColor)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is GeoMultiPolygon &&
+            const DeepCollectionEquality().equals(other.points, points) &&
+            const DeepCollectionEquality()
+                .equals(other.randomColor, randomColor));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(points),
+      const DeepCollectionEquality().hash(randomColor));
+
+  @JsonKey(ignore: true)
+  @override
+  $GeoMultiPolygonCopyWith<GeoMultiPolygon> get copyWith =>
+      _$GeoMultiPolygonCopyWithImpl<GeoMultiPolygon>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(LatLng point, Color randomColor) point,
+    required TResult Function(List<LatLng> points, Color randomColor)
+        linestring,
+    required TResult Function(List<LatLng> points, Color randomColor) polygon,
+    required TResult Function(
+            List<List<List<LatLng>>> points, Color randomColor)
+        multiPolygon,
+  }) {
+    return multiPolygon(points, randomColor);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(LatLng point, Color randomColor)? point,
+    TResult Function(List<LatLng> points, Color randomColor)? linestring,
+    TResult Function(List<LatLng> points, Color randomColor)? polygon,
+    TResult Function(List<List<List<LatLng>>> points, Color randomColor)?
+        multiPolygon,
+  }) {
+    return multiPolygon?.call(points, randomColor);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(LatLng point, Color randomColor)? point,
+    TResult Function(List<LatLng> points, Color randomColor)? linestring,
+    TResult Function(List<LatLng> points, Color randomColor)? polygon,
+    TResult Function(List<List<List<LatLng>>> points, Color randomColor)?
+        multiPolygon,
+    required TResult orElse(),
+  }) {
+    if (multiPolygon != null) {
+      return multiPolygon(points, randomColor);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GeoPoint value) point,
+    required TResult Function(GeoLinestring value) linestring,
+    required TResult Function(GeoPolygon value) polygon,
+    required TResult Function(GeoMultiPolygon value) multiPolygon,
+  }) {
+    return multiPolygon(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(GeoPoint value)? point,
+    TResult Function(GeoLinestring value)? linestring,
+    TResult Function(GeoPolygon value)? polygon,
+    TResult Function(GeoMultiPolygon value)? multiPolygon,
+  }) {
+    return multiPolygon?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GeoPoint value)? point,
+    TResult Function(GeoLinestring value)? linestring,
+    TResult Function(GeoPolygon value)? polygon,
+    TResult Function(GeoMultiPolygon value)? multiPolygon,
+    required TResult orElse(),
+  }) {
+    if (multiPolygon != null) {
+      return multiPolygon(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GeoMultiPolygon extends GeoGeometry {
+  factory GeoMultiPolygon(List<List<List<LatLng>>> points, Color randomColor) =
+      _$GeoMultiPolygon;
+  GeoMultiPolygon._() : super._();
+
+  List<List<List<LatLng>>> get points;
+  @override
+  Color get randomColor;
+  @override
+  @JsonKey(ignore: true)
+  $GeoMultiPolygonCopyWith<GeoMultiPolygon> get copyWith =>
       throw _privateConstructorUsedError;
 }

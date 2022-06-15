@@ -110,6 +110,13 @@ class FormattedLocation with _$FormattedLocation {
           "type": "Polygon",
           "coordinates": polygon.map((e) => e.toGeoPoint()).toList(),
         },
+        multiPolygon: (multiPolygon, _) => {
+          "type": "Polygon",
+          "coordinates": multiPolygon
+              .map((e) => e.map((k) => k.map((l) => l.toGeoPoint())))
+              .toList(),
+
+        },
       )
     };
   }
@@ -273,6 +280,8 @@ class GeoGeometry with _$GeoGeometry {
       GeoLinestring;
   factory GeoGeometry.polygon(List<LatLng> points, Color randomColor) =
       GeoPolygon;
+  factory GeoGeometry.multiPolygon(
+      List<List<List<LatLng>>> points, Color randomColor) = GeoMultiPolygon;
   static GeoGeometry fromMap(Map<String, dynamic> json) {
     var coords = json["coordinates"] as List;
     var color =
@@ -284,6 +293,18 @@ class GeoGeometry with _$GeoGeometry {
       }).toList();
       return GeoGeometry.polygon(
           points.expand((element) => element).toList(), color);
+    } else if (json["type"] == "MultiPolygon") {
+      List<List<List<LatLng>>> multiPoints = [];
+      coords.asMap().forEach((l1Index, l1) {
+        multiPoints.add([]);
+        l1.asMap().forEach((l2Index, l2) {
+          multiPoints[l1Index].add([]);
+          l2.asMap().forEach((l3Index, l3) {
+            multiPoints[l1Index][l2Index].add(_latLng(l3));
+          });
+        });
+      });
+      return GeoGeometry.multiPolygon(multiPoints, color);
     } else if (json["type"] == "LineString") {
       var points = coords.map((e) => _latLng(e)).toList();
       return GeoGeometry.linestring(points, color);
