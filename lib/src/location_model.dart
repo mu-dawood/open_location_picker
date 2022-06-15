@@ -115,7 +115,6 @@ class FormattedLocation with _$FormattedLocation {
           "coordinates": multiPolygon
               .map((e) => e.map((k) => k.map((l) => l.toGeoPoint())))
               .toList(),
-
         },
       )
     };
