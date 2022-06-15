@@ -13,7 +13,7 @@ class FormattedLocation with _$FormattedLocation {
   const FormattedLocation._();
   const factory FormattedLocation({
     ///reference to the Nominatim internal database ID
-    @Default('') String placeId,
+    required String placeId,
 
     /// latitude of the centroid of the object
     required double lat,
@@ -24,7 +24,7 @@ class FormattedLocation with _$FormattedLocation {
 
     ///reference to the OSM object
     required String osmType,
-    required String? icon,
+    String? icon,
 
     /// reference to the OSM object
     required int osmId,
@@ -56,12 +56,13 @@ class FormattedLocation with _$FormattedLocation {
     required Map<String, dynamic> namedetails,
 
     ///area of corner coordinates
-    required LatLngBounds boundingBox,
+    required LatLngBounds? boundingBox,
 
     /// GeoBounds of object
     required GeoGeometry geojson,
-    @Default({}) Map<String, String> names,
+    required Map<String, String> names,
   }) = _FormattedLocation;
+
   String get identifier => "$category-$osmId-$osmType";
   @override
   String toString() {
@@ -89,12 +90,13 @@ class FormattedLocation with _$FormattedLocation {
       "address": address.toJson(),
       "extratags": extratags,
       "namedetails": namedetails,
-      "boundingbox": [
-        boundingBox.southWest?.latitude,
-        boundingBox.northEast?.latitude,
-        boundingBox.southWest?.longitude,
-        boundingBox.northEast?.longitude
-      ],
+      if (boundingBox != null)
+        "boundingbox": [
+          boundingBox!.southWest?.latitude,
+          boundingBox!.northEast?.latitude,
+          boundingBox!.southWest?.longitude,
+          boundingBox!.northEast?.longitude
+        ],
       "geojson": geojson.when(
         point: (latlng, _) => {
           "type": "Point",
@@ -113,12 +115,64 @@ class FormattedLocation with _$FormattedLocation {
           "coordinates": multiPolygon
               .map((e) => e.map((k) => k.map((l) => l.toGeoPoint())))
               .toList(),
+
         },
       )
     };
   }
 
-  static FormattedLocation from(Map<String, dynamic> json) {
+  static FormattedLocation fromLatLng({
+    required double lat,
+    required double lon,
+    String placeId = '',
+    String addressType = '',
+    String category = '',
+    String licence = '',
+    String type = '',
+    String name = '',
+    String osmType = '',
+    String? displayName,
+    String? icon,
+    Address address = const Address(),
+    Map<String, String> names = const {},
+    Map<String, String> extratags = const {},
+    Map<String, String> namedetails = const {},
+    LatLngBounds? boundingBox,
+    GeoGeometry? geojson,
+    double importance = 0,
+    int placeRank = 0,
+    int osmId = 0,
+  }) {
+    return FormattedLocation(
+      placeId: placeId,
+      address: address,
+      names: names,
+      lat: lat,
+      lon: lon,
+      addressType: addressType,
+      boundingBox: boundingBox,
+      category: category,
+      displayName: displayName ?? '$lat, $lon',
+      extratags: extratags,
+      geojson: geojson ??
+          GeoGeometry.point(
+            LatLng(lon, lat),
+            Color((math.Random().nextDouble() * 0xFFFFFF).toInt())
+                .withOpacity(1.0),
+          ),
+      importance: importance,
+      licence: licence,
+      name: name,
+      namedetails: namedetails,
+      osmId: osmId,
+      osmType: osmType,
+      placeRank: placeRank,
+      type: type,
+      icon: icon,
+    );
+  }
+
+  static FormattedLocation fromJson(Map<String, dynamic> json) {
     if (json["error"] != null) {
       throw Exception(json["error"]);
     }
@@ -134,10 +188,14 @@ class FormattedLocation with _$FormattedLocation {
       lon: lon,
       addressType: json["addresstype"] ?? '',
       boundingBox: LatLngBounds.fromPoints([
-        LatLng(double.parse(boundingBox[0].toString()),
-            double.parse(boundingBox[2].toString())),
-        LatLng(double.parse(boundingBox[1].toString()),
-            double.parse(boundingBox[3].toString())),
+        LatLng(
+          double.parse(boundingBox[0].toString()),
+          double.parse(boundingBox[2].toString()),
+        ),
+        LatLng(
+          double.parse(boundingBox[1].toString()),
+          double.parse(boundingBox[3].toString()),
+        ),
       ]),
       category: json["category"] ?? '',
       displayName: json["display_name"] ?? '',
@@ -167,15 +225,15 @@ extension LatLngExt on LatLng {
 }
 
 class Address {
-  Address({
-    required this.highway,
-    required this.road,
-    required this.city,
-    required this.stateDistrict,
-    required this.state,
-    required this.postcode,
-    required this.country,
-    required this.countryCode,
+  const Address({
+    this.highway = "",
+    this.road = "",
+    this.city = "",
+    this.stateDistrict = "",
+    this.state = "",
+    this.postcode = "",
+    this.country = "",
+    this.countryCode = "",
   });
 
   final String highway;

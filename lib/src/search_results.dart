@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
+import 'package:latlong2/latlong.dart';
 
 import './location_model.dart';
 import 'bloc.dart';
@@ -9,8 +10,13 @@ import 'bloc.dart';
 class SearchResults extends StatelessWidget {
   final OpenMapBloc bloc;
   final ValueChanged<LatLngBounds> fitBounds;
-  const SearchResults({Key? key, required this.bloc, required this.fitBounds})
-      : super(key: key);
+  final ValueChanged<LatLng> moveTo;
+  const SearchResults({
+    Key? key,
+    required this.bloc,
+    required this.fitBounds,
+    required this.moveTo,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -62,16 +68,20 @@ class SearchResults extends StatelessWidget {
                 multi: (old) {
                   var exists = old
                       .any((element) => element.identifier == loc.identifier);
-                  var _new = exists
+                  var newList = exists
                       ? old
                           .map((e) => e.identifier == loc.identifier ? loc : e)
                           .toList()
                       : [loc, ...old];
                   bloc.emit(
-                      OpenMapState.selected(SelectedLocation.multi(_new)));
+                      OpenMapState.selected(SelectedLocation.multi(newList)));
                 },
               );
-              fitBounds(loc.boundingBox);
+              if (loc.boundingBox != null) {
+                fitBounds(loc.boundingBox!);
+              } else {
+                moveTo(LatLng(loc.lat, loc.lon));
+              }
             },
             title: Text(loc.toString()),
             leading: loc.icon == null

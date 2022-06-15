@@ -12,7 +12,8 @@ import 'options.dart';
 
 class _BaseFormField<T> extends StatefulWidget {
   final T? initialValue;
-  final Function(FormFieldState<T> field, SelectedLocation selectedLocation) onDone;
+  final Function(FormFieldState<T> field, SelectedLocation selectedLocation)
+      onDone;
   final FormFieldSetter<T>? onSaved;
   final FormFieldValidator<T>? validator;
   final InputDecoration decoration;
@@ -99,13 +100,15 @@ class __BaseFormFieldState<T> extends State<_BaseFormField<T>> {
       initialValue: widget.initialValue,
       onSaved: widget.onSaved,
       builder: (FormFieldState<T> field) {
-        var effectiveDecoration = widget.decoration.applyDefaults(Theme.of(context).inputDecorationTheme);
+        var effectiveDecoration = widget.decoration
+            .applyDefaults(Theme.of(context).inputDecorationTheme);
         var removeIcon = widget.removeIcon;
-        var _showRemove = !widget.isEmpty(field.value) && removeIcon != null;
+        var showRemove = !widget.isEmpty(field.value) && removeIcon != null;
         effectiveDecoration = effectiveDecoration.copyWith(
             errorText: field.errorText,
-            prefixIcon: effectiveDecoration.prefixIcon ?? const Icon(Icons.my_location_rounded),
-            suffixIcon: _showRemove
+            prefixIcon: effectiveDecoration.prefixIcon ??
+                const Icon(Icons.my_location_rounded),
+            suffixIcon: showRemove
                 ? IconButton(
                     onPressed: () {
                       widget.onRemove(field);
@@ -116,7 +119,9 @@ class __BaseFormFieldState<T> extends State<_BaseFormField<T>> {
                 : effectiveDecoration.suffixIcon);
 
         return ClipPath(
-          clipper: ShapeBorderClipper(shape: effectiveDecoration.border ?? const RoundedRectangleBorder()),
+          clipper: ShapeBorderClipper(
+              shape:
+                  effectiveDecoration.border ?? const RoundedRectangleBorder()),
           child: Material(
             color: Colors.transparent,
             child: InkWell(
@@ -146,14 +151,14 @@ class __BaseFormFieldState<T> extends State<_BaseFormField<T>> {
   void _pick(FormFieldState<T> field) async {
     var context = field.context;
 
-    var _bloc = _OpenMapBloc(widget.state(field.value));
+    var bloc = _OpenMapBloc(widget.state(field.value));
     try {
       await Navigator.push(
         context,
         MaterialPageRoute(
           builder: (_) => OpenStreetMaps(
             options: widget.options(field.value),
-            bloc: _bloc,
+            bloc: bloc,
             onDone: (value) {
               widget.onDone.call(field, value);
               Navigator.of(_).pop();
@@ -161,12 +166,12 @@ class __BaseFormFieldState<T> extends State<_BaseFormField<T>> {
           ),
         ),
       );
-      _bloc.close();
+      bloc.close();
     } catch (e) {
       if (mounted) {
         OpenMapSettings.of(context)?.onError?.call(context, e);
       }
-      _bloc.close();
+      bloc.close();
     }
   }
 }
@@ -185,6 +190,8 @@ class OpenMapPicker extends StatelessWidget {
   final TextAlignVertical? textAlignVertical;
   final FocusNode? focusNode;
   final bool expands;
+  final OpenMapOptions? options;
+
   const OpenMapPicker({
     Key? key,
     this.initialValue,
@@ -201,6 +208,7 @@ class OpenMapPicker extends StatelessWidget {
     this.textAlignVertical,
     this.focusNode,
     this.expands = false,
+    this.options,
   }) : super(key: key);
 
   @override
@@ -213,10 +221,11 @@ class OpenMapPicker extends StatelessWidget {
       focusNode: focusNode,
       initialValue: initialValue,
       options: (FormattedLocation? value) {
-        if (value == null) {
-          return OpenMapOptions();
+        if (value == null || value.boundingBox == null) {
+          return options ?? OpenMapOptions();
         } else {
-          return OpenMapOptions.bounds(bounds: value.boundingBox);
+          return options?.copyWithBounds(bounds: value.boundingBox!) ??
+              OpenMapOptions.bounds(bounds: value.boundingBox!);
         }
       },
       onDone: (field, value) {
@@ -277,7 +286,8 @@ class MultiOpenMapPicker extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return _BaseFormField<List<FormattedLocation>>(
-      state: (value) => OpenMapState.selected(SelectedLocation.multi(value ?? [])),
+      state: (value) =>
+          OpenMapState.selected(SelectedLocation.multi(value ?? [])),
       decoration: decoration,
       display: (value) {
         var v = value ?? [];
@@ -309,7 +319,8 @@ class MultiOpenMapPicker extends StatelessWidget {
           return OpenMapOptions();
         } else {
           return OpenMapOptions.bounds(
-            bounds: LatLngBounds.fromPoints(list.map((e) => e.toLatLng()).toList()),
+            bounds:
+                LatLngBounds.fromPoints(list.map((e) => e.toLatLng()).toList()),
           );
         }
       },
@@ -341,7 +352,8 @@ class _OpenMapBloc extends OpenMapBloc {
   _OpenMapBloc(this._state);
   @override
   OpenMapState get state => _state;
-  final StreamController<OpenMapState> _controller = StreamController<OpenMapState>.broadcast();
+  final StreamController<OpenMapState> _controller =
+      StreamController<OpenMapState>.broadcast();
   @override
   Stream<OpenMapState> get stream => _controller.stream;
 

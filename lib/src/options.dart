@@ -315,4 +315,68 @@ class OpenMapOptions {
       nePanBoundary: nePanBoundary ?? this.nePanBoundary,
     );
   }
+
+  OpenMapOptions copyWithBounds({
+    required LatLngBounds bounds,
+    FitBoundsOptions? boundsOptions,
+    Crs? crs,
+    double? zoom,
+    double? rotation,
+    bool? debugMultiFingerGestureWinner,
+    bool? enableMultiFingerGestureRace,
+    double? rotationThreshold,
+    int? rotationWinGestures,
+    double? pinchZoomThreshold,
+    int? pinchZoomWinGestures,
+    double? pinchMoveThreshold,
+    int? pinchMoveWinGestures,
+    bool? enableScrollWheel,
+    double? minZoom,
+    double? maxZoom,
+    int? interactiveFlags,
+    bool? allowPanning,
+    bool? allowPanningOnScrollingParent,
+    LongPressCallback? onLongPress,
+    PositionCallback? onPositionChanged,
+    List<MapPlugin>? plugins,
+    bool? slideOnBoundaries,
+    Size? screenSize,
+    bool? adaptiveBoundaries,
+    MapController? controller,
+    LatLng? swPanBoundary,
+    LatLng? nePanBoundary,
+  }) {
+    return OpenMapOptions.bounds(
+      crs: crs ?? this.crs,
+      zoom: zoom ?? this.zoom,
+      rotation: rotation ?? this.rotation,
+      debugMultiFingerGestureWinner:
+          debugMultiFingerGestureWinner ?? this.debugMultiFingerGestureWinner,
+      enableMultiFingerGestureRace:
+          enableMultiFingerGestureRace ?? this.enableMultiFingerGestureRace,
+      rotationThreshold: rotationThreshold ?? this.rotationThreshold,
+      rotationWinGestures: rotationWinGestures ?? this.rotationWinGestures,
+      pinchZoomThreshold: pinchZoomThreshold ?? this.pinchZoomThreshold,
+      pinchZoomWinGestures: pinchZoomWinGestures ?? this.pinchZoomWinGestures,
+      pinchMoveThreshold: pinchMoveThreshold ?? this.pinchMoveThreshold,
+      pinchMoveWinGestures: pinchMoveWinGestures ?? this.pinchMoveWinGestures,
+      enableScrollWheel: enableScrollWheel ?? this.enableScrollWheel,
+      minZoom: minZoom ?? this.minZoom,
+      maxZoom: maxZoom ?? this.maxZoom,
+      interactiveFlags: interactiveFlags ?? this.interactiveFlags,
+      allowPanning: allowPanning ?? this.allowPanning,
+      allowPanningOnScrollingParent:
+          allowPanningOnScrollingParent ?? this.allowPanningOnScrollingParent,
+      onLongPress: onLongPress ?? this.onLongPress,
+      onPositionChanged: onPositionChanged ?? this.onPositionChanged,
+      plugins: plugins ?? this.plugins,
+      slideOnBoundaries: slideOnBoundaries ?? this.slideOnBoundaries,
+      screenSize: screenSize ?? this.screenSize,
+      adaptiveBoundaries: adaptiveBoundaries ?? this.adaptiveBoundaries,
+      bounds: bounds,
+      boundsOptions: boundsOptions ?? _boundsOptions,
+      swPanBoundary: swPanBoundary ?? this.swPanBoundary,
+      nePanBoundary: nePanBoundary ?? this.nePanBoundary,
+    );
+  }
 }

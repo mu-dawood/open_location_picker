@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:http/http.dart' as http;
@@ -66,7 +67,7 @@ extension BlocExtension on OpenMapBloc {
     var response = await http.get(url);
 
     var parsed = jsonDecode(response.body);
-    return FormattedLocation.from(parsed);
+    return FormattedLocation.fromJson(parsed);
   }
 
   Future<List<FormattedLocation>> search({
@@ -92,10 +93,18 @@ extension BlocExtension on OpenMapBloc {
     var response = await http.get(url);
     var parsed = jsonDecode(response.body);
     if (parsed is List) {
-      return parsed.map((loc) {
-        var res = FormattedLocation.from(loc);
-        return res;
-      }).toList();
+      List<FormattedLocation> resList = [];
+      for (var loc in parsed) {
+        try {
+          var res = FormattedLocation.fromJson(loc);
+          resList.add(res);
+        } catch (e) {
+          if (kDebugMode) {
+            print(e);
+          }
+        }
+      }
+      return Future<List<FormattedLocation>>.value(resList);
     } else {
       throw Exception(parsed);
     }

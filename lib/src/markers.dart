@@ -13,7 +13,7 @@ class MyCurrentLocationMarker extends StatefulWidget {
   const MyCurrentLocationMarker({Key? key}) : super(key: key);
 
   @override
-  _MyCurrentLocationMarkerState createState() =>
+  State<MyCurrentLocationMarker> createState() =>
       _MyCurrentLocationMarkerState();
 }
 

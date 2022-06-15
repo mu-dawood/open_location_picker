@@ -47,7 +47,7 @@ class _MapAppBarState extends State<MapAppBar> {
       widget.bloc.emit(OpenMapState.selected(state.selected));
       return;
     }
-    var _q = q;
+    var query = q;
 
     timer = Timer(const Duration(milliseconds: 700), () async {
       var oldResults = state.maybeWhen(
@@ -59,7 +59,7 @@ class _MapAppBarState extends State<MapAppBar> {
       try {
         widget.bloc.emit(OpenMapState.searching(
           selected: state.selected,
-          query: _q,
+          query: query,
           oldResults: oldResults,
         ));
         Locale locale = Localizations.localeOf(context);
@@ -67,11 +67,11 @@ class _MapAppBarState extends State<MapAppBar> {
         var results = await widget.bloc.search(
           locale: locale,
           searchFilters: widget.searchFilters,
-          query: _q,
+          query: query,
         );
         widget.bloc.emit(OpenMapState.results(
           selected: state.selected,
-          query: _q,
+          query: query,
           searchResults: results,
         ));
       } catch (e) {
@@ -146,8 +146,8 @@ class _MapAppBarState extends State<MapAppBar> {
               },
             ),
             searching: (_) => Center(
-              child: widget.searchLoadingIndicator ?? const CircularProgressIndicator.adaptive()
-            ),
+                child: widget.searchLoadingIndicator ??
+                    const CircularProgressIndicator.adaptive()),
           ),
           backgroundColor: Theme.of(context).colorScheme.surface,
           titleTextStyle: Theme.of(context).textTheme.bodyText1,
