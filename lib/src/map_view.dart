@@ -283,12 +283,8 @@ class _OpenStreetMapsState extends State<OpenStreetMaps>
       mapController: _controller,
       children: [
         TileLayerWidget(
-          options: layerOptions(
-              isDark,
-              background,
-              widget.tileProvider ??
-                  settings?.defaultTileProvider ??
-                  const NonCachingNetworkTileProvider()),
+          options: layerOptions(isDark, background,
+              widget.tileProvider ?? settings?.defaultTileProvider),
         ),
         if (widget.bloc != null) ...[
           MapPolygons(bloc: widget.bloc!),
@@ -304,7 +300,7 @@ class _OpenStreetMapsState extends State<OpenStreetMaps>
   }
 
   TileLayerOptions _getLayerOptions(
-      bool isDark, Color background, TileProvider provider) {
+      bool isDark, Color background, TileProvider? provider) {
     return TileLayerOptions(
       urlTemplate: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
       subdomains: ['a', 'b', 'c'],

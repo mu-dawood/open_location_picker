@@ -15,7 +15,7 @@ typedef LocationMarkerCallback = Marker Function(
 typedef CurrentLocationMarkerCallback = Marker Function(
     BuildContext context, LatLng location);
 typedef TileLayerOptionsCallBack = TileLayerOptions Function(
-    bool isDark, Color background, TileProvider provider);
+    bool isDark, Color background, TileProvider? provider);
 
 /// Global settings for map
 /// You can wrap material app with it or wrap entire screen to override the globals
@@ -34,7 +34,7 @@ class OpenMapSettings extends InheritedWidget {
     this.myLocationButton,
     this.searchFilters,
     this.reverseZoom,
-    this.defaultTileProvider = const NonCachingNetworkTileProvider(),
+    this.defaultTileProvider,
     this.mapViewConfig,
   }) : super(key: key, child: child);
 
@@ -106,7 +106,7 @@ class OpenMapSettings extends InheritedWidget {
   ///   }
   /// }
   /// ```
-  final TileProvider defaultTileProvider;
+  final TileProvider? defaultTileProvider;
 
   ///Let you define visual map configurations
   final MapViewConfig? mapViewConfig;

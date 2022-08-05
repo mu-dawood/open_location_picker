@@ -155,7 +155,7 @@ class FormattedLocation with _$FormattedLocation {
       extratags: extratags,
       geojson: geojson ??
           GeoGeometry.point(
-            LatLng(lon, lat),
+            LatLng(lat, lon),
             Color((math.Random().nextDouble() * 0xFFFFFF).toInt())
                 .withOpacity(1.0),
           ),
