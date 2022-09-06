@@ -43,8 +43,8 @@ class SelectedLocation with _$SelectedLocation {
       _Multi;
 }
 
-extension BlocExtension on OpenMapBloc {
-  Future<FormattedLocation> reverseLocation({
+class Reverse {
+  static Future<FormattedLocation> reverseLocation({
     required Locale locale,
     ReverseZoom? zoom,
     required LatLng location,
@@ -70,7 +70,7 @@ extension BlocExtension on OpenMapBloc {
     return FormattedLocation.fromJson(parsed);
   }
 
-  Future<List<FormattedLocation>> search({
+  static Future<List<FormattedLocation>> search({
     required Locale locale,
     required String query,
     SearchFilters? searchFilters,

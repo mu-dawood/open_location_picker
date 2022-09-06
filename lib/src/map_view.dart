@@ -7,6 +7,7 @@ import './markers.dart';
 import './my_location_button.dart';
 import './search_results.dart';
 import 'bloc.dart';
+import 'location_model.dart';
 import 'map_view_settings.dart';
 import 'options.dart';
 import 'reverse_options.dart';
@@ -79,6 +80,27 @@ class OpenStreetMaps extends StatefulWidget {
 
   @override
   State<OpenStreetMaps> createState() => _OpenStreetMapsState();
+
+  static Future<FormattedLocation> getMyCurrentLocation(
+      BuildContext context) async {
+    var getCurrentLocation = OpenMapSettings.of(context)?.getCurrentLocation;
+    if (getCurrentLocation == null) {
+      throw FlutterError('You should add getCurrentLocation in map config');
+    }
+    var settings = OpenMapSettings.of(context);
+    Locale locale = Localizations.localeOf(context);
+    var latlng = await getCurrentLocation();
+    if (latlng == null) {
+      throw FlutterError('Can not detect your current location');
+    }
+
+    var zoom = settings?.reverseZoom;
+    return await Reverse.reverseLocation(
+      locale: locale,
+      location: latlng,
+      zoom: zoom,
+    );
+  }
 }
 
 class _OpenStreetMapsState extends State<OpenStreetMaps>
@@ -102,7 +124,7 @@ class _OpenStreetMapsState extends State<OpenStreetMaps>
         var settings = OpenMapSettings.of(context);
         Locale locale = Localizations.localeOf(context);
         var zoom = (widget.reverseZoom ?? settings?.reverseZoom);
-        var result = await bloc.reverseLocation(
+        var result = await Reverse.reverseLocation(
           locale: locale,
           location: latLng,
           zoom: zoom,

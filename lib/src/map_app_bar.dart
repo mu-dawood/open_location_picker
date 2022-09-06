@@ -64,7 +64,7 @@ class _MapAppBarState extends State<MapAppBar> {
         ));
         Locale locale = Localizations.localeOf(context);
 
-        var results = await widget.bloc.search(
+        var results = await Reverse.search(
           locale: locale,
           searchFilters: widget.searchFilters,
           query: query,
