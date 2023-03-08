@@ -1,7 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:open_location_picker/open_location_picker.dart';
+
+import '../open_location_picker.dart';
 
 /// search app bar
 class MapAppBar extends StatefulWidget with PreferredSizeWidget {
@@ -145,12 +146,10 @@ class _MapAppBarState extends State<MapAppBar> {
                 Navigator.pop(context);
               },
             ),
-            searching: (_) => Center(
-                child: widget.searchLoadingIndicator ??
-                    const CircularProgressIndicator.adaptive()),
+            searching: (_) => Center(child: widget.searchLoadingIndicator ?? const CircularProgressIndicator.adaptive()),
           ),
           backgroundColor: Theme.of(context).colorScheme.surface,
-          titleTextStyle: Theme.of(context).textTheme.bodyText1,
+          titleTextStyle: Theme.of(context).textTheme.bodyLarge,
           iconTheme: Theme.of(context).iconTheme,
           elevation: state.maybeMap(
             orElse: () => 4,

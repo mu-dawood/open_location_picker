@@ -28,20 +28,17 @@ class SelectedLocationView extends StatelessWidget {
         child: StreamBuilder(
           stream: bloc.stream,
           initialData: bloc.state,
-          builder:
-              (BuildContext context, AsyncSnapshot<OpenMapState> snapshot) {
+          builder: (BuildContext context, AsyncSnapshot<OpenMapState> snapshot) {
             var selected = snapshot.data!.selected;
             return selected.when(
               multi: (List<FormattedLocation> values) {
                 return ConstrainedBox(
-                  constraints: BoxConstraints(
-                      maxHeight: MediaQuery.of(context).size.height / 3),
+                  constraints: BoxConstraints(maxHeight: MediaQuery.of(context).size.height / 3),
                   child: Scrollbar(
                     child: ListView(
                       shrinkWrap: true,
                       children: ListTile.divideTiles(
-                        tiles:
-                            values.map((e) => _buildTile(context, e, selected)),
+                        tiles: values.map((e) => _buildTile(context, e, selected)),
                         context: context,
                       ).toList(),
                     ),
@@ -59,8 +56,7 @@ class SelectedLocationView extends StatelessWidget {
     );
   }
 
-  Widget _buildTile(
-      BuildContext context, FormattedLocation e, SelectedLocation state) {
+  Widget _buildTile(BuildContext context, FormattedLocation e, SelectedLocation state) {
     return ListTile(
       title: Text(e.toString()),
       leading: Icon(
@@ -77,16 +73,14 @@ class SelectedLocationView extends StatelessWidget {
         onPressed: () {
           state.when(
             single: (sub) {
-              bloc.emit(
-                  const OpenMapState.selected(SelectedLocation.single(null)));
+              bloc.emit(const OpenMapState.selected(SelectedLocation.single(null)));
             },
             multi: (list) {
-              bloc.emit(OpenMapState.selected(SelectedLocation.multi(
-                  list.where((element) => element != e).toList())));
+              bloc.emit(OpenMapState.selected(SelectedLocation.multi(list.where((element) => element != e).toList())));
             },
           );
         },
-        color: Theme.of(context).errorColor,
+        color: Theme.of(context).colorScheme.error,
       ),
       onTap: () {
         if (e.boundingBox != null) {
