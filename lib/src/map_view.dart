@@ -14,7 +14,8 @@ import 'search_results.dart';
 import 'selected_location_view.dart';
 import 'shapes.dart';
 
-typedef MyLocationButtonCallBack = Widget Function(Function(LatLng destLocation, [double destZoom]) callback);
+typedef MyLocationButtonCallBack = Widget Function(
+    Function(LatLng destLocation, [double destZoom]) callback);
 
 /// Map screen
 /// - it can be used to display location
@@ -80,7 +81,8 @@ class OpenStreetMaps extends StatefulWidget {
   @override
   State<OpenStreetMaps> createState() => _OpenStreetMapsState();
 
-  static Future<FormattedLocation> getMyCurrentLocation(BuildContext context) async {
+  static Future<FormattedLocation> getMyCurrentLocation(
+      BuildContext context) async {
     var getCurrentLocation = OpenMapSettings.of(context)?.getCurrentLocation;
     if (getCurrentLocation == null) {
       throw FlutterError('You should add getCurrentLocation in map config');
@@ -101,7 +103,8 @@ class OpenStreetMaps extends StatefulWidget {
   }
 }
 
-class _OpenStreetMapsState extends State<OpenStreetMaps> with TickerProviderStateMixin {
+class _OpenStreetMapsState extends State<OpenStreetMaps>
+    with TickerProviderStateMixin {
   late final _MapControllerImpl _controller;
   late final _MyAnimationController _animationController;
   @override
@@ -131,8 +134,13 @@ class _OpenStreetMapsState extends State<OpenStreetMaps> with TickerProviderStat
             bloc.emit(OpenMapState.selected(SelectedLocation.single(result)));
           },
           multi: (old) {
-            var exists = old.any((element) => element.identifier == result.identifier);
-            var newList = exists ? old.map((e) => e.identifier == result.identifier ? result : e).toList() : [result, ...old];
+            var exists =
+                old.any((element) => element.identifier == result.identifier);
+            var newList = exists
+                ? old
+                    .map((e) => e.identifier == result.identifier ? result : e)
+                    .toList()
+                : [result, ...old];
             bloc.emit(OpenMapState.selected(SelectedLocation.multi(newList)));
           },
         );
@@ -148,7 +156,8 @@ class _OpenStreetMapsState extends State<OpenStreetMaps> with TickerProviderStat
     }
   }
 
-  void _onMapCreated(MapController controller, OpenMapSettings? settings) async {
+  void _onMapCreated(
+      MapController controller, OpenMapSettings? settings) async {
     try {
       if (widget.options.center != null) return;
       if (widget.options.bounds != null) return;
@@ -236,7 +245,8 @@ class _OpenStreetMapsState extends State<OpenStreetMaps> with TickerProviderStat
     if (myCurrentLocation == null && settings?.getCurrentLocation != null) {
       myCurrentLocation = MyLocationButton(
         moveTo: moveTo,
-        selectCurrentLocationIcon: settings?.mapViewConfig?.selectCurrentLocationIcon,
+        selectCurrentLocationIcon:
+            settings?.mapViewConfig?.selectCurrentLocationIcon,
       );
     }
     var options = widget.options.create(
@@ -257,10 +267,13 @@ class _OpenStreetMapsState extends State<OpenStreetMaps> with TickerProviderStat
             searchFilters: widget.searchFilters ?? settings?.searchFilters,
             zoomInIcon: settings?.mapViewConfig?.zoomInIcon,
             zoomOutIcon: settings?.mapViewConfig?.zoomOutIcon,
-            searchLoadingIndicator: settings?.mapViewConfig?.searchLoadingIndicator,
+            searchLoadingIndicator:
+                settings?.mapViewConfig?.searchLoadingIndicator,
             searchDoneIcon: settings?.mapViewConfig?.searchDoneIcon,
             mapBackIcon: settings?.mapViewConfig?.mapBackIcon,
-            searchHint: widget.searchHint ?? settings?.searchHint?.call(context) ?? 'Search here',
+            searchHint: widget.searchHint ??
+                settings?.searchHint?.call(context) ??
+                'Search here',
           ),
           bottomNavigationBar: SelectedLocationView(
             bloc: bloc,
@@ -294,7 +307,8 @@ class _OpenStreetMapsState extends State<OpenStreetMaps> with TickerProviderStat
       mapController: _controller,
       children: [
         TileLayerWidget(
-          options: layerOptions(isDark, background, widget.tileProvider ?? settings?.defaultTileProvider),
+          options: layerOptions(isDark, background,
+              widget.tileProvider ?? settings?.defaultTileProvider),
         ),
         if (widget.bloc != null) ...[
           MapPolygons(bloc: widget.bloc!),
@@ -302,12 +316,15 @@ class _OpenStreetMapsState extends State<OpenStreetMaps> with TickerProviderStat
           MapPolylines(bloc: widget.bloc!),
           MapMarkers(bloc: widget.bloc!),
         ],
-        if (settings?.currentLocationMarker != null || settings?.getLocationStream != null) const MyCurrentLocationMarker()
+        if (settings?.currentLocationMarker != null ||
+            settings?.getLocationStream != null)
+          const MyCurrentLocationMarker()
       ],
     );
   }
 
-  TileLayerOptions _getLayerOptions(bool isDark, Color background, TileProvider? provider) {
+  TileLayerOptions _getLayerOptions(
+      bool isDark, Color background, TileProvider? provider) {
     return TileLayerOptions(
       urlTemplate: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
       subdomains: ['a', 'b', 'c'],
@@ -324,7 +341,8 @@ class _OpenStreetMapsState extends State<OpenStreetMaps> with TickerProviderStat
 }
 
 class _MyAnimationController extends AnimationController {
-  _MyAnimationController(TickerProvider vsync) : super(vsync: vsync, duration: const Duration(milliseconds: 400));
+  _MyAnimationController(TickerProvider vsync)
+      : super(vsync: vsync, duration: const Duration(milliseconds: 400));
 
   @override
   void reset() {

@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import '../open_location_picker.dart';
 
 /// search app bar
-class MapAppBar extends StatefulWidget with PreferredSizeWidget {
+class MapAppBar extends StatefulWidget implements PreferredSizeWidget {
   final OpenMapBloc bloc;
   final MapController controller;
   final ValueChanged<SelectedLocation>? onDone;
@@ -146,7 +146,9 @@ class _MapAppBarState extends State<MapAppBar> {
                 Navigator.pop(context);
               },
             ),
-            searching: (_) => Center(child: widget.searchLoadingIndicator ?? const CircularProgressIndicator.adaptive()),
+            searching: (_) => Center(
+                child: widget.searchLoadingIndicator ??
+                    const CircularProgressIndicator.adaptive()),
           ),
           backgroundColor: Theme.of(context).colorScheme.surface,
           titleTextStyle: Theme.of(context).textTheme.bodyLarge,
@@ -166,13 +168,14 @@ class _MapAppBarState extends State<MapAppBar> {
                   );
                 }),
             StreamBuilder(
-                stream: widget.controller.mapEventStream,
-                builder: (context, snapshot) {
-                  return IconButton(
-                    onPressed: (widget.controller.zoom > 1) ? zoomOut : null,
-                    icon: Icon(widget.zoomOutIcon ?? Icons.zoom_out_rounded),
-                  );
-                }),
+              stream: widget.controller.mapEventStream,
+              builder: (context, snapshot) {
+                return IconButton(
+                  onPressed: (widget.controller.zoom > 1) ? zoomOut : null,
+                  icon: Icon(widget.zoomOutIcon ?? Icons.zoom_out_rounded),
+                );
+              },
+            ),
             state.when(
               selected: _doneButton,
               reversing: (value, _) => _doneButton(value),
