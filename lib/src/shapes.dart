@@ -28,8 +28,8 @@ class MapPolygons extends StatelessWidget {
           );
         }).toList();
 
-        return PolygonLayerWidget(
-          options: PolygonLayerOptions(polygons: list),
+        return PolygonLayer(
+          polygons: list,
         );
       },
     );
@@ -56,8 +56,8 @@ class MapPolylines extends StatelessWidget {
             isDotted: true,
           );
         }).toList();
-        return PolylineLayerWidget(
-          options: PolylineLayerOptions(polylines: list),
+        return PolylineLayer(
+          polylines: list,
         );
       },
     );
@@ -85,8 +85,7 @@ class MapCircles extends StatelessWidget {
             radius: 50,
           );
         }).toList();
-        return CircleLayerWidget(
-          options: CircleLayerOptions(circles: list),
+        return CircleLayer(circles: list,
         );
       },
     );
