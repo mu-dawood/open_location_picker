@@ -27,25 +27,25 @@ class MyApp extends StatelessWidget {
   }
 
   Future<LatLng?> _getCurrentLocationUsingLocationPackage() async {
-    bool _serviceEnabled;
-    PermissionStatus _permissionGranted;
-    _serviceEnabled = await location.serviceEnabled();
-    if (!_serviceEnabled) {
-      _serviceEnabled = await location.requestService();
-      if (!_serviceEnabled) {
+    bool serviceEnabled;
+    PermissionStatus permissionGranted;
+    serviceEnabled = await location.serviceEnabled();
+    if (!serviceEnabled) {
+      serviceEnabled = await location.requestService();
+      if (!serviceEnabled) {
         throw Exception("Service is not enabled");
       }
     }
-    _permissionGranted = await location.hasPermission();
-    if (_permissionGranted == PermissionStatus.denied) {
-      _permissionGranted = await location.requestPermission();
-      if (_permissionGranted != PermissionStatus.granted) {
+    permissionGranted = await location.hasPermission();
+    if (permissionGranted == PermissionStatus.denied) {
+      permissionGranted = await location.requestPermission();
+      if (permissionGranted != PermissionStatus.granted) {
         throw Exception("Permission not granted");
       }
     }
-    var _locationData = await location.getLocation();
+    var locationData = await location.getLocation();
 
-    return LatLng(_locationData.latitude!, _locationData.longitude!);
+    return LatLng(locationData.latitude!, locationData.longitude!);
   }
 
   Future<LatLng> _determinePosition() async {

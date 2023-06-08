@@ -14,7 +14,7 @@ typedef LocationMarkerCallback = Marker Function(
     BuildContext context, FormattedLocation location);
 typedef CurrentLocationMarkerCallback = Marker Function(
     BuildContext context, LatLng location);
-typedef TileLayerOptionsCallBack = TileLayerOptions Function(
+typedef TileLayerOptionsCallBack = Map<String, String> Function(
     bool isDark, Color background, TileProvider? provider);
 
 /// Global settings for map
@@ -29,7 +29,7 @@ class OpenMapSettings extends InheritedWidget {
     this.onError,
     this.locationMarker,
     this.currentLocationMarker,
-    this.getMapTileOptions,
+    this.tileLayer,
     this.searchHint,
     this.myLocationButton,
     this.searchFilters,
@@ -57,7 +57,7 @@ class OpenMapSettings extends InheritedWidget {
   ///   tileProvider: provider,
   /// );
   /// ```
-  final TileLayerOptionsCallBack? getMapTileOptions;
+  final TileLayer? tileLayer;
 
   /// Limiting search results to
   final SearchFilters? searchFilters;
