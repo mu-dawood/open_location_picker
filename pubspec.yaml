@@ -22,4 +22,5 @@ dev_dependencies:
   freezed: ^2.0.3+1
   build_runner: ^2.1.5
 
+
 flutter:

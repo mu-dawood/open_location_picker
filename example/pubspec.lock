@@ -121,10 +121,10 @@ packages:
     dependency: transitive
     description:
       name: freezed_annotation
-      sha256: "5a5d169eaeb8e967974c4f80aa0e3fcb74cd9e1b8322b60b8f143755a3814d88"
+      sha256: aeac15850ef1b38ee368d4c53ba9a847e900bb2c53a4db3f6881cbb3cb684338
       url: "https://pub.dev"
     source: hosted
-    version: "2.0.3"
+    version: "2.2.0"
   geolocator:
     dependency: "direct main"
     description:
@@ -209,10 +209,10 @@ packages:
     dependency: transitive
     description:
       name: json_annotation
-      sha256: "2639efc0237c7b71c6584696c0847ea4e4733ddaf571ae9c79d5295e8ae17272"
+      sha256: b10a7b2ff83d83c777edba3c6a0f97045ddadd56c944e1a23a3fdf43a1bf4467
       url: "https://pub.dev"
     source: hosted
-    version: "4.4.0"
+    version: "4.8.1"
   latlong2:
     dependency: transitive
     description:
