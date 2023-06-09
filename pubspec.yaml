@@ -10,9 +10,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_map: ^4.0.0
+  flutter_map: ^2.2.0
   freezed_annotation: ^2.2.0
-  http: ^1.0.0
+  http: ^0.13.4
   latlong2: ^0.8.1
 
 dev_dependencies:
