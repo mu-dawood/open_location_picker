@@ -91,7 +91,7 @@ class OpenMapOptions {
   /// see [InteractiveFlag] for custom settings
   final int? interactiveFlags;
 
-  final bool? absorbPanEventsOnScrollables;
+  final LatLngBounds? maxBounds;
   final bool? keepAlive;
 
   final LongPressCallback? onLongPress;
@@ -123,7 +123,7 @@ class OpenMapOptions {
     this.minZoom,
     this.maxZoom,
     this.interactiveFlags,
-    this.absorbPanEventsOnScrollables,
+    this.maxBounds,
     this.keepAlive,
     this.onLongPress,
     this.onPositionChanged,
@@ -153,7 +153,7 @@ class OpenMapOptions {
     this.minZoom,
     this.maxZoom,
     this.interactiveFlags,
-    this.absorbPanEventsOnScrollables,
+    this.maxBounds,
     this.keepAlive,
     this.onLongPress,
     this.onPositionChanged,
@@ -179,7 +179,7 @@ class OpenMapOptions {
             settings: null) ??
         MapOptions();
     return MapOptions(
-      absorbPanEventsOnScrollables: absorbPanEventsOnScrollables ?? def.absorbPanEventsOnScrollables,
+      maxBounds: maxBounds ?? def.maxBounds,
       keepAlive:
           keepAlive ?? def.keepAlive,
       crs: crs ?? def.crs,
@@ -230,7 +230,7 @@ class OpenMapOptions {
     double? minZoom,
     double? maxZoom,
     int? interactiveFlags,
-    bool? absorbPanEventsOnScrollables,
+    LatLngBounds? maxBounds,
     bool? keepAlive,
     LongPressCallback? onLongPress,
     PositionCallback? onPositionChanged,
@@ -259,7 +259,7 @@ class OpenMapOptions {
         minZoom: minZoom ?? this.minZoom,
         maxZoom: maxZoom ?? this.maxZoom,
         interactiveFlags: interactiveFlags ?? this.interactiveFlags,
-        absorbPanEventsOnScrollables: absorbPanEventsOnScrollables ?? this.absorbPanEventsOnScrollables,
+        maxBounds: maxBounds ?? this.maxBounds,
         keepAlive:
             keepAlive ?? this.keepAlive,
         onLongPress: onLongPress ?? this.onLongPress,
@@ -291,7 +291,7 @@ class OpenMapOptions {
       minZoom: minZoom ?? this.minZoom,
       maxZoom: maxZoom ?? this.maxZoom,
       interactiveFlags: interactiveFlags ?? this.interactiveFlags,
-      absorbPanEventsOnScrollables: absorbPanEventsOnScrollables ?? this.absorbPanEventsOnScrollables,
+      maxBounds: maxBounds ?? this.maxBounds,
       keepAlive:
           keepAlive ?? this.keepAlive,
       onLongPress: onLongPress ?? this.onLongPress,
@@ -323,7 +323,7 @@ class OpenMapOptions {
     double? minZoom,
     double? maxZoom,
     int? interactiveFlags,
-    bool? absorbPanEventsOnScrollables,
+    LatLngBounds? maxBounds,
     bool? keepAlive,
     LongPressCallback? onLongPress,
     PositionCallback? onPositionChanged,
@@ -351,7 +351,7 @@ class OpenMapOptions {
       minZoom: minZoom ?? this.minZoom,
       maxZoom: maxZoom ?? this.maxZoom,
       interactiveFlags: interactiveFlags ?? this.interactiveFlags,
-      absorbPanEventsOnScrollables: absorbPanEventsOnScrollables ?? this.absorbPanEventsOnScrollables,
+      maxBounds: maxBounds ?? this.maxBounds,
       keepAlive:
           keepAlive ?? this.keepAlive,
       onLongPress: onLongPress ?? this.onLongPress,

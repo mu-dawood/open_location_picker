@@ -221,9 +221,6 @@ class _OpenStreetMapsState extends State<OpenStreetMaps>
   }
 
   void fitBounds(LatLngBounds bounds) {
-    if (!bounds.isValid) {
-      throw Exception('Bounds are not valid.');
-    }
     var target = _controller._state.getBoundsCenterZoom(
       bounds,
       const FitBoundsOptions(padding: EdgeInsets.all(12.0)),
