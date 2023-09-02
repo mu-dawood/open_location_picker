@@ -111,10 +111,10 @@ packages:
     dependency: transitive
     description:
       name: flutter_map
-      sha256: "09010e452bcd8c57ade1b936b79643c4fd599f93b00d1696630f0b919b6f374a"
+      sha256: "5286f72f87deb132daa1489442d6cc46e986fc105cb727d9ae1b602b35b1d1f3"
       url: "https://pub.dev"
     source: hosted
-    version: "2.2.0"
+    version: "5.0.0"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -129,10 +129,10 @@ packages:
     dependency: transitive
     description:
       name: freezed_annotation
-      sha256: aeac15850ef1b38ee368d4c53ba9a847e900bb2c53a4db3f6881cbb3cb684338
+      sha256: c3fd9336eb55a38cc1bbd79ab17573113a8deccd0ecbbf926cca3c62803b5c2d
       url: "https://pub.dev"
     source: hosted
-    version: "2.2.0"
+    version: "2.4.1"
   geolocator:
     dependency: "direct main"
     description:
@@ -185,10 +185,10 @@ packages:
     dependency: transitive
     description:
       name: http
-      sha256: "2ed163531e071c2c6b7c659635112f24cb64ecbebf6af46b550d536c0b1aa112"
+      sha256: "759d1a329847dd0f39226c688d3e06a6b8679668e350e2891a6474f8b4bb8525"
       url: "https://pub.dev"
     source: hosted
-    version: "0.13.4"
+    version: "1.1.0"
   http_parser:
     dependency: transitive
     description:
@@ -217,10 +217,10 @@ packages:
     dependency: transitive
     description:
       name: latlong2
-      sha256: "408993a0e3f46e79ce1f129e4cb0386eef6d48dfa6394939ecacfbd7049154ec"
+      sha256: "18712164760cee655bc790122b0fd8f3d5b3c36da2cb7bf94b68a197fbb0811b"
       url: "https://pub.dev"
     source: hosted
-    version: "0.8.1"
+    version: "0.9.0"
   lints:
     dependency: transitive
     description:
@@ -308,22 +308,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.1"
-  positioned_tap_detector_2:
-    dependency: transitive
-    description:
-      name: positioned_tap_detector_2
-      sha256: "52e06863ad3e1f82b058fd05054fc8c9caeeb3b47d5cea7a24bd9320746059c1"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.0.4"
   proj4dart:
     dependency: transitive
     description:
       name: proj4dart
-      sha256: ecece8694cb026917f9e90c0e0593043c65051e516aa9e6cd0f6f8c48485262e
+      sha256: c8a659ac9b6864aa47c171e78d41bbe6f5e1d7bd790a5814249e6b68bc44324e
       url: "https://pub.dev"
     source: hosted
-    version: "2.0.0"
+    version: "2.1.0"
   provider:
     dependency: transitive
     description:
@@ -332,14 +324,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.0.1"
-  quiver:
-    dependency: transitive
-    description:
-      name: quiver
-      sha256: "616b691d1c8f5c53b7b39ce3542f6a25308d7900bf689d0210e72a644a10387e"
-      url: "https://pub.dev"
-    source: hosted
-    version: "3.0.1+1"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -393,14 +377,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.6.0"
-  tuple:
-    dependency: transitive
-    description:
-      name: tuple
-      sha256: fe3ae4f0dca3f9aac0888e2e0d117b642ce283a82d7017b54136290c0a3b0dd3
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.0.0"
   typed_data:
     dependency: transitive
     description:
@@ -451,4 +427,4 @@ packages:
     version: "2.0.0"
 sdks:
   dart: ">=3.1.0-185.0.dev <4.0.0"
-  flutter: ">=2.8.0"
+  flutter: ">=3.10.0"
