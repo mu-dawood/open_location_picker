@@ -58,8 +58,7 @@ class _MyCurrentLocationMarkerState extends State<MyCurrentLocationMarker> {
   Widget build(BuildContext context) {
     var settings = OpenMapSettings.of(context);
     var currentMarker = settings?.currentLocationMarker;
-    return MarkerLayerWidget(
-      options: MarkerLayerOptions(
+    return MarkerLayer(
         markers: [
           if (_currentLocation != null)
             currentMarker?.call(context, _currentLocation!) ??
@@ -84,7 +83,6 @@ class _MyCurrentLocationMarkerState extends State<MyCurrentLocationMarker> {
                   ),
                 ),
         ],
-      ),
     );
   }
 }
@@ -119,8 +117,7 @@ class MapMarkers extends StatelessWidget {
       LatLng? loadingPoint) {
     var settings = OpenMapSettings.of(context);
     var marker = settings?.locationMarker;
-    return MarkerLayerWidget(
-      options: MarkerLayerOptions(
+    return MarkerLayer(
         markers: [
           if (loadingPoint != null)
             Marker(
@@ -145,7 +142,6 @@ class MapMarkers extends StatelessWidget {
                   ),
                 ),
         ],
-      ),
     );
   }
 }

@@ -66,7 +66,7 @@ class Reverse {
     );
     var response = await http.get(url);
 
-    var parsed = jsonDecode(response.body);
+    var parsed = jsonDecode(utf8.decode(response.bodyBytes));
     return FormattedLocation.fromJson(parsed);
   }
 
@@ -91,7 +91,7 @@ class Reverse {
       },
     );
     var response = await http.get(url);
-    var parsed = jsonDecode(response.body);
+    var parsed = jsonDecode(utf8.decode(response.bodyBytes));
     if (parsed is List) {
       List<FormattedLocation> resList = [];
       for (var loc in parsed) {

@@ -91,12 +91,11 @@ class OpenMapOptions {
   /// see [InteractiveFlag] for custom settings
   final int? interactiveFlags;
 
-  final bool? allowPanning;
-  final bool? allowPanningOnScrollingParent;
+  final LatLngBounds? maxBounds;
+  final bool? keepAlive;
 
   final LongPressCallback? onLongPress;
   final PositionCallback? onPositionChanged;
-  final List<MapPlugin>? plugins;
   final bool? slideOnBoundaries;
   final Size? screenSize;
   final bool? adaptiveBoundaries;
@@ -124,11 +123,10 @@ class OpenMapOptions {
     this.minZoom,
     this.maxZoom,
     this.interactiveFlags,
-    this.allowPanning,
-    this.allowPanningOnScrollingParent,
+    this.maxBounds,
+    this.keepAlive,
     this.onLongPress,
     this.onPositionChanged,
-    this.plugins,
     this.slideOnBoundaries,
     this.screenSize,
     this.adaptiveBoundaries,
@@ -155,11 +153,10 @@ class OpenMapOptions {
     this.minZoom,
     this.maxZoom,
     this.interactiveFlags,
-    this.allowPanning,
-    this.allowPanningOnScrollingParent,
+    this.maxBounds,
+    this.keepAlive,
     this.onLongPress,
     this.onPositionChanged,
-    this.plugins,
     this.slideOnBoundaries,
     this.screenSize,
     this.adaptiveBoundaries,
@@ -172,21 +169,19 @@ class OpenMapOptions {
         _bounds = bounds;
 
   MapOptions create({
-    required MapCreatedCallback onMapCreated,
-    required MapController controller,
+    required void Function()? onMapReady,
     required TapCallback onTap,
     OpenMapSettings? settings,
   }) {
     var def = settings?.defaultOptions?.create(
-            onMapCreated: onMapCreated,
-            controller: controller,
+            onMapReady: onMapReady,
             onTap: onTap,
             settings: null) ??
         MapOptions();
     return MapOptions(
-      allowPanning: allowPanning ?? def.allowPanning,
-      allowPanningOnScrollingParent:
-          allowPanningOnScrollingParent ?? def.allowPanningOnScrollingParent,
+      maxBounds: maxBounds ?? def.maxBounds,
+      keepAlive:
+          keepAlive ?? def.keepAlive,
       crs: crs ?? def.crs,
       center: _center ?? def.center,
       bounds: _bounds ?? def.bounds,
@@ -208,14 +203,12 @@ class OpenMapOptions {
       maxZoom: maxZoom ?? def.maxZoom,
       interactiveFlags: interactiveFlags ?? def.interactiveFlags,
       onLongPress: onLongPress ?? def.onLongPress,
-      onMapCreated: onMapCreated,
+      onMapReady: onMapReady,
       onTap: onTap,
       onPositionChanged: onPositionChanged ?? def.onPositionChanged,
-      plugins: plugins ?? def.plugins,
       slideOnBoundaries: slideOnBoundaries ?? def.slideOnBoundaries,
       adaptiveBoundaries: adaptiveBoundaries ?? def.adaptiveBoundaries,
       screenSize: screenSize ?? def.screenSize,
-      controller: controller,
       swPanBoundary: swPanBoundary ?? def.swPanBoundary,
       nePanBoundary: nePanBoundary ?? def.nePanBoundary,
     );
@@ -237,15 +230,13 @@ class OpenMapOptions {
     double? minZoom,
     double? maxZoom,
     int? interactiveFlags,
-    bool? allowPanning,
-    bool? allowPanningOnScrollingParent,
+    LatLngBounds? maxBounds,
+    bool? keepAlive,
     LongPressCallback? onLongPress,
     PositionCallback? onPositionChanged,
-    List<MapPlugin>? plugins,
     bool? slideOnBoundaries,
     Size? screenSize,
     bool? adaptiveBoundaries,
-    MapController? controller,
     LatLng? swPanBoundary,
     LatLng? nePanBoundary,
   }) {
@@ -268,12 +259,11 @@ class OpenMapOptions {
         minZoom: minZoom ?? this.minZoom,
         maxZoom: maxZoom ?? this.maxZoom,
         interactiveFlags: interactiveFlags ?? this.interactiveFlags,
-        allowPanning: allowPanning ?? this.allowPanning,
-        allowPanningOnScrollingParent:
-            allowPanningOnScrollingParent ?? this.allowPanningOnScrollingParent,
+        maxBounds: maxBounds ?? this.maxBounds,
+        keepAlive:
+            keepAlive ?? this.keepAlive,
         onLongPress: onLongPress ?? this.onLongPress,
         onPositionChanged: onPositionChanged ?? this.onPositionChanged,
-        plugins: plugins ?? this.plugins,
         slideOnBoundaries: slideOnBoundaries ?? this.slideOnBoundaries,
         screenSize: screenSize ?? this.screenSize,
         adaptiveBoundaries: adaptiveBoundaries ?? this.adaptiveBoundaries,
@@ -301,12 +291,11 @@ class OpenMapOptions {
       minZoom: minZoom ?? this.minZoom,
       maxZoom: maxZoom ?? this.maxZoom,
       interactiveFlags: interactiveFlags ?? this.interactiveFlags,
-      allowPanning: allowPanning ?? this.allowPanning,
-      allowPanningOnScrollingParent:
-          allowPanningOnScrollingParent ?? this.allowPanningOnScrollingParent,
+      maxBounds: maxBounds ?? this.maxBounds,
+      keepAlive:
+          keepAlive ?? this.keepAlive,
       onLongPress: onLongPress ?? this.onLongPress,
       onPositionChanged: onPositionChanged ?? this.onPositionChanged,
-      plugins: plugins ?? this.plugins,
       slideOnBoundaries: slideOnBoundaries ?? this.slideOnBoundaries,
       screenSize: screenSize ?? this.screenSize,
       adaptiveBoundaries: adaptiveBoundaries ?? this.adaptiveBoundaries,
@@ -334,15 +323,13 @@ class OpenMapOptions {
     double? minZoom,
     double? maxZoom,
     int? interactiveFlags,
-    bool? allowPanning,
-    bool? allowPanningOnScrollingParent,
+    LatLngBounds? maxBounds,
+    bool? keepAlive,
     LongPressCallback? onLongPress,
     PositionCallback? onPositionChanged,
-    List<MapPlugin>? plugins,
     bool? slideOnBoundaries,
     Size? screenSize,
     bool? adaptiveBoundaries,
-    MapController? controller,
     LatLng? swPanBoundary,
     LatLng? nePanBoundary,
   }) {
@@ -364,12 +351,11 @@ class OpenMapOptions {
       minZoom: minZoom ?? this.minZoom,
       maxZoom: maxZoom ?? this.maxZoom,
       interactiveFlags: interactiveFlags ?? this.interactiveFlags,
-      allowPanning: allowPanning ?? this.allowPanning,
-      allowPanningOnScrollingParent:
-          allowPanningOnScrollingParent ?? this.allowPanningOnScrollingParent,
+      maxBounds: maxBounds ?? this.maxBounds,
+      keepAlive:
+          keepAlive ?? this.keepAlive,
       onLongPress: onLongPress ?? this.onLongPress,
       onPositionChanged: onPositionChanged ?? this.onPositionChanged,
-      plugins: plugins ?? this.plugins,
       slideOnBoundaries: slideOnBoundaries ?? this.slideOnBoundaries,
       screenSize: screenSize ?? this.screenSize,
       adaptiveBoundaries: adaptiveBoundaries ?? this.adaptiveBoundaries,

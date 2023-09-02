@@ -156,8 +156,7 @@ class _OpenStreetMapsState extends State<OpenStreetMaps>
     }
   }
 
-  void _onMapCreated(
-      MapController controller, OpenMapSettings? settings) async {
+  void _onMapReady(OpenMapSettings? settings) async {
     try {
       if (widget.options.center != null) return;
       if (widget.options.bounds != null) return;
@@ -221,9 +220,6 @@ class _OpenStreetMapsState extends State<OpenStreetMaps>
   }
 
   void fitBounds(LatLngBounds bounds) {
-    if (!bounds.isValid) {
-      throw Exception('Bounds are not valid.');
-    }
     var target = _controller._state.getBoundsCenterZoom(
       bounds,
       const FitBoundsOptions(padding: EdgeInsets.all(12.0)),
@@ -250,8 +246,7 @@ class _OpenStreetMapsState extends State<OpenStreetMaps>
       );
     }
     var options = widget.options.create(
-      controller: _controller,
-      onMapCreated: (_) => _onMapCreated(_, settings),
+      onMapReady: () => _onMapReady(settings),
       onTap: (_, pos) => _onTap(pos),
     );
     var bloc = widget.bloc;
@@ -301,14 +296,22 @@ class _OpenStreetMapsState extends State<OpenStreetMaps>
   FlutterMap _buildMap(MapOptions options, OpenMapSettings? settings) {
     var background = Theme.of(context).scaffoldBackgroundColor;
     var isDark = Theme.of(context).brightness == Brightness.dark;
-    var layerOptions = settings?.getMapTileOptions ?? _getLayerOptions;
     return FlutterMap(
       options: options,
       mapController: _controller,
       children: [
-        TileLayerWidget(
-          options: layerOptions(isDark, background,
-              widget.tileProvider ?? settings?.defaultTileProvider),
+        settings?.tileLayer ??
+        TileLayer(
+        urlTemplate: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+        subdomains: const ['a', 'b', 'c'],
+        tileBuilder: (context, tileWidget, tile) {
+        if (!isDark || kIsWeb) return tileWidget;
+        return ColorFiltered(
+        colorFilter: ColorFilter.mode(background, BlendMode.saturation),
+        child: tileWidget,
+        );
+        },
+        tileProvider: settings?.defaultTileProvider,
         ),
         if (widget.bloc != null) ...[
           MapPolygons(bloc: widget.bloc!),
@@ -323,21 +326,6 @@ class _OpenStreetMapsState extends State<OpenStreetMaps>
     );
   }
 
-  TileLayerOptions _getLayerOptions(
-      bool isDark, Color background, TileProvider? provider) {
-    return TileLayerOptions(
-      urlTemplate: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-      subdomains: ['a', 'b', 'c'],
-      tileBuilder: (context, tileWidget, tile) {
-        if (!isDark || kIsWeb) return tileWidget;
-        return ColorFiltered(
-          colorFilter: ColorFilter.mode(background, BlendMode.saturation),
-          child: tileWidget,
-        );
-      },
-      tileProvider: provider,
-    );
-  }
 }
 
 class _MyAnimationController extends AnimationController {
@@ -353,9 +341,9 @@ class _MyAnimationController extends AnimationController {
 }
 
 class _MapControllerImpl extends MapControllerImpl {
-  late MapState _state;
+  late FlutterMapState _state;
   @override
-  set state(MapState state) {
+  set state(FlutterMapState state) {
     super.state = state;
     _state = state;
   }
