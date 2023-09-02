@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/plugin_api.dart';
@@ -34,6 +36,25 @@ class OpenStreetMaps extends StatefulWidget {
   /// You can set it also using `OpenMapSettings`
   final MyLocationButtonCallBack? myLocationButton;
 
+  /// override the default map
+  /// - use this if you want to use other map or other server
+  /// - you can also use it to change the dark map
+  /// * default is
+  ///
+  /// ```dart
+  /// return TileLayerOptions(
+  ///   urlTemplate: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+  ///   subdomains: ['a', 'b', 'c'],
+  ///   tileBuilder: (context, tileWidget, tile) {
+  ///     if (!isDark) return tileWidget;
+  ///     return ColorFiltered(
+  ///       colorFilter: ColorFilter.mode(background, BlendMode.saturation),
+  ///       child: tileWidget,
+  ///     );
+  ///   },
+  /// );
+  /// ```
+  ///
   /// You can override how map images downloaded
   /// You can cache images like that
   /// ``` dart
@@ -48,8 +69,7 @@ class OpenStreetMaps extends StatefulWidget {
   ///   }
   /// }
   /// ```
-  /// You can set it also using `OpenMapSettings`
-  final TileProvider? tileProvider;
+  final TileLayer Function(TileLayer defaultLayer)? tileLayer;
 
   /// call back on pressing to done button
   /// You can set it also using `OpenMapSettings`
@@ -70,7 +90,7 @@ class OpenStreetMaps extends StatefulWidget {
     Key? key,
     required this.options,
     this.bloc,
-    this.tileProvider,
+    this.tileLayer,
     this.myLocationButton,
     this.onDone,
     this.searchHint,
@@ -105,11 +125,12 @@ class OpenStreetMaps extends StatefulWidget {
 
 class _OpenStreetMapsState extends State<OpenStreetMaps>
     with TickerProviderStateMixin {
-  late final _MapControllerImpl _controller;
+  late final MapController _controller;
   late final _MyAnimationController _animationController;
+
   @override
   void initState() {
-    _controller = _MapControllerImpl();
+    _controller = MapController();
     _animationController = _MyAnimationController(this);
     super.initState();
   }
@@ -220,9 +241,9 @@ class _OpenStreetMapsState extends State<OpenStreetMaps>
   }
 
   void fitBounds(LatLngBounds bounds) {
-    var target = _controller._state.getBoundsCenterZoom(
+    var target = _controller.centerZoomFitBounds(
       bounds,
-      const FitBoundsOptions(padding: EdgeInsets.all(12.0)),
+      options: const FitBoundsOptions(padding: EdgeInsets.all(12.0)),
     );
     moveTo(target.center, target.zoom);
   }
@@ -296,23 +317,23 @@ class _OpenStreetMapsState extends State<OpenStreetMaps>
   FlutterMap _buildMap(MapOptions options, OpenMapSettings? settings) {
     var background = Theme.of(context).scaffoldBackgroundColor;
     var isDark = Theme.of(context).brightness == Brightness.dark;
+    var defaultTitle = TileLayer(
+      urlTemplate: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+      subdomains: const ['a', 'b', 'c'],
+      tileBuilder: (context, tileWidget, tile) {
+        if (!isDark || kIsWeb) return tileWidget;
+        return ColorFiltered(
+          colorFilter: ColorFilter.mode(background, BlendMode.saturation),
+          child: tileWidget,
+        );
+      },
+    );
     return FlutterMap(
       options: options,
       mapController: _controller,
       children: [
-        settings?.tileLayer ??
-        TileLayer(
-        urlTemplate: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-        subdomains: const ['a', 'b', 'c'],
-        tileBuilder: (context, tileWidget, tile) {
-        if (!isDark || kIsWeb) return tileWidget;
-        return ColorFiltered(
-        colorFilter: ColorFilter.mode(background, BlendMode.saturation),
-        child: tileWidget,
-        );
-        },
-        tileProvider: settings?.defaultTileProvider,
-        ),
+        (widget.tileLayer ?? settings?.tileLayer)?.call(defaultTitle) ??
+            defaultTitle,
         if (widget.bloc != null) ...[
           MapPolygons(bloc: widget.bloc!),
           MapCircles(bloc: widget.bloc!),
@@ -325,7 +346,6 @@ class _OpenStreetMapsState extends State<OpenStreetMaps>
       ],
     );
   }
-
 }
 
 class _MyAnimationController extends AnimationController {
@@ -337,14 +357,5 @@ class _MyAnimationController extends AnimationController {
     clearListeners();
     clearStatusListeners();
     super.reset();
-  }
-}
-
-class _MapControllerImpl extends MapControllerImpl {
-  late FlutterMapState _state;
-  @override
-  set state(FlutterMapState state) {
-    super.state = state;
-    _state = state;
   }
 }

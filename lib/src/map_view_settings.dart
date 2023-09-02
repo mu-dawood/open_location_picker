@@ -14,8 +14,6 @@ typedef LocationMarkerCallback = Marker Function(
     BuildContext context, FormattedLocation location);
 typedef CurrentLocationMarkerCallback = Marker Function(
     BuildContext context, LatLng location);
-typedef TileLayerOptionsCallBack = Map<String, String> Function(
-    bool isDark, Color background, TileProvider? provider);
 
 /// Global settings for map
 /// You can wrap material app with it or wrap entire screen to override the globals
@@ -34,7 +32,6 @@ class OpenMapSettings extends InheritedWidget {
     this.myLocationButton,
     this.searchFilters,
     this.reverseZoom,
-    this.defaultTileProvider,
     this.mapViewConfig,
   }) : super(key: key, child: child);
 
@@ -54,10 +51,24 @@ class OpenMapSettings extends InheritedWidget {
   ///       child: tileWidget,
   ///     );
   ///   },
-  ///   tileProvider: provider,
   /// );
   /// ```
-  final TileLayer? tileLayer;
+  ///
+  /// You can override how map images downloaded
+  /// You can cache images like that
+  /// ``` dart
+  /// import 'package:cached_network_image/cached_network_image.dart';
+  /// class CachedTileProvider extends TileProvider {
+  ///   const CachedTileProvider();
+  ///   @override
+  ///   ImageProvider getImage(Coords<num> coords, TileLayerOptions options) {
+  ///     return CachedNetworkImageProvider(
+  ///       getTileUrl(coords, options),
+  ///     );
+  ///   }
+  /// }
+  /// ```
+  final TileLayer Function(TileLayer defaultLayer)? tileLayer;
 
   /// Limiting search results to
   final SearchFilters? searchFilters;
@@ -92,22 +103,6 @@ class OpenMapSettings extends InheritedWidget {
   /// it must call the function we passed
   final MyLocationButtonCallBack? myLocationButton;
 
-  /// You can override how map images downloaded
-  /// You can cache images like that
-  /// ``` dart
-  /// import 'package:cached_network_image/cached_network_image.dart';
-  /// class CachedTileProvider extends TileProvider {
-  ///   const CachedTileProvider();
-  ///   @override
-  ///   ImageProvider getImage(Coords<num> coords, TileLayerOptions options) {
-  ///     return CachedNetworkImageProvider(
-  ///       getTileUrl(coords, options),
-  ///     );
-  ///   }
-  /// }
-  /// ```
-  final TileProvider? defaultTileProvider;
-
   ///Let you define visual map configurations
   final MapViewConfig? mapViewConfig;
 
@@ -129,7 +124,6 @@ class OpenMapSettings extends InheritedWidget {
         locationMarker != oldWidget.locationMarker ||
         child != oldWidget.child ||
         myLocationButton != oldWidget.myLocationButton ||
-        mapViewConfig != oldWidget.mapViewConfig ||
-        defaultTileProvider != oldWidget.defaultTileProvider;
+        mapViewConfig != oldWidget.mapViewConfig;
   }
 }

@@ -124,4 +124,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
 class CustomBloc extends Cubit<OpenMapState> implements OpenMapBloc {
   CustomBloc(OpenMapState initialState) : super(initialState);
+
+  @override
+  void emit(OpenMapState state) {
+    super.emit(state);
+  }
 }

@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'location_model.dart';
 
@@ -64,7 +64,6 @@ mixin _$FormattedLocation {
 
   /// GeoBounds of object
   GeoGeometry get geojson => throw _privateConstructorUsedError;
-  Map<String, String> get names => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $FormattedLocationCopyWith<FormattedLocation> get copyWith =>
@@ -75,7 +74,8 @@ mixin _$FormattedLocation {
 abstract class $FormattedLocationCopyWith<$Res> {
   factory $FormattedLocationCopyWith(
           FormattedLocation value, $Res Function(FormattedLocation) then) =
-      _$FormattedLocationCopyWithImpl<$Res>;
+      _$FormattedLocationCopyWithImpl<$Res, FormattedLocation>;
+  @useResult
   $Res call(
       {String placeId,
       double lat,
@@ -95,132 +95,129 @@ abstract class $FormattedLocationCopyWith<$Res> {
       Map<String, dynamic> extratags,
       Map<String, dynamic> namedetails,
       LatLngBounds? boundingBox,
-      GeoGeometry geojson,
-      Map<String, String> names});
+      GeoGeometry geojson});
 
   $GeoGeometryCopyWith<$Res> get geojson;
 }
 
 /// @nodoc
-class _$FormattedLocationCopyWithImpl<$Res>
+class _$FormattedLocationCopyWithImpl<$Res, $Val extends FormattedLocation>
     implements $FormattedLocationCopyWith<$Res> {
   _$FormattedLocationCopyWithImpl(this._value, this._then);
 
-  final FormattedLocation _value;
   // ignore: unused_field
-  final $Res Function(FormattedLocation) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? placeId = freezed,
-    Object? lat = freezed,
-    Object? lon = freezed,
-    Object? licence = freezed,
-    Object? osmType = freezed,
+    Object? placeId = null,
+    Object? lat = null,
+    Object? lon = null,
+    Object? licence = null,
+    Object? osmType = null,
     Object? icon = freezed,
-    Object? osmId = freezed,
-    Object? placeRank = freezed,
-    Object? category = freezed,
-    Object? type = freezed,
-    Object? importance = freezed,
-    Object? addressType = freezed,
-    Object? name = freezed,
-    Object? displayName = freezed,
-    Object? address = freezed,
-    Object? extratags = freezed,
-    Object? namedetails = freezed,
+    Object? osmId = null,
+    Object? placeRank = null,
+    Object? category = null,
+    Object? type = null,
+    Object? importance = null,
+    Object? addressType = null,
+    Object? name = null,
+    Object? displayName = null,
+    Object? address = null,
+    Object? extratags = null,
+    Object? namedetails = null,
     Object? boundingBox = freezed,
-    Object? geojson = freezed,
-    Object? names = freezed,
+    Object? geojson = null,
   }) {
     return _then(_value.copyWith(
-      placeId: placeId == freezed
+      placeId: null == placeId
           ? _value.placeId
           : placeId // ignore: cast_nullable_to_non_nullable
               as String,
-      lat: lat == freezed
+      lat: null == lat
           ? _value.lat
           : lat // ignore: cast_nullable_to_non_nullable
               as double,
-      lon: lon == freezed
+      lon: null == lon
           ? _value.lon
           : lon // ignore: cast_nullable_to_non_nullable
               as double,
-      licence: licence == freezed
+      licence: null == licence
           ? _value.licence
           : licence // ignore: cast_nullable_to_non_nullable
               as String,
-      osmType: osmType == freezed
+      osmType: null == osmType
           ? _value.osmType
           : osmType // ignore: cast_nullable_to_non_nullable
               as String,
-      icon: icon == freezed
+      icon: freezed == icon
           ? _value.icon
           : icon // ignore: cast_nullable_to_non_nullable
               as String?,
-      osmId: osmId == freezed
+      osmId: null == osmId
           ? _value.osmId
           : osmId // ignore: cast_nullable_to_non_nullable
               as int,
-      placeRank: placeRank == freezed
+      placeRank: null == placeRank
           ? _value.placeRank
           : placeRank // ignore: cast_nullable_to_non_nullable
               as int,
-      category: category == freezed
+      category: null == category
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
               as String,
-      type: type == freezed
+      type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as String,
-      importance: importance == freezed
+      importance: null == importance
           ? _value.importance
           : importance // ignore: cast_nullable_to_non_nullable
               as double,
-      addressType: addressType == freezed
+      addressType: null == addressType
           ? _value.addressType
           : addressType // ignore: cast_nullable_to_non_nullable
               as String,
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      displayName: displayName == freezed
+      displayName: null == displayName
           ? _value.displayName
           : displayName // ignore: cast_nullable_to_non_nullable
               as String,
-      address: address == freezed
+      address: null == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
               as Address,
-      extratags: extratags == freezed
+      extratags: null == extratags
           ? _value.extratags
           : extratags // ignore: cast_nullable_to_non_nullable
               as Map<String, dynamic>,
-      namedetails: namedetails == freezed
+      namedetails: null == namedetails
           ? _value.namedetails
           : namedetails // ignore: cast_nullable_to_non_nullable
               as Map<String, dynamic>,
-      boundingBox: boundingBox == freezed
+      boundingBox: freezed == boundingBox
           ? _value.boundingBox
           : boundingBox // ignore: cast_nullable_to_non_nullable
               as LatLngBounds?,
-      geojson: geojson == freezed
+      geojson: null == geojson
           ? _value.geojson
           : geojson // ignore: cast_nullable_to_non_nullable
               as GeoGeometry,
-      names: names == freezed
-          ? _value.names
-          : names // ignore: cast_nullable_to_non_nullable
-              as Map<String, String>,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $GeoGeometryCopyWith<$Res> get geojson {
     return $GeoGeometryCopyWith<$Res>(_value.geojson, (value) {
-      return _then(_value.copyWith(geojson: value));
+      return _then(_value.copyWith(geojson: value) as $Val);
     });
   }
 }
@@ -232,6 +229,7 @@ abstract class _$$_FormattedLocationCopyWith<$Res>
           $Res Function(_$_FormattedLocation) then) =
       __$$_FormattedLocationCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String placeId,
       double lat,
@@ -251,8 +249,7 @@ abstract class _$$_FormattedLocationCopyWith<$Res>
       Map<String, dynamic> extratags,
       Map<String, dynamic> namedetails,
       LatLngBounds? boundingBox,
-      GeoGeometry geojson,
-      Map<String, String> names});
+      GeoGeometry geojson});
 
   @override
   $GeoGeometryCopyWith<$Res> get geojson;
@@ -260,119 +257,112 @@ abstract class _$$_FormattedLocationCopyWith<$Res>
 
 /// @nodoc
 class __$$_FormattedLocationCopyWithImpl<$Res>
-    extends _$FormattedLocationCopyWithImpl<$Res>
+    extends _$FormattedLocationCopyWithImpl<$Res, _$_FormattedLocation>
     implements _$$_FormattedLocationCopyWith<$Res> {
   __$$_FormattedLocationCopyWithImpl(
       _$_FormattedLocation _value, $Res Function(_$_FormattedLocation) _then)
-      : super(_value, (v) => _then(v as _$_FormattedLocation));
+      : super(_value, _then);
 
-  @override
-  _$_FormattedLocation get _value => super._value as _$_FormattedLocation;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? placeId = freezed,
-    Object? lat = freezed,
-    Object? lon = freezed,
-    Object? licence = freezed,
-    Object? osmType = freezed,
+    Object? placeId = null,
+    Object? lat = null,
+    Object? lon = null,
+    Object? licence = null,
+    Object? osmType = null,
     Object? icon = freezed,
-    Object? osmId = freezed,
-    Object? placeRank = freezed,
-    Object? category = freezed,
-    Object? type = freezed,
-    Object? importance = freezed,
-    Object? addressType = freezed,
-    Object? name = freezed,
-    Object? displayName = freezed,
-    Object? address = freezed,
-    Object? extratags = freezed,
-    Object? namedetails = freezed,
+    Object? osmId = null,
+    Object? placeRank = null,
+    Object? category = null,
+    Object? type = null,
+    Object? importance = null,
+    Object? addressType = null,
+    Object? name = null,
+    Object? displayName = null,
+    Object? address = null,
+    Object? extratags = null,
+    Object? namedetails = null,
     Object? boundingBox = freezed,
-    Object? geojson = freezed,
-    Object? names = freezed,
+    Object? geojson = null,
   }) {
     return _then(_$_FormattedLocation(
-      placeId: placeId == freezed
+      placeId: null == placeId
           ? _value.placeId
           : placeId // ignore: cast_nullable_to_non_nullable
               as String,
-      lat: lat == freezed
+      lat: null == lat
           ? _value.lat
           : lat // ignore: cast_nullable_to_non_nullable
               as double,
-      lon: lon == freezed
+      lon: null == lon
           ? _value.lon
           : lon // ignore: cast_nullable_to_non_nullable
               as double,
-      licence: licence == freezed
+      licence: null == licence
           ? _value.licence
           : licence // ignore: cast_nullable_to_non_nullable
               as String,
-      osmType: osmType == freezed
+      osmType: null == osmType
           ? _value.osmType
           : osmType // ignore: cast_nullable_to_non_nullable
               as String,
-      icon: icon == freezed
+      icon: freezed == icon
           ? _value.icon
           : icon // ignore: cast_nullable_to_non_nullable
               as String?,
-      osmId: osmId == freezed
+      osmId: null == osmId
           ? _value.osmId
           : osmId // ignore: cast_nullable_to_non_nullable
               as int,
-      placeRank: placeRank == freezed
+      placeRank: null == placeRank
           ? _value.placeRank
           : placeRank // ignore: cast_nullable_to_non_nullable
               as int,
-      category: category == freezed
+      category: null == category
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
               as String,
-      type: type == freezed
+      type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as String,
-      importance: importance == freezed
+      importance: null == importance
           ? _value.importance
           : importance // ignore: cast_nullable_to_non_nullable
               as double,
-      addressType: addressType == freezed
+      addressType: null == addressType
           ? _value.addressType
           : addressType // ignore: cast_nullable_to_non_nullable
               as String,
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      displayName: displayName == freezed
+      displayName: null == displayName
           ? _value.displayName
           : displayName // ignore: cast_nullable_to_non_nullable
               as String,
-      address: address == freezed
+      address: null == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
               as Address,
-      extratags: extratags == freezed
+      extratags: null == extratags
           ? _value._extratags
           : extratags // ignore: cast_nullable_to_non_nullable
               as Map<String, dynamic>,
-      namedetails: namedetails == freezed
+      namedetails: null == namedetails
           ? _value._namedetails
           : namedetails // ignore: cast_nullable_to_non_nullable
               as Map<String, dynamic>,
-      boundingBox: boundingBox == freezed
+      boundingBox: freezed == boundingBox
           ? _value.boundingBox
           : boundingBox // ignore: cast_nullable_to_non_nullable
               as LatLngBounds?,
-      geojson: geojson == freezed
+      geojson: null == geojson
           ? _value.geojson
           : geojson // ignore: cast_nullable_to_non_nullable
               as GeoGeometry,
-      names: names == freezed
-          ? _value._names
-          : names // ignore: cast_nullable_to_non_nullable
-              as Map<String, String>,
     ));
   }
 }
@@ -399,11 +389,9 @@ class _$_FormattedLocation extends _FormattedLocation {
       required final Map<String, dynamic> extratags,
       required final Map<String, dynamic> namedetails,
       required this.boundingBox,
-      required this.geojson,
-      required final Map<String, String> names})
+      required this.geojson})
       : _extratags = extratags,
         _namedetails = namedetails,
-        _names = names,
         super._();
 
   ///reference to the Nominatim internal database ID
@@ -464,6 +452,7 @@ class _$_FormattedLocation extends _FormattedLocation {
   /// dictionary with additional useful tags like website or max speed
   @override
   Map<String, dynamic> get extratags {
+    if (_extratags is EqualUnmodifiableMapView) return _extratags;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableMapView(_extratags);
   }
@@ -474,6 +463,7 @@ class _$_FormattedLocation extends _FormattedLocation {
   /// dictionary with full list of available names including ref etc
   @override
   Map<String, dynamic> get namedetails {
+    if (_namedetails is EqualUnmodifiableMapView) return _namedetails;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableMapView(_namedetails);
   }
@@ -485,73 +475,68 @@ class _$_FormattedLocation extends _FormattedLocation {
   /// GeoBounds of object
   @override
   final GeoGeometry geojson;
-  final Map<String, String> _names;
-  @override
-  Map<String, String> get names {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_names);
-  }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FormattedLocation &&
-            const DeepCollectionEquality().equals(other.placeId, placeId) &&
-            const DeepCollectionEquality().equals(other.lat, lat) &&
-            const DeepCollectionEquality().equals(other.lon, lon) &&
-            const DeepCollectionEquality().equals(other.licence, licence) &&
-            const DeepCollectionEquality().equals(other.osmType, osmType) &&
-            const DeepCollectionEquality().equals(other.icon, icon) &&
-            const DeepCollectionEquality().equals(other.osmId, osmId) &&
-            const DeepCollectionEquality().equals(other.placeRank, placeRank) &&
-            const DeepCollectionEquality().equals(other.category, category) &&
-            const DeepCollectionEquality().equals(other.type, type) &&
-            const DeepCollectionEquality()
-                .equals(other.importance, importance) &&
-            const DeepCollectionEquality()
-                .equals(other.addressType, addressType) &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality()
-                .equals(other.displayName, displayName) &&
-            const DeepCollectionEquality().equals(other.address, address) &&
+            (identical(other.placeId, placeId) || other.placeId == placeId) &&
+            (identical(other.lat, lat) || other.lat == lat) &&
+            (identical(other.lon, lon) || other.lon == lon) &&
+            (identical(other.licence, licence) || other.licence == licence) &&
+            (identical(other.osmType, osmType) || other.osmType == osmType) &&
+            (identical(other.icon, icon) || other.icon == icon) &&
+            (identical(other.osmId, osmId) || other.osmId == osmId) &&
+            (identical(other.placeRank, placeRank) ||
+                other.placeRank == placeRank) &&
+            (identical(other.category, category) ||
+                other.category == category) &&
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.importance, importance) ||
+                other.importance == importance) &&
+            (identical(other.addressType, addressType) ||
+                other.addressType == addressType) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.displayName, displayName) ||
+                other.displayName == displayName) &&
+            (identical(other.address, address) || other.address == address) &&
             const DeepCollectionEquality()
                 .equals(other._extratags, _extratags) &&
             const DeepCollectionEquality()
                 .equals(other._namedetails, _namedetails) &&
-            const DeepCollectionEquality()
-                .equals(other.boundingBox, boundingBox) &&
-            const DeepCollectionEquality().equals(other.geojson, geojson) &&
-            const DeepCollectionEquality().equals(other._names, _names));
+            (identical(other.boundingBox, boundingBox) ||
+                other.boundingBox == boundingBox) &&
+            (identical(other.geojson, geojson) || other.geojson == geojson));
   }
 
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
-        const DeepCollectionEquality().hash(placeId),
-        const DeepCollectionEquality().hash(lat),
-        const DeepCollectionEquality().hash(lon),
-        const DeepCollectionEquality().hash(licence),
-        const DeepCollectionEquality().hash(osmType),
-        const DeepCollectionEquality().hash(icon),
-        const DeepCollectionEquality().hash(osmId),
-        const DeepCollectionEquality().hash(placeRank),
-        const DeepCollectionEquality().hash(category),
-        const DeepCollectionEquality().hash(type),
-        const DeepCollectionEquality().hash(importance),
-        const DeepCollectionEquality().hash(addressType),
-        const DeepCollectionEquality().hash(name),
-        const DeepCollectionEquality().hash(displayName),
-        const DeepCollectionEquality().hash(address),
+        placeId,
+        lat,
+        lon,
+        licence,
+        osmType,
+        icon,
+        osmId,
+        placeRank,
+        category,
+        type,
+        importance,
+        addressType,
+        name,
+        displayName,
+        address,
         const DeepCollectionEquality().hash(_extratags),
         const DeepCollectionEquality().hash(_namedetails),
-        const DeepCollectionEquality().hash(boundingBox),
-        const DeepCollectionEquality().hash(geojson),
-        const DeepCollectionEquality().hash(_names)
+        boundingBox,
+        geojson
       ]);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_FormattedLocationCopyWith<_$_FormattedLocation> get copyWith =>
       __$$_FormattedLocationCopyWithImpl<_$_FormattedLocation>(
           this, _$identity);
@@ -577,80 +562,77 @@ abstract class _FormattedLocation extends FormattedLocation {
       required final Map<String, dynamic> extratags,
       required final Map<String, dynamic> namedetails,
       required final LatLngBounds? boundingBox,
-      required final GeoGeometry geojson,
-      required final Map<String, String> names}) = _$_FormattedLocation;
+      required final GeoGeometry geojson}) = _$_FormattedLocation;
   const _FormattedLocation._() : super._();
 
   @override
 
   ///reference to the Nominatim internal database ID
-  String get placeId => throw _privateConstructorUsedError;
+  String get placeId;
   @override
 
   /// latitude of the centroid of the object
-  double get lat => throw _privateConstructorUsedError;
+  double get lat;
   @override
 
   /// longitude of the centroid of the object
-  double get lon => throw _privateConstructorUsedError;
+  double get lon;
   @override
-  String get licence => throw _privateConstructorUsedError;
+  String get licence;
   @override
 
   ///reference to the OSM object
-  String get osmType => throw _privateConstructorUsedError;
+  String get osmType;
   @override
-  String? get icon => throw _privateConstructorUsedError;
+  String? get icon;
   @override
 
   /// reference to the OSM object
-  int get osmId => throw _privateConstructorUsedError;
+  int get osmId;
   @override
 
   /// search rank of the object
-  int get placeRank => throw _privateConstructorUsedError;
+  int get placeRank;
   @override
 
   ///key of the main OSM tag
-  String get category => throw _privateConstructorUsedError;
+  String get category;
   @override
 
   /// value of the main OSM tag
-  String get type => throw _privateConstructorUsedError;
+  String get type;
   @override
 
   /// computed importance rank
-  double get importance => throw _privateConstructorUsedError;
+  double get importance;
   @override
-  String get addressType => throw _privateConstructorUsedError;
+  String get addressType;
   @override
-  String get name => throw _privateConstructorUsedError;
+  String get name;
   @override
 
   ///full comma-separated address
-  String get displayName => throw _privateConstructorUsedError;
+  String get displayName;
   @override
 
   /// dictionary of address details
-  Address get address => throw _privateConstructorUsedError;
+  Address get address;
   @override
 
   /// dictionary with additional useful tags like website or max speed
-  Map<String, dynamic> get extratags => throw _privateConstructorUsedError;
+  Map<String, dynamic> get extratags;
   @override
 
   /// dictionary with full list of available names including ref etc
-  Map<String, dynamic> get namedetails => throw _privateConstructorUsedError;
+  Map<String, dynamic> get namedetails;
   @override
 
   ///area of corner coordinates
-  LatLngBounds? get boundingBox => throw _privateConstructorUsedError;
+  LatLngBounds? get boundingBox;
   @override
 
   /// GeoBounds of object
-  GeoGeometry get geojson => throw _privateConstructorUsedError;
-  @override
-  Map<String, String> get names => throw _privateConstructorUsedError;
+  GeoGeometry get geojson;
   @override
   @JsonKey(ignore: true)
   _$$_FormattedLocationCopyWith<_$_FormattedLocation> get copyWith =>
@@ -658,44 +640,6 @@ abstract class _FormattedLocation extends FormattedLocation {
 }
 
 /// @nodoc
-class _$GeoGeometryTearOff {
-  const _$GeoGeometryTearOff();
-
-  GeoPoint point(LatLng point, Color randomColor) {
-    return GeoPoint(
-      point,
-      randomColor,
-    );
-  }
-
-  GeoLinestring linestring(List<LatLng> points, Color randomColor) {
-    return GeoLinestring(
-      points,
-      randomColor,
-    );
-  }
-
-  GeoPolygon polygon(List<LatLng> points, Color randomColor) {
-    return GeoPolygon(
-      points,
-      randomColor,
-    );
-  }
-
-  GeoMultiPolygon multiPolygon(
-      List<List<List<LatLng>>> points, Color randomColor) {
-    return GeoMultiPolygon(
-      points,
-      randomColor,
-    );
-  }
-}
-
-/// @nodoc
-const $GeoGeometry = _$GeoGeometryTearOff();
-
-/// @nodoc
-
 mixin _$GeoGeometry {
   Color get randomColor => throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -711,10 +655,10 @@ mixin _$GeoGeometry {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(LatLng point, Color randomColor)? point,
-    TResult Function(List<LatLng> points, Color randomColor)? linestring,
-    TResult Function(List<LatLng> points, Color randomColor)? polygon,
-    TResult Function(List<List<List<LatLng>>> points, Color randomColor)?
+    TResult? Function(LatLng point, Color randomColor)? point,
+    TResult? Function(List<LatLng> points, Color randomColor)? linestring,
+    TResult? Function(List<LatLng> points, Color randomColor)? polygon,
+    TResult? Function(List<List<List<LatLng>>> points, Color randomColor)?
         multiPolygon,
   }) =>
       throw _privateConstructorUsedError;
@@ -738,10 +682,10 @@ mixin _$GeoGeometry {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(GeoPoint value)? point,
-    TResult Function(GeoLinestring value)? linestring,
-    TResult Function(GeoPolygon value)? polygon,
-    TResult Function(GeoMultiPolygon value)? multiPolygon,
+    TResult? Function(GeoPoint value)? point,
+    TResult? Function(GeoLinestring value)? linestring,
+    TResult? Function(GeoPolygon value)? polygon,
+    TResult? Function(GeoMultiPolygon value)? multiPolygon,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -763,28 +707,32 @@ mixin _$GeoGeometry {
 abstract class $GeoGeometryCopyWith<$Res> {
   factory $GeoGeometryCopyWith(
           GeoGeometry value, $Res Function(GeoGeometry) then) =
-      _$GeoGeometryCopyWithImpl<$Res>;
+      _$GeoGeometryCopyWithImpl<$Res, GeoGeometry>;
+  @useResult
   $Res call({Color randomColor});
 }
 
 /// @nodoc
-class _$GeoGeometryCopyWithImpl<$Res> implements $GeoGeometryCopyWith<$Res> {
+class _$GeoGeometryCopyWithImpl<$Res, $Val extends GeoGeometry>
+    implements $GeoGeometryCopyWith<$Res> {
   _$GeoGeometryCopyWithImpl(this._value, this._then);
 
-  final GeoGeometry _value;
   // ignore: unused_field
-  final $Res Function(GeoGeometry) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? randomColor = freezed,
+    Object? randomColor = null,
   }) {
     return _then(_value.copyWith(
-      randomColor: randomColor == freezed
+      randomColor: null == randomColor
           ? _value.randomColor
           : randomColor // ignore: cast_nullable_to_non_nullable
               as Color,
-    ));
+    ) as $Val);
   }
 }
 
@@ -794,29 +742,29 @@ abstract class _$$GeoPointCopyWith<$Res> implements $GeoGeometryCopyWith<$Res> {
           _$GeoPoint value, $Res Function(_$GeoPoint) then) =
       __$$GeoPointCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({LatLng point, Color randomColor});
 }
 
 /// @nodoc
-class __$$GeoPointCopyWithImpl<$Res> extends _$GeoGeometryCopyWithImpl<$Res>
+class __$$GeoPointCopyWithImpl<$Res>
+    extends _$GeoGeometryCopyWithImpl<$Res, _$GeoPoint>
     implements _$$GeoPointCopyWith<$Res> {
   __$$GeoPointCopyWithImpl(_$GeoPoint _value, $Res Function(_$GeoPoint) _then)
-      : super(_value, (v) => _then(v as _$GeoPoint));
+      : super(_value, _then);
 
-  @override
-  _$GeoPoint get _value => super._value as _$GeoPoint;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? point = freezed,
-    Object? randomColor = freezed,
+    Object? point = null,
+    Object? randomColor = null,
   }) {
     return _then(_$GeoPoint(
-      point == freezed
+      null == point
           ? _value.point
           : point // ignore: cast_nullable_to_non_nullable
               as LatLng,
-      randomColor == freezed
+      null == randomColor
           ? _value.randomColor
           : randomColor // ignore: cast_nullable_to_non_nullable
               as Color,
@@ -844,19 +792,17 @@ class _$GeoPoint extends GeoPoint {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GeoPoint &&
-            const DeepCollectionEquality().equals(other.point, point) &&
-            const DeepCollectionEquality()
-                .equals(other.randomColor, randomColor));
+            (identical(other.point, point) || other.point == point) &&
+            (identical(other.randomColor, randomColor) ||
+                other.randomColor == randomColor));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(point),
-      const DeepCollectionEquality().hash(randomColor));
+  int get hashCode => Object.hash(runtimeType, point, randomColor);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$GeoPointCopyWith<_$GeoPoint> get copyWith =>
       __$$GeoPointCopyWithImpl<_$GeoPoint>(this, _$identity);
 
@@ -877,10 +823,10 @@ class _$GeoPoint extends GeoPoint {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(LatLng point, Color randomColor)? point,
-    TResult Function(List<LatLng> points, Color randomColor)? linestring,
-    TResult Function(List<LatLng> points, Color randomColor)? polygon,
-    TResult Function(List<List<List<LatLng>>> points, Color randomColor)?
+    TResult? Function(LatLng point, Color randomColor)? point,
+    TResult? Function(List<LatLng> points, Color randomColor)? linestring,
+    TResult? Function(List<LatLng> points, Color randomColor)? polygon,
+    TResult? Function(List<List<List<LatLng>>> points, Color randomColor)?
         multiPolygon,
   }) {
     return point?.call(this.point, randomColor);
@@ -916,10 +862,10 @@ class _$GeoPoint extends GeoPoint {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(GeoPoint value)? point,
-    TResult Function(GeoLinestring value)? linestring,
-    TResult Function(GeoPolygon value)? polygon,
-    TResult Function(GeoMultiPolygon value)? multiPolygon,
+    TResult? Function(GeoPoint value)? point,
+    TResult? Function(GeoLinestring value)? linestring,
+    TResult? Function(GeoPolygon value)? polygon,
+    TResult? Function(GeoMultiPolygon value)? multiPolygon,
   }) {
     return point?.call(this);
   }
@@ -944,9 +890,9 @@ abstract class GeoPoint extends GeoGeometry {
   factory GeoPoint(final LatLng point, final Color randomColor) = _$GeoPoint;
   GeoPoint._() : super._();
 
-  LatLng get point => throw _privateConstructorUsedError;
+  LatLng get point;
   @override
-  Color get randomColor => throw _privateConstructorUsedError;
+  Color get randomColor;
   @override
   @JsonKey(ignore: true)
   _$$GeoPointCopyWith<_$GeoPoint> get copyWith =>
@@ -960,31 +906,30 @@ abstract class _$$GeoLinestringCopyWith<$Res>
           _$GeoLinestring value, $Res Function(_$GeoLinestring) then) =
       __$$GeoLinestringCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({List<LatLng> points, Color randomColor});
 }
 
 /// @nodoc
 class __$$GeoLinestringCopyWithImpl<$Res>
-    extends _$GeoGeometryCopyWithImpl<$Res>
+    extends _$GeoGeometryCopyWithImpl<$Res, _$GeoLinestring>
     implements _$$GeoLinestringCopyWith<$Res> {
   __$$GeoLinestringCopyWithImpl(
       _$GeoLinestring _value, $Res Function(_$GeoLinestring) _then)
-      : super(_value, (v) => _then(v as _$GeoLinestring));
+      : super(_value, _then);
 
-  @override
-  _$GeoLinestring get _value => super._value as _$GeoLinestring;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? points = freezed,
-    Object? randomColor = freezed,
+    Object? points = null,
+    Object? randomColor = null,
   }) {
     return _then(_$GeoLinestring(
-      points == freezed
+      null == points
           ? _value._points
           : points // ignore: cast_nullable_to_non_nullable
               as List<LatLng>,
-      randomColor == freezed
+      null == randomColor
           ? _value.randomColor
           : randomColor // ignore: cast_nullable_to_non_nullable
               as Color,
@@ -1002,6 +947,7 @@ class _$GeoLinestring extends GeoLinestring {
   final List<LatLng> _points;
   @override
   List<LatLng> get points {
+    if (_points is EqualUnmodifiableListView) return _points;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_points);
   }
@@ -1020,18 +966,17 @@ class _$GeoLinestring extends GeoLinestring {
         (other.runtimeType == runtimeType &&
             other is _$GeoLinestring &&
             const DeepCollectionEquality().equals(other._points, _points) &&
-            const DeepCollectionEquality()
-                .equals(other.randomColor, randomColor));
+            (identical(other.randomColor, randomColor) ||
+                other.randomColor == randomColor));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_points),
-      const DeepCollectionEquality().hash(randomColor));
+      runtimeType, const DeepCollectionEquality().hash(_points), randomColor);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$GeoLinestringCopyWith<_$GeoLinestring> get copyWith =>
       __$$GeoLinestringCopyWithImpl<_$GeoLinestring>(this, _$identity);
 
@@ -1052,10 +997,10 @@ class _$GeoLinestring extends GeoLinestring {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(LatLng point, Color randomColor)? point,
-    TResult Function(List<LatLng> points, Color randomColor)? linestring,
-    TResult Function(List<LatLng> points, Color randomColor)? polygon,
-    TResult Function(List<List<List<LatLng>>> points, Color randomColor)?
+    TResult? Function(LatLng point, Color randomColor)? point,
+    TResult? Function(List<LatLng> points, Color randomColor)? linestring,
+    TResult? Function(List<LatLng> points, Color randomColor)? polygon,
+    TResult? Function(List<List<List<LatLng>>> points, Color randomColor)?
         multiPolygon,
   }) {
     return linestring?.call(points, randomColor);
@@ -1091,10 +1036,10 @@ class _$GeoLinestring extends GeoLinestring {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(GeoPoint value)? point,
-    TResult Function(GeoLinestring value)? linestring,
-    TResult Function(GeoPolygon value)? polygon,
-    TResult Function(GeoMultiPolygon value)? multiPolygon,
+    TResult? Function(GeoPoint value)? point,
+    TResult? Function(GeoLinestring value)? linestring,
+    TResult? Function(GeoPolygon value)? polygon,
+    TResult? Function(GeoMultiPolygon value)? multiPolygon,
   }) {
     return linestring?.call(this);
   }
@@ -1120,9 +1065,9 @@ abstract class GeoLinestring extends GeoGeometry {
       _$GeoLinestring;
   GeoLinestring._() : super._();
 
-  List<LatLng> get points => throw _privateConstructorUsedError;
+  List<LatLng> get points;
   @override
-  Color get randomColor => throw _privateConstructorUsedError;
+  Color get randomColor;
   @override
   @JsonKey(ignore: true)
   _$$GeoLinestringCopyWith<_$GeoLinestring> get copyWith =>
@@ -1136,30 +1081,30 @@ abstract class _$$GeoPolygonCopyWith<$Res>
           _$GeoPolygon value, $Res Function(_$GeoPolygon) then) =
       __$$GeoPolygonCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({List<LatLng> points, Color randomColor});
 }
 
 /// @nodoc
-class __$$GeoPolygonCopyWithImpl<$Res> extends _$GeoGeometryCopyWithImpl<$Res>
+class __$$GeoPolygonCopyWithImpl<$Res>
+    extends _$GeoGeometryCopyWithImpl<$Res, _$GeoPolygon>
     implements _$$GeoPolygonCopyWith<$Res> {
   __$$GeoPolygonCopyWithImpl(
       _$GeoPolygon _value, $Res Function(_$GeoPolygon) _then)
-      : super(_value, (v) => _then(v as _$GeoPolygon));
+      : super(_value, _then);
 
-  @override
-  _$GeoPolygon get _value => super._value as _$GeoPolygon;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? points = freezed,
-    Object? randomColor = freezed,
+    Object? points = null,
+    Object? randomColor = null,
   }) {
     return _then(_$GeoPolygon(
-      points == freezed
+      null == points
           ? _value._points
           : points // ignore: cast_nullable_to_non_nullable
               as List<LatLng>,
-      randomColor == freezed
+      null == randomColor
           ? _value.randomColor
           : randomColor // ignore: cast_nullable_to_non_nullable
               as Color,
@@ -1177,6 +1122,7 @@ class _$GeoPolygon extends GeoPolygon {
   final List<LatLng> _points;
   @override
   List<LatLng> get points {
+    if (_points is EqualUnmodifiableListView) return _points;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_points);
   }
@@ -1195,18 +1141,17 @@ class _$GeoPolygon extends GeoPolygon {
         (other.runtimeType == runtimeType &&
             other is _$GeoPolygon &&
             const DeepCollectionEquality().equals(other._points, _points) &&
-            const DeepCollectionEquality()
-                .equals(other.randomColor, randomColor));
+            (identical(other.randomColor, randomColor) ||
+                other.randomColor == randomColor));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_points),
-      const DeepCollectionEquality().hash(randomColor));
+      runtimeType, const DeepCollectionEquality().hash(_points), randomColor);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$GeoPolygonCopyWith<_$GeoPolygon> get copyWith =>
       __$$GeoPolygonCopyWithImpl<_$GeoPolygon>(this, _$identity);
 
@@ -1227,10 +1172,10 @@ class _$GeoPolygon extends GeoPolygon {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(LatLng point, Color randomColor)? point,
-    TResult Function(List<LatLng> points, Color randomColor)? linestring,
-    TResult Function(List<LatLng> points, Color randomColor)? polygon,
-    TResult Function(List<List<List<LatLng>>> points, Color randomColor)?
+    TResult? Function(LatLng point, Color randomColor)? point,
+    TResult? Function(List<LatLng> points, Color randomColor)? linestring,
+    TResult? Function(List<LatLng> points, Color randomColor)? polygon,
+    TResult? Function(List<List<List<LatLng>>> points, Color randomColor)?
         multiPolygon,
   }) {
     return polygon?.call(points, randomColor);
@@ -1266,10 +1211,10 @@ class _$GeoPolygon extends GeoPolygon {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(GeoPoint value)? point,
-    TResult Function(GeoLinestring value)? linestring,
-    TResult Function(GeoPolygon value)? polygon,
-    TResult Function(GeoMultiPolygon value)? multiPolygon,
+    TResult? Function(GeoPoint value)? point,
+    TResult? Function(GeoLinestring value)? linestring,
+    TResult? Function(GeoPolygon value)? polygon,
+    TResult? Function(GeoMultiPolygon value)? multiPolygon,
   }) {
     return polygon?.call(this);
   }
@@ -1295,9 +1240,9 @@ abstract class GeoPolygon extends GeoGeometry {
       _$GeoPolygon;
   GeoPolygon._() : super._();
 
-  List<LatLng> get points => throw _privateConstructorUsedError;
+  List<LatLng> get points;
   @override
-  Color get randomColor => throw _privateConstructorUsedError;
+  Color get randomColor;
   @override
   @JsonKey(ignore: true)
   _$$GeoPolygonCopyWith<_$GeoPolygon> get copyWith =>
@@ -1305,37 +1250,36 @@ abstract class GeoPolygon extends GeoGeometry {
 }
 
 /// @nodoc
-abstract class $GeoMultiPolygonCopyWith<$Res>
+abstract class _$$GeoMultiPolygonCopyWith<$Res>
     implements $GeoGeometryCopyWith<$Res> {
-  factory $GeoMultiPolygonCopyWith(
-          GeoMultiPolygon value, $Res Function(GeoMultiPolygon) then) =
-      _$GeoMultiPolygonCopyWithImpl<$Res>;
+  factory _$$GeoMultiPolygonCopyWith(
+          _$GeoMultiPolygon value, $Res Function(_$GeoMultiPolygon) then) =
+      __$$GeoMultiPolygonCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({List<List<List<LatLng>>> points, Color randomColor});
 }
 
 /// @nodoc
-class _$GeoMultiPolygonCopyWithImpl<$Res>
-    extends _$GeoGeometryCopyWithImpl<$Res>
-    implements $GeoMultiPolygonCopyWith<$Res> {
-  _$GeoMultiPolygonCopyWithImpl(
-      GeoMultiPolygon _value, $Res Function(GeoMultiPolygon) _then)
-      : super(_value, (v) => _then(v as GeoMultiPolygon));
+class __$$GeoMultiPolygonCopyWithImpl<$Res>
+    extends _$GeoGeometryCopyWithImpl<$Res, _$GeoMultiPolygon>
+    implements _$$GeoMultiPolygonCopyWith<$Res> {
+  __$$GeoMultiPolygonCopyWithImpl(
+      _$GeoMultiPolygon _value, $Res Function(_$GeoMultiPolygon) _then)
+      : super(_value, _then);
 
-  @override
-  GeoMultiPolygon get _value => super._value as GeoMultiPolygon;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? points = freezed,
-    Object? randomColor = freezed,
+    Object? points = null,
+    Object? randomColor = null,
   }) {
-    return _then(GeoMultiPolygon(
-      points == freezed
-          ? _value.points
+    return _then(_$GeoMultiPolygon(
+      null == points
+          ? _value._points
           : points // ignore: cast_nullable_to_non_nullable
               as List<List<List<LatLng>>>,
-      randomColor == freezed
+      null == randomColor
           ? _value.randomColor
           : randomColor // ignore: cast_nullable_to_non_nullable
               as Color,
@@ -1346,10 +1290,18 @@ class _$GeoMultiPolygonCopyWithImpl<$Res>
 /// @nodoc
 
 class _$GeoMultiPolygon extends GeoMultiPolygon {
-  _$GeoMultiPolygon(this.points, this.randomColor) : super._();
+  _$GeoMultiPolygon(final List<List<List<LatLng>>> points, this.randomColor)
+      : _points = points,
+        super._();
 
+  final List<List<List<LatLng>>> _points;
   @override
-  final List<List<List<LatLng>>> points;
+  List<List<List<LatLng>>> get points {
+    if (_points is EqualUnmodifiableListView) return _points;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_points);
+  }
+
   @override
   final Color randomColor;
 
@@ -1362,22 +1314,21 @@ class _$GeoMultiPolygon extends GeoMultiPolygon {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is GeoMultiPolygon &&
-            const DeepCollectionEquality().equals(other.points, points) &&
-            const DeepCollectionEquality()
-                .equals(other.randomColor, randomColor));
+            other is _$GeoMultiPolygon &&
+            const DeepCollectionEquality().equals(other._points, _points) &&
+            (identical(other.randomColor, randomColor) ||
+                other.randomColor == randomColor));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(points),
-      const DeepCollectionEquality().hash(randomColor));
+      runtimeType, const DeepCollectionEquality().hash(_points), randomColor);
 
   @JsonKey(ignore: true)
   @override
-  $GeoMultiPolygonCopyWith<GeoMultiPolygon> get copyWith =>
-      _$GeoMultiPolygonCopyWithImpl<GeoMultiPolygon>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$GeoMultiPolygonCopyWith<_$GeoMultiPolygon> get copyWith =>
+      __$$GeoMultiPolygonCopyWithImpl<_$GeoMultiPolygon>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1396,10 +1347,10 @@ class _$GeoMultiPolygon extends GeoMultiPolygon {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(LatLng point, Color randomColor)? point,
-    TResult Function(List<LatLng> points, Color randomColor)? linestring,
-    TResult Function(List<LatLng> points, Color randomColor)? polygon,
-    TResult Function(List<List<List<LatLng>>> points, Color randomColor)?
+    TResult? Function(LatLng point, Color randomColor)? point,
+    TResult? Function(List<LatLng> points, Color randomColor)? linestring,
+    TResult? Function(List<LatLng> points, Color randomColor)? polygon,
+    TResult? Function(List<List<List<LatLng>>> points, Color randomColor)?
         multiPolygon,
   }) {
     return multiPolygon?.call(points, randomColor);
@@ -1435,10 +1386,10 @@ class _$GeoMultiPolygon extends GeoMultiPolygon {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(GeoPoint value)? point,
-    TResult Function(GeoLinestring value)? linestring,
-    TResult Function(GeoPolygon value)? polygon,
-    TResult Function(GeoMultiPolygon value)? multiPolygon,
+    TResult? Function(GeoPoint value)? point,
+    TResult? Function(GeoLinestring value)? linestring,
+    TResult? Function(GeoPolygon value)? polygon,
+    TResult? Function(GeoMultiPolygon value)? multiPolygon,
   }) {
     return multiPolygon?.call(this);
   }
@@ -1460,7 +1411,8 @@ class _$GeoMultiPolygon extends GeoMultiPolygon {
 }
 
 abstract class GeoMultiPolygon extends GeoGeometry {
-  factory GeoMultiPolygon(List<List<List<LatLng>>> points, Color randomColor) =
+  factory GeoMultiPolygon(
+          final List<List<List<LatLng>>> points, final Color randomColor) =
       _$GeoMultiPolygon;
   GeoMultiPolygon._() : super._();
 
@@ -1469,6 +1421,6 @@ abstract class GeoMultiPolygon extends GeoGeometry {
   Color get randomColor;
   @override
   @JsonKey(ignore: true)
-  $GeoMultiPolygonCopyWith<GeoMultiPolygon> get copyWith =>
+  _$$GeoMultiPolygonCopyWith<_$GeoMultiPolygon> get copyWith =>
       throw _privateConstructorUsedError;
 }

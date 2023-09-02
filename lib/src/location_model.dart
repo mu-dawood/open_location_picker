@@ -60,7 +60,6 @@ class FormattedLocation with _$FormattedLocation {
 
     /// GeoBounds of object
     required GeoGeometry geojson,
-    required Map<String, String> names,
   }) = _FormattedLocation;
 
   String get identifier => "$category-$osmId-$osmType";
@@ -92,10 +91,10 @@ class FormattedLocation with _$FormattedLocation {
       "namedetails": namedetails,
       if (boundingBox != null)
         "boundingbox": [
-          boundingBox!.southWest?.latitude,
-          boundingBox!.northEast?.latitude,
-          boundingBox!.southWest?.longitude,
-          boundingBox!.northEast?.longitude
+          boundingBox!.southWest.latitude,
+          boundingBox!.northEast.latitude,
+          boundingBox!.southWest.longitude,
+          boundingBox!.northEast.longitude
         ],
       "geojson": geojson.when(
         point: (latlng, _) => {
@@ -145,7 +144,6 @@ class FormattedLocation with _$FormattedLocation {
     return FormattedLocation(
       placeId: placeId,
       address: address,
-      names: names,
       lat: lat,
       lon: lon,
       addressType: addressType,
@@ -181,8 +179,6 @@ class FormattedLocation with _$FormattedLocation {
     return FormattedLocation(
       placeId: json["place_id"]!.toString(),
       address: Address.fromMap(json["address"] ?? {}),
-      names: (json["namedetails"] as Map)
-          .map((key, value) => MapEntry(key.toString(), value)),
       lat: lat,
       lon: lon,
       addressType: json["addresstype"] ?? '',
@@ -198,21 +194,23 @@ class FormattedLocation with _$FormattedLocation {
       ]),
       category: json["category"] ?? '',
       displayName: json["display_name"] ?? '',
-      extratags: (json["extratags"] as Map)
-          .map((key, value) => MapEntry(key.toString(), value)),
+      extratags: (json["extratags"] as Map?)
+              ?.map((key, value) => MapEntry(key.toString(), value)) ??
+          {},
       geojson: GeoGeometry.fromMap(json["geojson"] ??
           {
             "type": "Point",
             "coordinates": [lon, lat]
           }),
-      importance: double.parse(json["importance"]?.toString() ?? ''),
+      importance: double.tryParse(json["importance"]?.toString() ?? '') ?? 0,
       licence: json["licence"] ?? '',
       name: json["name"] ?? '',
-      namedetails: (json["namedetails"] as Map)
-          .map((key, value) => MapEntry(key.toString(), value)),
-      osmId: int.parse(json["osm_id"]?.toString() ?? '0'),
+      namedetails: (json["namedetails"] as Map?)
+              ?.map((key, value) => MapEntry(key.toString(), value)) ??
+          {},
+      osmId: int.tryParse(json["osm_id"]?.toString() ?? '0') ?? 0,
       osmType: json["osm_type"] ?? '',
-      placeRank: int.parse(json["place_rank"]?.toString() ?? '0'),
+      placeRank: int.tryParse(json["place_rank"]?.toString() ?? '0') ?? 0,
       type: json["type"] ?? '',
       icon: json["icon"],
     );

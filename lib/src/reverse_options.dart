@@ -114,7 +114,7 @@ class ViewBox extends LatLngBounds {
     return {
       "bounded": bounded ? "1" : "0",
       "viewbox":
-          "${southWest?.latitude},${southWest?.longitude},${northEast?.latitude},${northEast?.longitude}",
+          "${southWest.latitude},${southWest.longitude},${northEast.latitude},${northEast.longitude}",
     };
   }
 }

@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'bloc.dart';
 
@@ -32,12 +32,12 @@ mixin _$OpenMapState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(SelectedLocation selected)? selected,
-    TResult Function(SelectedLocation selected, LatLng reversing)? reversing,
-    TResult Function(SelectedLocation selected, String query,
+    TResult? Function(SelectedLocation selected)? selected,
+    TResult? Function(SelectedLocation selected, LatLng reversing)? reversing,
+    TResult? Function(SelectedLocation selected, String query,
             List<FormattedLocation> oldResults)?
         searching,
-    TResult Function(SelectedLocation selected, String query,
+    TResult? Function(SelectedLocation selected, String query,
             List<FormattedLocation> searchResults)?
         results,
   }) =>
@@ -65,10 +65,10 @@ mixin _$OpenMapState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Selected value)? selected,
-    TResult Function(_Reversing value)? reversing,
-    TResult Function(_Searching value)? searching,
-    TResult Function(_Results value)? results,
+    TResult? Function(_Selected value)? selected,
+    TResult? Function(_Reversing value)? reversing,
+    TResult? Function(_Searching value)? searching,
+    TResult? Function(_Results value)? results,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -90,36 +90,41 @@ mixin _$OpenMapState {
 abstract class $OpenMapStateCopyWith<$Res> {
   factory $OpenMapStateCopyWith(
           OpenMapState value, $Res Function(OpenMapState) then) =
-      _$OpenMapStateCopyWithImpl<$Res>;
+      _$OpenMapStateCopyWithImpl<$Res, OpenMapState>;
+  @useResult
   $Res call({SelectedLocation selected});
 
   $SelectedLocationCopyWith<$Res> get selected;
 }
 
 /// @nodoc
-class _$OpenMapStateCopyWithImpl<$Res> implements $OpenMapStateCopyWith<$Res> {
+class _$OpenMapStateCopyWithImpl<$Res, $Val extends OpenMapState>
+    implements $OpenMapStateCopyWith<$Res> {
   _$OpenMapStateCopyWithImpl(this._value, this._then);
 
-  final OpenMapState _value;
   // ignore: unused_field
-  final $Res Function(OpenMapState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? selected = freezed,
+    Object? selected = null,
   }) {
     return _then(_value.copyWith(
-      selected: selected == freezed
+      selected: null == selected
           ? _value.selected
           : selected // ignore: cast_nullable_to_non_nullable
               as SelectedLocation,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $SelectedLocationCopyWith<$Res> get selected {
     return $SelectedLocationCopyWith<$Res>(_value.selected, (value) {
-      return _then(_value.copyWith(selected: value));
+      return _then(_value.copyWith(selected: value) as $Val);
     });
   }
 }
@@ -131,6 +136,7 @@ abstract class _$$_SelectedCopyWith<$Res>
           _$_Selected value, $Res Function(_$_Selected) then) =
       __$$_SelectedCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({SelectedLocation selected});
 
   @override
@@ -138,21 +144,20 @@ abstract class _$$_SelectedCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_SelectedCopyWithImpl<$Res> extends _$OpenMapStateCopyWithImpl<$Res>
+class __$$_SelectedCopyWithImpl<$Res>
+    extends _$OpenMapStateCopyWithImpl<$Res, _$_Selected>
     implements _$$_SelectedCopyWith<$Res> {
   __$$_SelectedCopyWithImpl(
       _$_Selected _value, $Res Function(_$_Selected) _then)
-      : super(_value, (v) => _then(v as _$_Selected));
+      : super(_value, _then);
 
-  @override
-  _$_Selected get _value => super._value as _$_Selected;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? selected = freezed,
+    Object? selected = null,
   }) {
     return _then(_$_Selected(
-      selected == freezed
+      null == selected
           ? _value.selected
           : selected // ignore: cast_nullable_to_non_nullable
               as SelectedLocation,
@@ -186,15 +191,16 @@ class _$_Selected with DiagnosticableTreeMixin implements _Selected {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Selected &&
-            const DeepCollectionEquality().equals(other.selected, selected));
+            (identical(other.selected, selected) ||
+                other.selected == selected));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(selected));
+  int get hashCode => Object.hash(runtimeType, selected);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_SelectedCopyWith<_$_Selected> get copyWith =>
       __$$_SelectedCopyWithImpl<_$_Selected>(this, _$identity);
 
@@ -217,12 +223,12 @@ class _$_Selected with DiagnosticableTreeMixin implements _Selected {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(SelectedLocation selected)? selected,
-    TResult Function(SelectedLocation selected, LatLng reversing)? reversing,
-    TResult Function(SelectedLocation selected, String query,
+    TResult? Function(SelectedLocation selected)? selected,
+    TResult? Function(SelectedLocation selected, LatLng reversing)? reversing,
+    TResult? Function(SelectedLocation selected, String query,
             List<FormattedLocation> oldResults)?
         searching,
-    TResult Function(SelectedLocation selected, String query,
+    TResult? Function(SelectedLocation selected, String query,
             List<FormattedLocation> searchResults)?
         results,
   }) {
@@ -262,10 +268,10 @@ class _$_Selected with DiagnosticableTreeMixin implements _Selected {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Selected value)? selected,
-    TResult Function(_Reversing value)? reversing,
-    TResult Function(_Searching value)? searching,
-    TResult Function(_Results value)? results,
+    TResult? Function(_Selected value)? selected,
+    TResult? Function(_Reversing value)? reversing,
+    TResult? Function(_Searching value)? searching,
+    TResult? Function(_Results value)? results,
   }) {
     return selected?.call(this);
   }
@@ -290,7 +296,7 @@ abstract class _Selected implements OpenMapState {
   const factory _Selected(final SelectedLocation selected) = _$_Selected;
 
   @override
-  SelectedLocation get selected => throw _privateConstructorUsedError;
+  SelectedLocation get selected;
   @override
   @JsonKey(ignore: true)
   _$$_SelectedCopyWith<_$_Selected> get copyWith =>
@@ -304,6 +310,7 @@ abstract class _$$_ReversingCopyWith<$Res>
           _$_Reversing value, $Res Function(_$_Reversing) then) =
       __$$_ReversingCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({SelectedLocation selected, LatLng reversing});
 
   @override
@@ -311,26 +318,25 @@ abstract class _$$_ReversingCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ReversingCopyWithImpl<$Res> extends _$OpenMapStateCopyWithImpl<$Res>
+class __$$_ReversingCopyWithImpl<$Res>
+    extends _$OpenMapStateCopyWithImpl<$Res, _$_Reversing>
     implements _$$_ReversingCopyWith<$Res> {
   __$$_ReversingCopyWithImpl(
       _$_Reversing _value, $Res Function(_$_Reversing) _then)
-      : super(_value, (v) => _then(v as _$_Reversing));
+      : super(_value, _then);
 
-  @override
-  _$_Reversing get _value => super._value as _$_Reversing;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? selected = freezed,
-    Object? reversing = freezed,
+    Object? selected = null,
+    Object? reversing = null,
   }) {
     return _then(_$_Reversing(
-      selected == freezed
+      null == selected
           ? _value.selected
           : selected // ignore: cast_nullable_to_non_nullable
               as SelectedLocation,
-      reversing == freezed
+      null == reversing
           ? _value.reversing
           : reversing // ignore: cast_nullable_to_non_nullable
               as LatLng,
@@ -367,18 +373,18 @@ class _$_Reversing with DiagnosticableTreeMixin implements _Reversing {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Reversing &&
-            const DeepCollectionEquality().equals(other.selected, selected) &&
-            const DeepCollectionEquality().equals(other.reversing, reversing));
+            (identical(other.selected, selected) ||
+                other.selected == selected) &&
+            (identical(other.reversing, reversing) ||
+                other.reversing == reversing));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(selected),
-      const DeepCollectionEquality().hash(reversing));
+  int get hashCode => Object.hash(runtimeType, selected, reversing);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ReversingCopyWith<_$_Reversing> get copyWith =>
       __$$_ReversingCopyWithImpl<_$_Reversing>(this, _$identity);
 
@@ -401,12 +407,12 @@ class _$_Reversing with DiagnosticableTreeMixin implements _Reversing {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(SelectedLocation selected)? selected,
-    TResult Function(SelectedLocation selected, LatLng reversing)? reversing,
-    TResult Function(SelectedLocation selected, String query,
+    TResult? Function(SelectedLocation selected)? selected,
+    TResult? Function(SelectedLocation selected, LatLng reversing)? reversing,
+    TResult? Function(SelectedLocation selected, String query,
             List<FormattedLocation> oldResults)?
         searching,
-    TResult Function(SelectedLocation selected, String query,
+    TResult? Function(SelectedLocation selected, String query,
             List<FormattedLocation> searchResults)?
         results,
   }) {
@@ -446,10 +452,10 @@ class _$_Reversing with DiagnosticableTreeMixin implements _Reversing {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Selected value)? selected,
-    TResult Function(_Reversing value)? reversing,
-    TResult Function(_Searching value)? searching,
-    TResult Function(_Results value)? results,
+    TResult? Function(_Selected value)? selected,
+    TResult? Function(_Reversing value)? reversing,
+    TResult? Function(_Searching value)? searching,
+    TResult? Function(_Results value)? results,
   }) {
     return reversing?.call(this);
   }
@@ -475,8 +481,8 @@ abstract class _Reversing implements OpenMapState {
       final SelectedLocation selected, final LatLng reversing) = _$_Reversing;
 
   @override
-  SelectedLocation get selected => throw _privateConstructorUsedError;
-  LatLng get reversing => throw _privateConstructorUsedError;
+  SelectedLocation get selected;
+  LatLng get reversing;
   @override
   @JsonKey(ignore: true)
   _$$_ReversingCopyWith<_$_Reversing> get copyWith =>
@@ -490,6 +496,7 @@ abstract class _$$_SearchingCopyWith<$Res>
           _$_Searching value, $Res Function(_$_Searching) then) =
       __$$_SearchingCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {SelectedLocation selected,
       String query,
@@ -500,31 +507,30 @@ abstract class _$$_SearchingCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_SearchingCopyWithImpl<$Res> extends _$OpenMapStateCopyWithImpl<$Res>
+class __$$_SearchingCopyWithImpl<$Res>
+    extends _$OpenMapStateCopyWithImpl<$Res, _$_Searching>
     implements _$$_SearchingCopyWith<$Res> {
   __$$_SearchingCopyWithImpl(
       _$_Searching _value, $Res Function(_$_Searching) _then)
-      : super(_value, (v) => _then(v as _$_Searching));
+      : super(_value, _then);
 
-  @override
-  _$_Searching get _value => super._value as _$_Searching;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? selected = freezed,
-    Object? query = freezed,
-    Object? oldResults = freezed,
+    Object? selected = null,
+    Object? query = null,
+    Object? oldResults = null,
   }) {
     return _then(_$_Searching(
-      selected: selected == freezed
+      selected: null == selected
           ? _value.selected
           : selected // ignore: cast_nullable_to_non_nullable
               as SelectedLocation,
-      query: query == freezed
+      query: null == query
           ? _value.query
           : query // ignore: cast_nullable_to_non_nullable
               as String,
-      oldResults: oldResults == freezed
+      oldResults: null == oldResults
           ? _value._oldResults
           : oldResults // ignore: cast_nullable_to_non_nullable
               as List<FormattedLocation>,
@@ -548,6 +554,7 @@ class _$_Searching with DiagnosticableTreeMixin implements _Searching {
   final List<FormattedLocation> _oldResults;
   @override
   List<FormattedLocation> get oldResults {
+    if (_oldResults is EqualUnmodifiableListView) return _oldResults;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_oldResults);
   }
@@ -572,21 +579,20 @@ class _$_Searching with DiagnosticableTreeMixin implements _Searching {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Searching &&
-            const DeepCollectionEquality().equals(other.selected, selected) &&
-            const DeepCollectionEquality().equals(other.query, query) &&
+            (identical(other.selected, selected) ||
+                other.selected == selected) &&
+            (identical(other.query, query) || other.query == query) &&
             const DeepCollectionEquality()
                 .equals(other._oldResults, _oldResults));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(selected),
-      const DeepCollectionEquality().hash(query),
+  int get hashCode => Object.hash(runtimeType, selected, query,
       const DeepCollectionEquality().hash(_oldResults));
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_SearchingCopyWith<_$_Searching> get copyWith =>
       __$$_SearchingCopyWithImpl<_$_Searching>(this, _$identity);
 
@@ -609,12 +615,12 @@ class _$_Searching with DiagnosticableTreeMixin implements _Searching {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(SelectedLocation selected)? selected,
-    TResult Function(SelectedLocation selected, LatLng reversing)? reversing,
-    TResult Function(SelectedLocation selected, String query,
+    TResult? Function(SelectedLocation selected)? selected,
+    TResult? Function(SelectedLocation selected, LatLng reversing)? reversing,
+    TResult? Function(SelectedLocation selected, String query,
             List<FormattedLocation> oldResults)?
         searching,
-    TResult Function(SelectedLocation selected, String query,
+    TResult? Function(SelectedLocation selected, String query,
             List<FormattedLocation> searchResults)?
         results,
   }) {
@@ -654,10 +660,10 @@ class _$_Searching with DiagnosticableTreeMixin implements _Searching {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Selected value)? selected,
-    TResult Function(_Reversing value)? reversing,
-    TResult Function(_Searching value)? searching,
-    TResult Function(_Results value)? results,
+    TResult? Function(_Selected value)? selected,
+    TResult? Function(_Reversing value)? reversing,
+    TResult? Function(_Searching value)? searching,
+    TResult? Function(_Results value)? results,
   }) {
     return searching?.call(this);
   }
@@ -685,9 +691,9 @@ abstract class _Searching implements OpenMapState {
       required final List<FormattedLocation> oldResults}) = _$_Searching;
 
   @override
-  SelectedLocation get selected => throw _privateConstructorUsedError;
-  String get query => throw _privateConstructorUsedError;
-  List<FormattedLocation> get oldResults => throw _privateConstructorUsedError;
+  SelectedLocation get selected;
+  String get query;
+  List<FormattedLocation> get oldResults;
   @override
   @JsonKey(ignore: true)
   _$$_SearchingCopyWith<_$_Searching> get copyWith =>
@@ -701,6 +707,7 @@ abstract class _$$_ResultsCopyWith<$Res>
           _$_Results value, $Res Function(_$_Results) then) =
       __$$_ResultsCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {SelectedLocation selected,
       String query,
@@ -711,30 +718,29 @@ abstract class _$$_ResultsCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ResultsCopyWithImpl<$Res> extends _$OpenMapStateCopyWithImpl<$Res>
+class __$$_ResultsCopyWithImpl<$Res>
+    extends _$OpenMapStateCopyWithImpl<$Res, _$_Results>
     implements _$$_ResultsCopyWith<$Res> {
   __$$_ResultsCopyWithImpl(_$_Results _value, $Res Function(_$_Results) _then)
-      : super(_value, (v) => _then(v as _$_Results));
+      : super(_value, _then);
 
-  @override
-  _$_Results get _value => super._value as _$_Results;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? selected = freezed,
-    Object? query = freezed,
-    Object? searchResults = freezed,
+    Object? selected = null,
+    Object? query = null,
+    Object? searchResults = null,
   }) {
     return _then(_$_Results(
-      selected: selected == freezed
+      selected: null == selected
           ? _value.selected
           : selected // ignore: cast_nullable_to_non_nullable
               as SelectedLocation,
-      query: query == freezed
+      query: null == query
           ? _value.query
           : query // ignore: cast_nullable_to_non_nullable
               as String,
-      searchResults: searchResults == freezed
+      searchResults: null == searchResults
           ? _value._searchResults
           : searchResults // ignore: cast_nullable_to_non_nullable
               as List<FormattedLocation>,
@@ -758,6 +764,7 @@ class _$_Results with DiagnosticableTreeMixin implements _Results {
   final List<FormattedLocation> _searchResults;
   @override
   List<FormattedLocation> get searchResults {
+    if (_searchResults is EqualUnmodifiableListView) return _searchResults;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_searchResults);
   }
@@ -782,21 +789,20 @@ class _$_Results with DiagnosticableTreeMixin implements _Results {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Results &&
-            const DeepCollectionEquality().equals(other.selected, selected) &&
-            const DeepCollectionEquality().equals(other.query, query) &&
+            (identical(other.selected, selected) ||
+                other.selected == selected) &&
+            (identical(other.query, query) || other.query == query) &&
             const DeepCollectionEquality()
                 .equals(other._searchResults, _searchResults));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(selected),
-      const DeepCollectionEquality().hash(query),
+  int get hashCode => Object.hash(runtimeType, selected, query,
       const DeepCollectionEquality().hash(_searchResults));
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ResultsCopyWith<_$_Results> get copyWith =>
       __$$_ResultsCopyWithImpl<_$_Results>(this, _$identity);
 
@@ -819,12 +825,12 @@ class _$_Results with DiagnosticableTreeMixin implements _Results {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(SelectedLocation selected)? selected,
-    TResult Function(SelectedLocation selected, LatLng reversing)? reversing,
-    TResult Function(SelectedLocation selected, String query,
+    TResult? Function(SelectedLocation selected)? selected,
+    TResult? Function(SelectedLocation selected, LatLng reversing)? reversing,
+    TResult? Function(SelectedLocation selected, String query,
             List<FormattedLocation> oldResults)?
         searching,
-    TResult Function(SelectedLocation selected, String query,
+    TResult? Function(SelectedLocation selected, String query,
             List<FormattedLocation> searchResults)?
         results,
   }) {
@@ -864,10 +870,10 @@ class _$_Results with DiagnosticableTreeMixin implements _Results {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Selected value)? selected,
-    TResult Function(_Reversing value)? reversing,
-    TResult Function(_Searching value)? searching,
-    TResult Function(_Results value)? results,
+    TResult? Function(_Selected value)? selected,
+    TResult? Function(_Reversing value)? reversing,
+    TResult? Function(_Searching value)? searching,
+    TResult? Function(_Results value)? results,
   }) {
     return results?.call(this);
   }
@@ -895,10 +901,9 @@ abstract class _Results implements OpenMapState {
       required final List<FormattedLocation> searchResults}) = _$_Results;
 
   @override
-  SelectedLocation get selected => throw _privateConstructorUsedError;
-  String get query => throw _privateConstructorUsedError;
-  List<FormattedLocation> get searchResults =>
-      throw _privateConstructorUsedError;
+  SelectedLocation get selected;
+  String get query;
+  List<FormattedLocation> get searchResults;
   @override
   @JsonKey(ignore: true)
   _$$_ResultsCopyWith<_$_Results> get copyWith =>
@@ -907,6 +912,7 @@ abstract class _Results implements OpenMapState {
 
 /// @nodoc
 mixin _$SelectedLocation {
+  Object? get selected => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(FormattedLocation? selected) single,
@@ -915,8 +921,8 @@ mixin _$SelectedLocation {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(FormattedLocation? selected)? single,
-    TResult Function(List<FormattedLocation> selected)? multi,
+    TResult? Function(FormattedLocation? selected)? single,
+    TResult? Function(List<FormattedLocation> selected)? multi,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -934,8 +940,8 @@ mixin _$SelectedLocation {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Single value)? single,
-    TResult Function(_Multi value)? multi,
+    TResult? Function(_Single value)? single,
+    TResult? Function(_Multi value)? multi,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -951,43 +957,44 @@ mixin _$SelectedLocation {
 abstract class $SelectedLocationCopyWith<$Res> {
   factory $SelectedLocationCopyWith(
           SelectedLocation value, $Res Function(SelectedLocation) then) =
-      _$SelectedLocationCopyWithImpl<$Res>;
+      _$SelectedLocationCopyWithImpl<$Res, SelectedLocation>;
 }
 
 /// @nodoc
-class _$SelectedLocationCopyWithImpl<$Res>
+class _$SelectedLocationCopyWithImpl<$Res, $Val extends SelectedLocation>
     implements $SelectedLocationCopyWith<$Res> {
   _$SelectedLocationCopyWithImpl(this._value, this._then);
 
-  final SelectedLocation _value;
   // ignore: unused_field
-  final $Res Function(SelectedLocation) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
 abstract class _$$_SingleCopyWith<$Res> {
   factory _$$_SingleCopyWith(_$_Single value, $Res Function(_$_Single) then) =
       __$$_SingleCopyWithImpl<$Res>;
+  @useResult
   $Res call({FormattedLocation? selected});
 
   $FormattedLocationCopyWith<$Res>? get selected;
 }
 
 /// @nodoc
-class __$$_SingleCopyWithImpl<$Res> extends _$SelectedLocationCopyWithImpl<$Res>
+class __$$_SingleCopyWithImpl<$Res>
+    extends _$SelectedLocationCopyWithImpl<$Res, _$_Single>
     implements _$$_SingleCopyWith<$Res> {
   __$$_SingleCopyWithImpl(_$_Single _value, $Res Function(_$_Single) _then)
-      : super(_value, (v) => _then(v as _$_Single));
+      : super(_value, _then);
 
-  @override
-  _$_Single get _value => super._value as _$_Single;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? selected = freezed,
   }) {
     return _then(_$_Single(
-      selected == freezed
+      freezed == selected
           ? _value.selected
           : selected // ignore: cast_nullable_to_non_nullable
               as FormattedLocation?,
@@ -995,6 +1002,7 @@ class __$$_SingleCopyWithImpl<$Res> extends _$SelectedLocationCopyWithImpl<$Res>
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $FormattedLocationCopyWith<$Res>? get selected {
     if (_value.selected == null) {
       return null;
@@ -1032,15 +1040,16 @@ class _$_Single with DiagnosticableTreeMixin implements _Single {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Single &&
-            const DeepCollectionEquality().equals(other.selected, selected));
+            (identical(other.selected, selected) ||
+                other.selected == selected));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(selected));
+  int get hashCode => Object.hash(runtimeType, selected);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_SingleCopyWith<_$_Single> get copyWith =>
       __$$_SingleCopyWithImpl<_$_Single>(this, _$identity);
 
@@ -1056,8 +1065,8 @@ class _$_Single with DiagnosticableTreeMixin implements _Single {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(FormattedLocation? selected)? single,
-    TResult Function(List<FormattedLocation> selected)? multi,
+    TResult? Function(FormattedLocation? selected)? single,
+    TResult? Function(List<FormattedLocation> selected)? multi,
   }) {
     return single?.call(selected);
   }
@@ -1087,8 +1096,8 @@ class _$_Single with DiagnosticableTreeMixin implements _Single {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Single value)? single,
-    TResult Function(_Multi value)? multi,
+    TResult? Function(_Single value)? single,
+    TResult? Function(_Multi value)? multi,
   }) {
     return single?.call(this);
   }
@@ -1110,7 +1119,8 @@ class _$_Single with DiagnosticableTreeMixin implements _Single {
 abstract class _Single implements SelectedLocation {
   const factory _Single(final FormattedLocation? selected) = _$_Single;
 
-  FormattedLocation? get selected => throw _privateConstructorUsedError;
+  @override
+  FormattedLocation? get selected;
   @JsonKey(ignore: true)
   _$$_SingleCopyWith<_$_Single> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1120,24 +1130,24 @@ abstract class _Single implements SelectedLocation {
 abstract class _$$_MultiCopyWith<$Res> {
   factory _$$_MultiCopyWith(_$_Multi value, $Res Function(_$_Multi) then) =
       __$$_MultiCopyWithImpl<$Res>;
+  @useResult
   $Res call({List<FormattedLocation> selected});
 }
 
 /// @nodoc
-class __$$_MultiCopyWithImpl<$Res> extends _$SelectedLocationCopyWithImpl<$Res>
+class __$$_MultiCopyWithImpl<$Res>
+    extends _$SelectedLocationCopyWithImpl<$Res, _$_Multi>
     implements _$$_MultiCopyWith<$Res> {
   __$$_MultiCopyWithImpl(_$_Multi _value, $Res Function(_$_Multi) _then)
-      : super(_value, (v) => _then(v as _$_Multi));
+      : super(_value, _then);
 
-  @override
-  _$_Multi get _value => super._value as _$_Multi;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? selected = freezed,
+    Object? selected = null,
   }) {
     return _then(_$_Multi(
-      selected == freezed
+      null == selected
           ? _value._selected
           : selected // ignore: cast_nullable_to_non_nullable
               as List<FormattedLocation>,
@@ -1153,6 +1163,7 @@ class _$_Multi with DiagnosticableTreeMixin implements _Multi {
   final List<FormattedLocation> _selected;
   @override
   List<FormattedLocation> get selected {
+    if (_selected is EqualUnmodifiableListView) return _selected;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_selected);
   }
@@ -1184,6 +1195,7 @@ class _$_Multi with DiagnosticableTreeMixin implements _Multi {
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_MultiCopyWith<_$_Multi> get copyWith =>
       __$$_MultiCopyWithImpl<_$_Multi>(this, _$identity);
 
@@ -1199,8 +1211,8 @@ class _$_Multi with DiagnosticableTreeMixin implements _Multi {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(FormattedLocation? selected)? single,
-    TResult Function(List<FormattedLocation> selected)? multi,
+    TResult? Function(FormattedLocation? selected)? single,
+    TResult? Function(List<FormattedLocation> selected)? multi,
   }) {
     return multi?.call(selected);
   }
@@ -1230,8 +1242,8 @@ class _$_Multi with DiagnosticableTreeMixin implements _Multi {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Single value)? single,
-    TResult Function(_Multi value)? multi,
+    TResult? Function(_Single value)? single,
+    TResult? Function(_Multi value)? multi,
   }) {
     return multi?.call(this);
   }
@@ -1253,7 +1265,8 @@ class _$_Multi with DiagnosticableTreeMixin implements _Multi {
 abstract class _Multi implements SelectedLocation {
   const factory _Multi(final List<FormattedLocation> selected) = _$_Multi;
 
-  List<FormattedLocation> get selected => throw _privateConstructorUsedError;
+  @override
+  List<FormattedLocation> get selected;
   @JsonKey(ignore: true)
   _$$_MultiCopyWith<_$_Multi> get copyWith =>
       throw _privateConstructorUsedError;
