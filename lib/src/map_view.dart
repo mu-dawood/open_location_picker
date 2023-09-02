@@ -156,9 +156,8 @@ class _OpenStreetMapsState extends State<OpenStreetMaps>
     }
   }
 
-  void _onMapReady() async {
+  void _onMapReady(OpenMapSettings? settings) async {
     try {
-      var settings = OpenMapSettings.of(context);
       if (widget.options.center != null) return;
       if (widget.options.bounds != null) return;
       if (settings == null) return;
@@ -247,7 +246,7 @@ class _OpenStreetMapsState extends State<OpenStreetMaps>
       );
     }
     var options = widget.options.create(
-      onMapReady: () => _onMapReady(),
+      onMapReady: () => _onMapReady(settings),
       onTap: (_, pos) => _onTap(pos),
     );
     var bloc = widget.bloc;
