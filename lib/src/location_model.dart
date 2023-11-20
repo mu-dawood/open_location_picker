@@ -231,6 +231,8 @@ class Address {
     this.postcode = "",
     this.country = "",
     this.countryCode = "",
+    this.municipality = "",
+    this.village = "",
   });
 
   final String highway;
@@ -241,6 +243,8 @@ class Address {
   final String postcode;
   final String country;
   final String countryCode;
+  final String municipality;
+  final String village;
 
   Map<String, dynamic> toJson() {
     return {
@@ -251,7 +255,9 @@ class Address {
       "state": state,
       "postcode": postcode,
       "country": country,
-      "countryCode": countryCode
+      "countryCode": countryCode,
+      "municipality": municipality,
+      "village": village
     };
   }
 
@@ -265,6 +271,8 @@ class Address {
       postcode: map['postcode'] ?? '',
       country: map['country'] ?? '',
       countryCode: map['country_code'] ?? '',
+      municipality: map['municipality'] ?? '',
+      village: map['village'] ?? '',
     );
   }
 }
